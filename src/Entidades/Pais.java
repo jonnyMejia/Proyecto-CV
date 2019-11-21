@@ -10,14 +10,14 @@ package Entidades;
  * @author Dani Lucano
  */
 public class Pais {
-    String pais_id;
+    int pais_id;
     String nombre;
 
-    public String getPais_id() {
+    public int getPais_id() {
         return pais_id;
     }
 
-    public void setPais_id(String pais_id) {
+    public void setPais_id(int pais_id) {
         this.pais_id = pais_id;
     }
 

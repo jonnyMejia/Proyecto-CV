@@ -10,14 +10,14 @@ package Entidades;
  * @author Dani Lucano
  */
 public class Area {
-    String area_id;
+    int area_id;
     String nombre;
 
-    public String getArea_id() {
+    public int getArea_id() {
         return area_id;
     }
 
-    public void setArea_id(String area_id) {
+    public void setArea_id(int area_id) {
         this.area_id = area_id;
     }
 

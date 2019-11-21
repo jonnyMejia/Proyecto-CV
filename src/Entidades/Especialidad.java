@@ -10,14 +10,14 @@ package Entidades;
  * @author Dani Lucano
  */
 public class Especialidad {
-    String espec_id;
+    int espec_id;
     String nimbre;
 
-    public String getEspec_id() {
+    public int getEspec_id() {
         return espec_id;
     }
 
-    public void setEspec_id(String espec_id) {
+    public void setEspec_id(int espec_id) {
         this.espec_id = espec_id;
     }
 

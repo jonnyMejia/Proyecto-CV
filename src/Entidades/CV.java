@@ -14,7 +14,7 @@ import java.util.Date;
 public class CV {
     int cv_id;
     int pos_id;
-    String puesto_id;
+    int puesto_id;
     Date fecha;
 
     public int getCv_id() {
@@ -33,11 +33,11 @@ public class CV {
         this.pos_id = pos_id;
     }
 
-    public String getPuesto_id() {
+    public int getPuesto_id() {
         return puesto_id;
     }
 
-    public void setPuesto_id(String puesto_id) {
+    public void setPuesto_id(int puesto_id) {
         this.puesto_id = puesto_id;
     }
 

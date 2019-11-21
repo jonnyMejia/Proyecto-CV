@@ -10,14 +10,14 @@ package Entidades;
  * @author Dani Lucano
  */
 public class Area_Laboral {
-    String area_lab_id;
+    int area_lab_id;
     String nombre;
 
-    public String getArea_lab_id() {
+    public int getArea_lab_id() {
         return area_lab_id;
     }
 
-    public void setArea_lab_id(String area_lab_id) {
+    public void setArea_lab_id(int area_lab_id) {
         this.area_lab_id = area_lab_id;
     }
 

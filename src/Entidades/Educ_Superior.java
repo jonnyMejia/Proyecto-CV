@@ -12,38 +12,38 @@ import java.util.Date;
  * @author Dani Lucano
  */
 public class Educ_Superior {
-    String educ_sup_id;
-    String inst_id;
-    String grado_id;
+    int educ_sup_id;
+    int inst_id;
+    int grado_id;
     String esduc_sup_ciclo;
-    String pais_id;
+    int pais_id;
     Date f_ini;
     Date f_fin;
     Date anios;
-    String espec_id;
-    String orden_merito;
+    int espec_id;
+    int orden_merito;
 
-    public String getEduc_sup_id() {
+    public int getEduc_sup_id() {
         return educ_sup_id;
     }
 
-    public void setEduc_sup_id(String educ_sup_id) {
+    public void setEduc_sup_id(int educ_sup_id) {
         this.educ_sup_id = educ_sup_id;
     }
 
-    public String getInst_id() {
+    public int getInst_id() {
         return inst_id;
     }
 
-    public void setInst_id(String inst_id) {
+    public void setInst_id(int inst_id) {
         this.inst_id = inst_id;
     }
 
-    public String getGrado_id() {
+    public int getGrado_id() {
         return grado_id;
     }
 
-    public void setGrado_id(String grado_id) {
+    public void setGrado_id(int grado_id) {
         this.grado_id = grado_id;
     }
 
@@ -55,11 +55,11 @@ public class Educ_Superior {
         this.esduc_sup_ciclo = esduc_sup_ciclo;
     }
 
-    public String getPais_id() {
+    public int getPais_id() {
         return pais_id;
     }
 
-    public void setPais_id(String pais_id) {
+    public void setPais_id(int pais_id) {
         this.pais_id = pais_id;
     }
 
@@ -87,19 +87,19 @@ public class Educ_Superior {
         this.anios = anios;
     }
 
-    public String getEspec_id() {
+    public int getEspec_id() {
         return espec_id;
     }
 
-    public void setEspec_id(String espec_id) {
+    public void setEspec_id(int espec_id) {
         this.espec_id = espec_id;
     }
 
-    public String getOrden_merito() {
+    public int getOrden_merito() {
         return orden_merito;
     }
 
-    public void setOrden_merito(String orden_merito) {
+    public void setOrden_merito(int orden_merito) {
         this.orden_merito = orden_merito;
     }
     

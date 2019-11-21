@@ -10,14 +10,14 @@ package Entidades;
  * @author Dani Lucano
  */
 public class Nivel {
-    String nivel_id;
+    int nivel_id;
     String nivel;
 
-    public String getNivel_id() {
+    public int getNivel_id() {
         return nivel_id;
     }
 
-    public void setNivel_id(String nivel_id) {
+    public void setNivel_id(int nivel_id) {
         this.nivel_id = nivel_id;
     }
 

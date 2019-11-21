@@ -12,20 +12,20 @@ import java.util.Date;
  * @author Dani Lucano
  */
 public class Exp_Laboral {
-    String exp_lab_id;
+    int exp_lab_id;
     String emp_nom;
     String nom_puesto;
     Date f_ini;
     Date f_fin;
-    String srea_id;
-    String cargo_id;
-    String motivo_id;
+    int srea_id;
+    int cargo_id;
+    int motivo_id;
 
-    public String getExp_lab_id() {
+    public int getExp_lab_id() {
         return exp_lab_id;
     }
 
-    public void setExp_lab_id(String exp_lab_id) {
+    public void setExp_lab_id(int exp_lab_id) {
         this.exp_lab_id = exp_lab_id;
     }
 
@@ -61,27 +61,27 @@ public class Exp_Laboral {
         this.f_fin = f_fin;
     }
 
-    public String getSrea_id() {
+    public int getSrea_id() {
         return srea_id;
     }
 
-    public void setSrea_id(String srea_id) {
+    public void setSrea_id(int srea_id) {
         this.srea_id = srea_id;
     }
 
-    public String getCargo_id() {
+    public int getCargo_id() {
         return cargo_id;
     }
 
-    public void setCargo_id(String cargo_id) {
+    public void setCargo_id(int cargo_id) {
         this.cargo_id = cargo_id;
     }
 
-    public String getMotivo_id() {
+    public int getMotivo_id() {
         return motivo_id;
     }
 
-    public void setMotivo_id(String motivo_id) {
+    public void setMotivo_id(int motivo_id) {
         this.motivo_id = motivo_id;
     }
     

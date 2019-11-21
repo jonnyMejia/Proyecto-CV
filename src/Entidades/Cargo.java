@@ -10,14 +10,14 @@ package Entidades;
  * @author Dani Lucano
  */
 public class Cargo {
-    String cargo_id;
+    int cargo_id;
     String nombre;
 
-    public String getCargo_id() {
+    public int getCargo_id() {
         return cargo_id;
     }
 
-    public void setCargo_id(String cargo_id) {
+    public void setCargo_id(int cargo_id) {
         this.cargo_id = cargo_id;
     }
 

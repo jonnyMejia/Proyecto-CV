@@ -11,8 +11,8 @@ package Entidades;
  */
 public class Empresa {
     String emo_nom;
-    String sector_id;
-    String depto_id;
+    int sector_id;
+    int depto_id;
     String rubro;
     String telf;
 
@@ -24,19 +24,19 @@ public class Empresa {
         this.emo_nom = emo_nom;
     }
 
-    public String getSector_id() {
+    public int getSector_id() {
         return sector_id;
     }
 
-    public void setSector_id(String sector_id) {
+    public void setSector_id(int sector_id) {
         this.sector_id = sector_id;
     }
 
-    public String getDepto_id() {
+    public int getDepto_id() {
         return depto_id;
     }
 
-    public void setDepto_id(String depto_id) {
+    public void setDepto_id(int depto_id) {
         this.depto_id = depto_id;
     }
 

@@ -10,14 +10,14 @@ package Entidades;
  * @author Dani Lucano
  */
 public class Materia {
-    String mat_id;
+    int mat_id;
     String mat_nom;
 
-    public String getMat_id() {
+    public int getMat_id() {
         return mat_id;
     }
 
-    public void setMat_id(String mat_id) {
+    public void setMat_id(int mat_id) {
         this.mat_id = mat_id;
     }
 

@@ -10,14 +10,14 @@ package Entidades;
  * @author Dani Lucano
  */
 public class Sector {
-    String sector_id;
+    int sector_id;
     String nombre;
 
-    public String getSector_id() {
+    public int getSector_id() {
         return sector_id;
     }
 
-    public void setSector_id(String sector_id) {
+    public void setSector_id(int sector_id) {
         this.sector_id = sector_id;
     }
 

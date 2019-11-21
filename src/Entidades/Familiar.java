@@ -10,16 +10,16 @@ package Entidades;
  * @author Dani Lucano
  */
 public class Familiar {
-    String fam_id;
+    int fam_id;  //PUEDE SER UN DNI
     String fam_nom;
-    String tipo_id;
+    int tipo_id;
     String telf;
 
-    public String getFam_id() {
+    public int getFam_id() {
         return fam_id;
     }
 
-    public void setFam_id(String fam_id) {
+    public void setFam_id(int fam_id) {
         this.fam_id = fam_id;
     }
 
@@ -31,11 +31,11 @@ public class Familiar {
         this.fam_nom = fam_nom;
     }
 
-    public String getTipo_id() {
+    public int getTipo_id() {
         return tipo_id;
     }
 
-    public void setTipo_id(String tipo_id) {
+    public void setTipo_id(int tipo_id) {
         this.tipo_id = tipo_id;
     }
 

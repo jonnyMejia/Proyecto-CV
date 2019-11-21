@@ -10,7 +10,7 @@ package Entidades;
  * @author Dani Lucano
  */
 public class Pensiones {
-    String pensiones_id;
+    int pensiones_id;
     String nimbre;
 
     public Pensiones() {
@@ -18,11 +18,11 @@ public class Pensiones {
     
     
 
-    public String getPensiones_id() {
+    public int getPensiones_id() {
         return pensiones_id;
     }
 
-    public void setPensiones_id(String pensiones_id) {
+    public void setPensiones_id(int pensiones_id) {
         this.pensiones_id = pensiones_id;
     }
 

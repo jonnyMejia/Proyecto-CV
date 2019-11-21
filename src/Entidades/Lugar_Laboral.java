@@ -10,14 +10,14 @@ package Entidades;
  * @author Dani Lucano
  */
 public class Lugar_Laboral {
-    String lug_id;
+    int lug_id;
     String lug_nom;
 
-    public String getLug_id() {
+    public int getLug_id() {
         return lug_id;
     }
 
-    public void setLug_id(String lug_id) {
+    public void setLug_id(int lug_id) {
         this.lug_id = lug_id;
     }
 

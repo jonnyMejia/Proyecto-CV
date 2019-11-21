@@ -10,14 +10,14 @@ package Entidades;
  * @author Dani Lucano
  */
 public class Estado {
-    String estadi_id;
+    int estadi_id;
     String nombre;
 
-    public String getEstadi_id() {
+    public int getEstadi_id() {
         return estadi_id;
     }
 
-    public void setEstadi_id(String estadi_id) {
+    public void setEstadi_id(int estadi_id) {
         this.estadi_id = estadi_id;
     }
 

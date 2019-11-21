@@ -10,14 +10,14 @@ package Entidades;
  * @author Dani Lucano
  */
 public class Departamento {
-    String depto_id;
+    int depto_id;
     String nombre;
 
-    public String getDepto_id() {
+    public int getDepto_id() {
         return depto_id;
     }
 
-    public void setDepto_id(String depto_id) {
+    public void setDepto_id(int depto_id) {
         this.depto_id = depto_id;
     }
 

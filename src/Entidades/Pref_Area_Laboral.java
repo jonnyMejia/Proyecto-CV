@@ -10,22 +10,22 @@ package Entidades;
  * @author Dani Lucano
  */
 public class Pref_Area_Laboral {
-    String pref_area_lab_id;
-    String area_lab_id;
+    int pref_area_lab_id;
+    int area_lab_id;
 
-    public String getPref_area_lab_id() {
+    public int getPref_area_lab_id() {
         return pref_area_lab_id;
     }
 
-    public void setPref_area_lab_id(String pref_area_lab_id) {
+    public void setPref_area_lab_id(int pref_area_lab_id) {
         this.pref_area_lab_id = pref_area_lab_id;
     }
 
-    public String getArea_lab_id() {
+    public int getArea_lab_id() {
         return area_lab_id;
     }
 
-    public void setArea_lab_id(String area_lab_id) {
+    public void setArea_lab_id(int area_lab_id) {
         this.area_lab_id = area_lab_id;
     }
     

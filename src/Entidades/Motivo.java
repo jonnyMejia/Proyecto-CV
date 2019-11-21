@@ -10,14 +10,14 @@ package Entidades;
  * @author Dani Lucano
  */
 public class Motivo {
-    String motivo_id;
+    int motivo_id;
     String motivo;
 
-    public String getMotivo_id() {
+    public int getMotivo_id() {
         return motivo_id;
     }
 
-    public void setMotivo_id(String motivo_id) {
+    public void setMotivo_id(int motivo_id) {
         this.motivo_id = motivo_id;
     }
 

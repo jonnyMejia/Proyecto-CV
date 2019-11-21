@@ -10,14 +10,14 @@ package Entidades;
  * @author Dani Lucano
  */
 public class Tipo_Familiar {
-    String tipo_id;
+    int tipo_id;
     String tipo_nom;
 
-    public String getTipo_id() {
+    public int getTipo_id() {
         return tipo_id;
     }
 
-    public void setTipo_id(String tipo_id) {
+    public void setTipo_id(int tipo_id) {
         this.tipo_id = tipo_id;
     }
 
