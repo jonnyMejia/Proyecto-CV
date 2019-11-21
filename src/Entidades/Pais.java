@@ -12,8 +12,14 @@ package Entidades;
 public class Pais {
     String pais_id;
     String nombre;
+    
+    public Pais(String pais_id, String nombre) {
+		super();
+		this.pais_id = pais_id;
+		this.nombre = nombre;
+	}
 
-    public String getPais_id() {
+	public String getPais_id() {
         return pais_id;
     }
 
