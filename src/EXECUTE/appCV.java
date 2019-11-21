@@ -15,7 +15,7 @@ public class appCV {
 		paisjdbc.queryUpdate(new Pais("1", "NuevoPeru"));
 		List<Pais> lista=paisjdbc.querySelect();
 		System.out.println("mostrando Result");
-		lista.forEach(e->System.out.println(String.format("Hi", e.getPais_id(),e.getNombre())));
+		lista.forEach(e->System.out.println(String.format("%1$3S -> %2$S", e.getPais_id(),e.getNombre())));
 		
 	}
 }
