@@ -10,15 +10,21 @@ package Entidades;
  * @author Dani Lucano
  */
 public class Puesto {
-    int puest_id;
+    int puesto_id;
     String nombre;
+    
+    public Puesto(int puesto_id, String nombre) {
+		super();
+		this.puesto_id = puesto_id;
+		this.nombre = nombre;
+	}
 
-    public int getPuest_id() {
-        return puest_id;
+	public int getPuest_id() {
+        return puesto_id;
     }
 
     public void setPuest_id(int puest_id) {
-        this.puest_id = puest_id;
+        this.puesto_id = puest_id;
     }
 
     public String getNombre() {

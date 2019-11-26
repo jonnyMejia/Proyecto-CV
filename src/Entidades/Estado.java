@@ -10,15 +10,21 @@ package Entidades;
  * @author Dani Lucano
  */
 public class Estado {
-    int estadi_id;
+    int estado_id;
     String nombre;
 
-    public int getEstadi_id() {
-        return estadi_id;
+    public Estado(int estado_id, String nombre) {
+		super();
+		this.estado_id = estado_id;
+		this.nombre = nombre;
+	}
+
+	public int getEstado_id() {
+        return estado_id;
     }
 
-    public void setEstadi_id(int estadi_id) {
-        this.estadi_id = estadi_id;
+    public void setEstado_id(int estadi_id) {
+        this.estado_id = estadi_id;
     }
 
     public String getNombre() {

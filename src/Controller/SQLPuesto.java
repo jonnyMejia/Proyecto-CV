@@ -8,27 +8,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 import DBManager.DBManager;
-import Entidades.Pais;
+import Entidades.Puesto;
 
-public class SQLPais {
-	private static String SELECT = "SELECT * FROM PAIS ";
-	private static String DELETE = "DELETE FROM PAIS WHERE pais_id = ? ";
-	private static String INSERT = "INSERT INTO PAIS VALUES ( ? , ? )";
-	private static String UPDATE = "UPDATE PAIS SET nombre = ? WHERE pais_id = ? ";
+public class SQLPuesto {
+	private static String SELECT = "SELECT * FROM PUESTP ";
+	private static String DELETE = "DELETE FROM PUESTO WHERE puesto_id = ? ";
+	private static String INSERT = "INSERT INTO PUESTO VALUES ( ? , ? )";
+	private static String UPDATE = "UPDATE PUESTO SET nombre = ? WHERE puesto_id = ? ";
 	
-	public List<Pais> querySelect() {
+	public List<Puesto> querySelect() {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		Pais pais= null;
-		List<Pais> listaPaises=new ArrayList<>();
+		Puesto puesto= null;
+		List<Puesto> listaPaises=new ArrayList<>();
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(SELECT);
 			rs = stmt.executeQuery();
 			while(rs.next()) {
-				pais=new Pais(rs.getInt(1),rs.getString(2));
-				listaPaises.add(pais);
+				puesto=new Puesto(rs.getInt(1),rs.getString(2));
+				listaPaises.add(puesto);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -39,15 +39,15 @@ public class SQLPais {
 		}
 		return listaPaises;
 	}
-	public int queryInsert(Pais pais) {
+	public int queryInsert(Puesto puesto) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		int rows=0;
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(INSERT);
-			stmt.setInt(1, pais.getPais_id());
-			stmt.setString(2, pais.getNombre());
+			stmt.setInt(1, puesto.getPuest_id());
+			stmt.setString(2, puesto.getNombre());
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -74,15 +74,15 @@ public class SQLPais {
 		}
 		return rows;
 	}
-	public int queryUpdate(Pais pais) {
+	public int queryUpdate(Puesto puesto) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		int rows=0;
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(UPDATE);
-			stmt.setString(1, pais.getNombre());
-			stmt.setInt(2, pais.getPais_id());
+			stmt.setString(1, puesto.getNombre());
+			stmt.setInt(2, puesto.getPuest_id());
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -92,5 +92,4 @@ public class SQLPais {
 		}
 		return rows;
 	}
-	
 }

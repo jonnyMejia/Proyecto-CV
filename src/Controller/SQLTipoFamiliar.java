@@ -8,27 +8,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 import DBManager.DBManager;
-import Entidades.Pais;
+import Entidades.Tipo_Familiar;
 
-public class SQLPais {
-	private static String SELECT = "SELECT * FROM PAIS ";
-	private static String DELETE = "DELETE FROM PAIS WHERE pais_id = ? ";
-	private static String INSERT = "INSERT INTO PAIS VALUES ( ? , ? )";
-	private static String UPDATE = "UPDATE PAIS SET nombre = ? WHERE pais_id = ? ";
+public class SQLTipoFamiliar {
+	private static String SELECT = "SELECT * FROM TIPO_FAMILIAR";
+	private static String DELETE = "DELETE FROM TIPO_FAMILIAR WHERE tipo_id = ? ";
+	private static String INSERT = "INSERT INTO TIPO_FAMILIAR VALUES ( ? , ? )";
+	private static String UPDATE = "UPDATE TIPO_FAMILIAR SET nombre = ? WHERE tipo_id = ? ";
 	
-	public List<Pais> querySelect() {
+	public List<Tipo_Familiar> querySelect() {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		Pais pais= null;
-		List<Pais> listaPaises=new ArrayList<>();
+		Tipo_Familiar familiar= null;
+		List<Tipo_Familiar> listaPaises=new ArrayList<>();
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(SELECT);
 			rs = stmt.executeQuery();
 			while(rs.next()) {
-				pais=new Pais(rs.getInt(1),rs.getString(2));
-				listaPaises.add(pais);
+				familiar=new Tipo_Familiar(rs.getInt(1),rs.getString(2));
+				listaPaises.add(familiar);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -39,15 +39,15 @@ public class SQLPais {
 		}
 		return listaPaises;
 	}
-	public int queryInsert(Pais pais) {
+	public int queryInsert(Tipo_Familiar familiar) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		int rows=0;
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(INSERT);
-			stmt.setInt(1, pais.getPais_id());
-			stmt.setString(2, pais.getNombre());
+			stmt.setInt(1, familiar.getTipo_id());
+			stmt.setString(2, familiar.getNombre());
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -74,15 +74,15 @@ public class SQLPais {
 		}
 		return rows;
 	}
-	public int queryUpdate(Pais pais) {
+	public int queryUpdate(Tipo_Familiar familiar) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		int rows=0;
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(UPDATE);
-			stmt.setString(1, pais.getNombre());
-			stmt.setInt(2, pais.getPais_id());
+			stmt.setString(1, familiar.getNombre());
+			stmt.setInt(2, familiar.getTipo_id());
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -92,5 +92,4 @@ public class SQLPais {
 		}
 		return rows;
 	}
-	
 }

@@ -13,7 +13,13 @@ public class Cargo {
     int cargo_id;
     String nombre;
 
-    public int getCargo_id() {
+    public Cargo(int cargo_id, String nombre) {
+		super();
+		this.cargo_id = cargo_id;
+		this.nombre = nombre;
+	}
+
+	public int getCargo_id() {
         return cargo_id;
     }
 

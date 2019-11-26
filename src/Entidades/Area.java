@@ -13,7 +13,13 @@ public class Area {
     int area_id;
     String nombre;
 
-    public int getArea_id() {
+    public Area(int area_id, String nombre) {
+		super();
+		this.area_id = area_id;
+		this.nombre = nombre;
+	}
+
+	public int getArea_id() {
         return area_id;
     }
 

@@ -10,15 +10,15 @@ package Entidades;
  * @author Dani Lucano
  */
 public class Grado_Espec {
-    int grdo_id;
+    int grado_id;
     String nombre;
 
-    public int getGrdo_id() {
-        return grdo_id;
+    public int getGrado_id() {
+        return grado_id;
     }
 
-    public void setGrdo_id(int grdo_id) {
-        this.grdo_id = grdo_id;
+    public void setGrado_id(int grdo_id) {
+        this.grado_id = grdo_id;
     }
 
     public String getNombre() {

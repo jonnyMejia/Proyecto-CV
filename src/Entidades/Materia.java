@@ -10,23 +10,29 @@ package Entidades;
  * @author Dani Lucano
  */
 public class Materia {
-    int mat_id;
-    String mat_nom;
+    int materia_id;
+    String nombre;
+    
+    public Materia(int materia_id, String nombre) {
+		super();
+		this.materia_id = materia_id;
+		this.nombre = nombre;
+	}
 
-    public int getMat_id() {
-        return mat_id;
+	public int getMat_id() {
+        return materia_id;
     }
 
-    public void setMat_id(int mat_id) {
-        this.mat_id = mat_id;
+    public void setMat_id(int materia_id) {
+        this.materia_id = materia_id;
     }
 
-    public String getMat_nom() {
-        return mat_nom;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setMat_nom(String mat_nom) {
-        this.mat_nom = mat_nom;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
     
     

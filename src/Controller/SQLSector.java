@@ -6,29 +6,28 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import DBManager.DBManager;
-import Entidades.Pais;
+import Entidades.Sector;
 
-public class SQLPais {
-	private static String SELECT = "SELECT * FROM PAIS ";
-	private static String DELETE = "DELETE FROM PAIS WHERE pais_id = ? ";
-	private static String INSERT = "INSERT INTO PAIS VALUES ( ? , ? )";
-	private static String UPDATE = "UPDATE PAIS SET nombre = ? WHERE pais_id = ? ";
+public class SQLSector {
+	private static String SELECT = "SELECT * FROM SECTOR ";
+	private static String DELETE = "DELETE FROM SECTOR WHERE sector_id = ? ";
+	private static String INSERT = "INSERT INTO SECTOR VALUES ( ? , ? )";
+	private static String UPDATE = "UPDATE SECTOR SET nombre = ? WHERE sector_id = ? ";
 	
-	public List<Pais> querySelect() {
+	public List<Sector> querySelect() {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		Pais pais= null;
-		List<Pais> listaPaises=new ArrayList<>();
+		Sector sector= null;
+		List<Sector> listaPaises=new ArrayList<>();
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(SELECT);
 			rs = stmt.executeQuery();
 			while(rs.next()) {
-				pais=new Pais(rs.getInt(1),rs.getString(2));
-				listaPaises.add(pais);
+				sector=new Sector(rs.getInt(1),rs.getString(2));
+				listaPaises.add(sector);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -39,15 +38,15 @@ public class SQLPais {
 		}
 		return listaPaises;
 	}
-	public int queryInsert(Pais pais) {
+	public int queryInsert(Sector sector) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		int rows=0;
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(INSERT);
-			stmt.setInt(1, pais.getPais_id());
-			stmt.setString(2, pais.getNombre());
+			stmt.setInt(1, sector.getSector_id());
+			stmt.setString(2, sector.getNombre());
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -74,15 +73,15 @@ public class SQLPais {
 		}
 		return rows;
 	}
-	public int queryUpdate(Pais pais) {
+	public int queryUpdate(Sector sector) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		int rows=0;
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(UPDATE);
-			stmt.setString(1, pais.getNombre());
-			stmt.setInt(2, pais.getPais_id());
+			stmt.setString(1, sector.getNombre());
+			stmt.setInt(2, sector.getSector_id());
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -92,5 +91,4 @@ public class SQLPais {
 		}
 		return rows;
 	}
-	
-}
+}	

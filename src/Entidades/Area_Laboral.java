@@ -12,8 +12,14 @@ package Entidades;
 public class Area_Laboral {
     int area_lab_id;
     String nombre;
+    
+    public Area_Laboral(int area_lab_id, String nombre) {
+		super();
+		this.area_lab_id = area_lab_id;
+		this.nombre = nombre;
+	}
 
-    public int getArea_lab_id() {
+	public int getArea_lab_id() {
         return area_lab_id;
     }
 

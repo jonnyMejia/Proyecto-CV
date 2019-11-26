@@ -8,27 +8,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 import DBManager.DBManager;
-import Entidades.Pais;
+import Entidades.Nivel;
 
-public class SQLPais {
-	private static String SELECT = "SELECT * FROM PAIS ";
-	private static String DELETE = "DELETE FROM PAIS WHERE pais_id = ? ";
-	private static String INSERT = "INSERT INTO PAIS VALUES ( ? , ? )";
-	private static String UPDATE = "UPDATE PAIS SET nombre = ? WHERE pais_id = ? ";
+public class SQLNivel {
+	private static String SELECT = "SELECT * FROM NIVEL ";
+	private static String DELETE = "DELETE FROM NIVEL WHERE nivel_id = ? ";
+	private static String INSERT = "INSERT INTO NIVEL VALUES ( ? , ? )";
+	private static String UPDATE = "UPDATE NIVEL SET nivel = ? WHERE nivel_id = ? ";
 	
-	public List<Pais> querySelect() {
+	public List<Nivel> querySelect() {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		Pais pais= null;
-		List<Pais> listaPaises=new ArrayList<>();
+		Nivel nivel= null;
+		List<Nivel> listaPaises=new ArrayList<>();
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(SELECT);
 			rs = stmt.executeQuery();
 			while(rs.next()) {
-				pais=new Pais(rs.getInt(1),rs.getString(2));
-				listaPaises.add(pais);
+				nivel=new Nivel(rs.getInt(1),rs.getString(2));
+				listaPaises.add(nivel);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -39,15 +39,15 @@ public class SQLPais {
 		}
 		return listaPaises;
 	}
-	public int queryInsert(Pais pais) {
+	public int queryInsert(Nivel nivel) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		int rows=0;
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(INSERT);
-			stmt.setInt(1, pais.getPais_id());
-			stmt.setString(2, pais.getNombre());
+			stmt.setInt(1, nivel.getNivel_id());
+			stmt.setString(2, nivel.getNivel());
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -74,15 +74,15 @@ public class SQLPais {
 		}
 		return rows;
 	}
-	public int queryUpdate(Pais pais) {
+	public int queryUpdate(Nivel nivel) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		int rows=0;
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(UPDATE);
-			stmt.setString(1, pais.getNombre());
-			stmt.setInt(2, pais.getPais_id());
+			stmt.setString(1, nivel.getNivel());
+			stmt.setInt(2, nivel.getNivel_id());
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -92,5 +92,4 @@ public class SQLPais {
 		}
 		return rows;
 	}
-	
 }

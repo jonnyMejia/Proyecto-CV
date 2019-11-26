@@ -11,14 +11,16 @@ package Entidades;
  */
 public class Pensiones {
     int pensiones_id;
-    String nimbre;
+    String nombre;
 
-    public Pensiones() {
-    }
     
-    
+    public Pensiones(int pensiones_id, String nombre) {
+		super();
+		this.pensiones_id = pensiones_id;
+		this.nombre = nombre;
+	}
 
-    public int getPensiones_id() {
+	public int getPensiones_id() {
         return pensiones_id;
     }
 
@@ -26,12 +28,12 @@ public class Pensiones {
         this.pensiones_id = pensiones_id;
     }
 
-    public String getNimbre() {
-        return nimbre;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNimbre(String nimbre) {
-        this.nimbre = nimbre;
+    public void setNombre(String nimbre) {
+        this.nombre = nimbre;
     }
     
     

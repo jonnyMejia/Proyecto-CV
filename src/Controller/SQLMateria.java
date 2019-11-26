@@ -8,27 +8,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 import DBManager.DBManager;
-import Entidades.Pais;
+import Entidades.Materia;
 
-public class SQLPais {
-	private static String SELECT = "SELECT * FROM PAIS ";
-	private static String DELETE = "DELETE FROM PAIS WHERE pais_id = ? ";
-	private static String INSERT = "INSERT INTO PAIS VALUES ( ? , ? )";
-	private static String UPDATE = "UPDATE PAIS SET nombre = ? WHERE pais_id = ? ";
+public class SQLMateria {
+	private static String SELECT = "SELECT * FROM MATERIA ";
+	private static String DELETE = "DELETE FROM MATERIA WHERE materia_id = ? ";
+	private static String INSERT = "INSERT INTO MATERIA VALUES ( ? , ? )";
+	private static String UPDATE = "UPDATE MATERIA SET nombre = ? WHERE materia_id = ? ";
 	
-	public List<Pais> querySelect() {
+	public List<Materia> querySelect() {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		Pais pais= null;
-		List<Pais> listaPaises=new ArrayList<>();
+		Materia mat= null;
+		List<Materia> listaPaises=new ArrayList<>();
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(SELECT);
 			rs = stmt.executeQuery();
 			while(rs.next()) {
-				pais=new Pais(rs.getInt(1),rs.getString(2));
-				listaPaises.add(pais);
+				mat=new Materia(rs.getInt(1),rs.getString(2));
+				listaPaises.add(mat);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -39,15 +39,15 @@ public class SQLPais {
 		}
 		return listaPaises;
 	}
-	public int queryInsert(Pais pais) {
+	public int queryInsert(Materia mat) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		int rows=0;
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(INSERT);
-			stmt.setInt(1, pais.getPais_id());
-			stmt.setString(2, pais.getNombre());
+			stmt.setInt(1, mat.getMat_id());
+			stmt.setString(2, mat.getNombre());
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -74,15 +74,15 @@ public class SQLPais {
 		}
 		return rows;
 	}
-	public int queryUpdate(Pais pais) {
+	public int queryUpdate(Materia mat) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		int rows=0;
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(UPDATE);
-			stmt.setString(1, pais.getNombre());
-			stmt.setInt(2, pais.getPais_id());
+			stmt.setString(1, mat.getNombre());
+			stmt.setInt(2, mat.getMat_id());
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -92,5 +92,4 @@ public class SQLPais {
 		}
 		return rows;
 	}
-	
 }

@@ -12,8 +12,15 @@ package Entidades;
 public class Motivo {
     int motivo_id;
     String motivo;
+    
 
-    public int getMotivo_id() {
+    public Motivo(int motivo_id, String motivo) {
+		super();
+		this.motivo_id = motivo_id;
+		this.motivo = motivo;
+	}
+
+	public int getMotivo_id() {
         return motivo_id;
     }
 

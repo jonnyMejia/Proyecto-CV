@@ -11,9 +11,15 @@ package Entidades;
  */
 public class Especialidad {
     int espec_id;
-    String nimbre;
+    String nombre;
 
-    public int getEspec_id() {
+    public Especialidad(int espec_id, String nimbre) {
+		super();
+		this.espec_id = espec_id;
+		this.nombre = nimbre;
+	}
+
+	public int getEspec_id() {
         return espec_id;
     }
 
@@ -21,12 +27,12 @@ public class Especialidad {
         this.espec_id = espec_id;
     }
 
-    public String getNimbre() {
-        return nimbre;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNimbre(String nimbre) {
-        this.nimbre = nimbre;
+    public void setNombre(String nimbre) {
+        this.nombre = nimbre;
     }
     
     

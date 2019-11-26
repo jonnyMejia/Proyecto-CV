@@ -13,7 +13,13 @@ public class Departamento {
     int depto_id;
     String nombre;
 
-    public int getDepto_id() {
+    public Departamento(int depto_id, String nombre) {
+		super();
+		this.depto_id = depto_id;
+		this.nombre = nombre;
+	}
+
+	public int getDepto_id() {
         return depto_id;
     }
 

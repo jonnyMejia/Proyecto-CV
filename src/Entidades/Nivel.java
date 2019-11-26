@@ -12,8 +12,14 @@ package Entidades;
 public class Nivel {
     int nivel_id;
     String nivel;
+    
+    public Nivel(int nivel_id, String nivel) {
+		super();
+		this.nivel_id = nivel_id;
+		this.nivel = nivel;
+	}
 
-    public int getNivel_id() {
+	public int getNivel_id() {
         return nivel_id;
     }
 

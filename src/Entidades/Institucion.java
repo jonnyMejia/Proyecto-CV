@@ -13,7 +13,13 @@ public class Institucion {
     int inst_id;
     String nombre;
 
-    public int getInst_id() {
+    public Institucion(int inst_id, String nombre) {
+		super();
+		this.inst_id = inst_id;
+		this.nombre = nombre;
+	}
+
+	public int getInst_id() {
         return inst_id;
     }
 

@@ -13,7 +13,13 @@ public class Sector {
     int sector_id;
     String nombre;
 
-    public int getSector_id() {
+    public Sector(int sector_id, String nombre) {
+		super();
+		this.sector_id = sector_id;
+		this.nombre = nombre;
+	}
+
+	public int getSector_id() {
         return sector_id;
     }
 

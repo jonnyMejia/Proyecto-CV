@@ -11,9 +11,15 @@ package Entidades;
  */
 public class Tipo_Familiar {
     int tipo_id;
-    String tipo_nom;
+    String nombre;
+    
+    public Tipo_Familiar(int tipo_id, String nombre) {
+		super();
+		this.tipo_id = tipo_id;
+		this.nombre = nombre;
+	}
 
-    public int getTipo_id() {
+	public int getTipo_id() {
         return tipo_id;
     }
 
@@ -21,12 +27,12 @@ public class Tipo_Familiar {
         this.tipo_id = tipo_id;
     }
 
-    public String getTipo_nom() {
-        return tipo_nom;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setTipo_nom(String tipo_nom) {
-        this.tipo_nom = tipo_nom;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
     
     

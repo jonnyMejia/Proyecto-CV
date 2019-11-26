@@ -57,13 +57,7 @@ public class Estudio_Extra {
         this.nivel = nivel;
     }
 
-    public int getPais_id() {
-        return pais_id;
-    }
-
-    public void setPais_id(int pais_id) {
-        this.pais_id = pais_id;
-    }
+   
     
     
 }
