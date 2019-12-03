@@ -64,6 +64,8 @@ public class POSTULAR_4 extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        bRegre = new javax.swing.JButton();
+        bLimpiar = new javax.swing.JButton();
         jLabel33 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -151,6 +153,15 @@ public class POSTULAR_4 extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
+
+        bRegre.setText("Regresar");
+        bRegre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bRegreActionPerformed(evt);
+            }
+        });
+
+        bLimpiar.setText("Limpiar");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -241,9 +252,13 @@ public class POSTULAR_4 extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButton5)
-                .addGap(39, 39, 39)
+                .addGap(18, 18, 18)
+                .addComponent(bLimpiar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bRegre)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
-                .addGap(29, 29, 29))
+                .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1))
@@ -305,11 +320,13 @@ public class POSTULAR_4 extends javax.swing.JFrame {
                     .addComponent(jButton4))
                 .addGap(23, 23, 23)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(jButton5))
-                .addContainerGap(17, Short.MAX_VALUE))
+                    .addComponent(jButton5)
+                    .addComponent(bRegre)
+                    .addComponent(bLimpiar))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         jLabel33.setText("EXPERIENCIA LABORAL");
@@ -371,6 +388,13 @@ public class POSTULAR_4 extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void bRegreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRegreActionPerformed
+        // TODO add your handling code here:
+        POSTULAR_3 P=new POSTULAR_3();
+        P.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bRegreActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -408,6 +432,8 @@ public class POSTULAR_4 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bLimpiar;
+    private javax.swing.JButton bRegre;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;

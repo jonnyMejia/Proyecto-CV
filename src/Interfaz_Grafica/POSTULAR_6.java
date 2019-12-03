@@ -44,6 +44,8 @@ public class POSTULAR_6 extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         bCancel = new javax.swing.JButton();
+        bRegre = new javax.swing.JButton();
+        bLimpiar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -152,6 +154,15 @@ public class POSTULAR_6 extends javax.swing.JFrame {
             }
         });
 
+        bRegre.setText("Regresar");
+        bRegre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bRegreActionPerformed(evt);
+            }
+        });
+
+        bLimpiar.setText("Limpiar");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -163,7 +174,11 @@ public class POSTULAR_6 extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(bCancel)
-                .addGap(18, 18, 18)
+                .addGap(8, 8, 8)
+                .addComponent(bLimpiar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bRegre)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
                 .addGap(45, 45, 45))
         );
@@ -174,7 +189,9 @@ public class POSTULAR_6 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(bCancel))
+                    .addComponent(bCancel)
+                    .addComponent(bRegre)
+                    .addComponent(bLimpiar))
                 .addGap(22, 22, 22))
         );
 
@@ -205,6 +222,13 @@ public class POSTULAR_6 extends javax.swing.JFrame {
         I.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bCancelActionPerformed
+
+    private void bRegreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRegreActionPerformed
+        // TODO add your handling code here:
+        POSTULAR_5 P=new POSTULAR_5();
+        P.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bRegreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,6 +270,8 @@ public class POSTULAR_6 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCancel;
+    private javax.swing.JButton bLimpiar;
+    private javax.swing.JButton bRegre;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

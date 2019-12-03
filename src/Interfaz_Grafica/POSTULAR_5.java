@@ -46,6 +46,8 @@ public class POSTULAR_5 extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        bRegre = new javax.swing.JButton();
+        bLimpiar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -93,6 +95,15 @@ public class POSTULAR_5 extends javax.swing.JFrame {
             }
         });
 
+        bRegre.setText("Regresar");
+        bRegre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bRegreActionPerformed(evt);
+            }
+        });
+
+        bLimpiar.setText("Limpiar");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -138,7 +149,11 @@ public class POSTULAR_5 extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButton3)
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bLimpiar)
+                .addGap(12, 12, 12)
+                .addComponent(bRegre)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton4)
                 .addGap(55, 55, 55))
         );
@@ -177,7 +192,9 @@ public class POSTULAR_5 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(jButton4)
+                    .addComponent(bRegre)
+                    .addComponent(bLimpiar))
                 .addGap(25, 25, 25))
         );
 
@@ -234,6 +251,13 @@ public class POSTULAR_5 extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void bRegreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRegreActionPerformed
+        // TODO add your handling code here:
+        POSTULAR_4 P=new POSTULAR_4();
+        P.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_bRegreActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -271,6 +295,8 @@ public class POSTULAR_5 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bLimpiar;
+    private javax.swing.JButton bRegre;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
