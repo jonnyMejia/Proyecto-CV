@@ -21,14 +21,14 @@ public class SQLNivel {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		Nivel nivel= null;
-		List<Nivel> listaPaises=new ArrayList<>();
+		List<Nivel> lista=new ArrayList<>();
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(SELECT);
 			rs = stmt.executeQuery();
 			while(rs.next()) {
 				nivel=new Nivel(rs.getInt(1),rs.getString(2));
-				listaPaises.add(nivel);
+				lista.add(nivel);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -37,7 +37,7 @@ public class SQLNivel {
 			DBManager.closePrepared(stmt);
 			DBManager.closeConnection(con);
 		}
-		return listaPaises;
+		return lista;
 	}
 	public int queryInsert(Nivel nivel) {
 		Connection con = null;

@@ -21,14 +21,14 @@ public class SQLIntitucion {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		Institucion inst= null;
-		List<Institucion> listaPaises=new ArrayList<>();
+		List<Institucion> lista=new ArrayList<>();
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(SELECT);
 			rs = stmt.executeQuery();
 			while(rs.next()) {
 				inst=new Institucion(rs.getInt(1),rs.getString(2));
-				listaPaises.add(inst);
+				lista.add(inst);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -37,7 +37,7 @@ public class SQLIntitucion {
 			DBManager.closePrepared(stmt);
 			DBManager.closeConnection(con);
 		}
-		return listaPaises;
+		return lista;
 	}
 	public int queryInsert(Institucion inst) {
 		Connection con = null;

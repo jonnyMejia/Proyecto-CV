@@ -5,6 +5,16 @@
  */
 package Interfaz_Grafica;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.DefaultComboBoxModel;
+
+import com.sun.org.apache.xpath.internal.operations.String;
+
+import Controller.SQLLugarLaboral;
+import Entidades.Lugar_Laboral;
+
 /**
  *
  * @author USER
@@ -64,18 +74,19 @@ public class POSTULAR_1 extends javax.swing.JFrame {
         bCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
+        
         jLabel2.setText("Lugar de preferencia para trabajar");
-
-        prefTrab.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
+        SQLLugarLaboral lug= new SQLLugarLaboral();
+        List<Lugar_Laboral> lista_lug=lug.querySelect(); 
+        prefTrab.setModel(new DefaultComboBoxModel<Object>(lista_lug.stream().map(e->e.getNombre()).toArray()));
+        
         jLabel3.setText("Area de preferencia para trabajar");
 
-        areaPref.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        areaPref.setModel(new javax.swing.DefaultComboBoxModel<>());
 
         jLabel4.setText("Codigo del puesto");
 
-        codPuesto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        codPuesto.setModel(new javax.swing.DefaultComboBoxModel<>());
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("DETALLE DEL PUESTO");
@@ -91,12 +102,13 @@ public class POSTULAR_1 extends javax.swing.JFrame {
         jLabel10.setText("Fecha Nac.");
 
         jLabel11.setText("Sexo");
-
-        genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        
+        
+        genero.setModel(new DefaultComboBoxModel<>());
 
         jLabel12.setText("Estado Civil");
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox5.setModel(new DefaultComboBoxModel<>());
 
         jLabel13.setText("Domicilio");
 
@@ -104,7 +116,7 @@ public class POSTULAR_1 extends javax.swing.JFrame {
 
         jLabel15.setText("Nacionalidad");
 
-        pais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        pais.setModel(new DefaultComboBoxModel<Object>());
 
         jLabel16.setText("e-mail");
 
@@ -353,13 +365,13 @@ public class POSTULAR_1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> areaPref;
+    private javax.swing.JComboBox<Object> areaPref;
     private javax.swing.JButton bCancel;
     private javax.swing.JButton bClean;
     private javax.swing.JButton bContinuar;
-    private javax.swing.JComboBox<String> codPuesto;
-    private javax.swing.JComboBox<String> genero;
-    private javax.swing.JComboBox<String> jComboBox5;
+    private javax.swing.JComboBox<Object> codPuesto;
+    private javax.swing.JComboBox<Object> genero;
+    private javax.swing.JComboBox<Object> jComboBox5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -379,8 +391,8 @@ public class POSTULAR_1 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JComboBox<String> pais;
-    private javax.swing.JComboBox<String> prefTrab;
+    private javax.swing.JComboBox<Object> pais;
+    private javax.swing.JComboBox<Object> prefTrab;
     private javax.swing.JTextField txt_anio;
     private javax.swing.JTextField txt_ape;
     private javax.swing.JTextField txt_dia;

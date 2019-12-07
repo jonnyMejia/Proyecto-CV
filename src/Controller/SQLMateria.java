@@ -21,14 +21,14 @@ public class SQLMateria {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		Materia mat= null;
-		List<Materia> listaPaises=new ArrayList<>();
+		List<Materia> lista=new ArrayList<>();
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(SELECT);
 			rs = stmt.executeQuery();
 			while(rs.next()) {
 				mat=new Materia(rs.getInt(1),rs.getString(2));
-				listaPaises.add(mat);
+				lista.add(mat);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -37,7 +37,7 @@ public class SQLMateria {
 			DBManager.closePrepared(stmt);
 			DBManager.closeConnection(con);
 		}
-		return listaPaises;
+		return lista;
 	}
 	public int queryInsert(Materia mat) {
 		Connection con = null;

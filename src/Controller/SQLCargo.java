@@ -21,14 +21,14 @@ public class SQLCargo {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		Cargo cargo= null;
-		List<Cargo> listaPaises=new ArrayList<>();
+		List<Cargo> lista=new ArrayList<>();
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(SELECT);
 			rs = stmt.executeQuery();
 			while(rs.next()) {
 				cargo=new Cargo(rs.getInt(1),rs.getString(2));
-				listaPaises.add(cargo);
+				lista.add(cargo);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -37,7 +37,7 @@ public class SQLCargo {
 			DBManager.closePrepared(stmt);
 			DBManager.closeConnection(con);
 		}
-		return listaPaises;
+		return lista;
 	}
 	public int queryInsert(Cargo cargo) {
 		Connection con = null;

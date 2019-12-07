@@ -1,0 +1,95 @@
+TABLAS SIN NINGUN FOREIGN KEY
+
+CREATE TABLE AREA(
+     area_id NUMBER(2),
+     nombre VARCHAR2(25)not null unique,
+     CONSTRAINT area_pk PRIMARY KEY(area_id)
+);
+CREATE TABLE AREA_LABORAL(
+    area_lab_id NUMBER(2),
+    nombre VARCHAR2(15),
+    CONSTRAINT area_lab_pk PRIMARY KEY (area_lab_id)
+);
+CREATE TABLE CARGO(
+     cargo_id NUMBER(2),
+     nombre VARCHAR2(15)not null unique,
+     CONSTRAINT cargo_pk PRIMARY KEY(cargo_id)
+);
+CREATE TABLE DEPARTAMENTO(
+   depto_id NUMBER(2),
+   nombre varchar2(15) NOT NULL UNIQUE,
+    CONSTRAINT depto_pk PRIMARY KEY(depto_id)
+);
+CREATE TABLE ESPECIALIDAD(
+   espec_id NUMBER(2),
+   nombre VARCHAR(50) NOT NULL UNIQUE,
+    CONSTRAINT espec_pk PRIMARY KEY(espec_id)
+);
+CREATE TABLE ESTADO(
+     estado_id NUMBER(2),
+     nombre VARCHAR(15) UNIQUE NOT NULL,
+     CONSTRAINT estado_pk PRIMARY KEY(estado_id)
+);
+CREATE TABLE GRADO_ESPEC(
+   grado_id NUMBER(2),
+   nombre VARCHAR(15) NOT NULL UNIQUE,
+   CONSTRAINT grado_pk PRIMARY KEY(grado_id)
+);
+CREATE TABLE INSTITUCION(
+    inst_id Number(3),
+    nombre VARCHAR(15) not null unique,
+    CONSTRAINT institucion_pk PRIMARY KEY(inst_id)   
+);
+CREATE TABLE LUGAR_LABORAL(
+    lug_id NUMBER(3),
+    lug_nom VARCHAR(50) NOT NULL UNIQUE,
+    CONSTRAINT lugar_pk PRIMARY KEY(lug_id)
+);
+CREATE TABLE MATERIA(
+    materia_id NUMBER(2),
+     nombre VARCHAR2(15) not null unique,
+     CONSTRAINT materia_pk PRIMARY KEY(materia_id)
+);
+CREATE TABLE MOTIVO(
+     motivo_id NUMBER(2),
+     motivo VARCHAR2(15) not null unique,
+     CONSTRAINT motivo_pk PRIMARY KEY(motivo_id)
+);
+CREATE TABLE NIVEL(
+    nivel_id NUMBER(2),
+    nivel VARCHAR2(3) not null unique,
+    CONSTRAINT nivel_pk PRIMARY KEY(nivel_id)
+);
+CREATE TABLE PAIS(
+    pais_id NUMBER(2),
+    nombre VARCHAR2(25) UNIQUE NOT NULL ,
+    CONSTRAINT pais_pk PRIMARY KEY(pais_id)
+);
+CREATE TABLE PENSIONES(
+     pensiones_id NUMBER(2),
+     nombre VARCHAR2(15) UNIQUE NOT NULL,
+     CONSTRAINT pensiones_pk PRIMARY KEY(pensiones_id)
+);
+CREATE TABLE PUESTO(
+     puesto_id NUMBER(2),
+     nombre VARCHAR2(15) UNIQUE NOT NULL,
+     CONSTRAINT puesto_pk PRIMARY KEY(puesto_id) 
+);
+CREATE TABLE REL_LAB(
+    rel_lab_id NUMBER(2),
+    descripcion  VARCHAR2(15) not null unique,
+    CONSTRAINT rel_lab_pk PRIMARY KEY(rel_lab_id)
+);
+CREATE TABLE SECTOR(
+    sector_id NUMBER(2),
+    nombre varchar2(15) NOT NULL UNIQUE,
+    CONSTRAINT sector_pk PRIMARY KEY(sector_id)
+);
+CREATE TABLE TIPO_FAMILIAR(
+    tipo_id NUMBER(2),
+    nombre VARCHAR2(15) NOT NULL UNIQUE,
+    CONSTRAINT tipo_pk PRIMARY KEY(tipo_id)
+);
+
+TABLAS CON FOREIGN KEY
+

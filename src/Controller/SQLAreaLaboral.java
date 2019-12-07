@@ -21,14 +21,14 @@ public class SQLAreaLaboral {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		Area_Laboral areaLab= null;
-		List<Area_Laboral> listaPaises=new ArrayList<>();
+		List<Area_Laboral> lista=new ArrayList<>();
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(SELECT);
 			rs = stmt.executeQuery();
 			while(rs.next()) {
 				areaLab=new Area_Laboral(rs.getInt(1),rs.getString(2));
-				listaPaises.add(areaLab);
+				lista.add(areaLab);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -37,7 +37,7 @@ public class SQLAreaLaboral {
 			DBManager.closePrepared(stmt);
 			DBManager.closeConnection(con);
 		}
-		return listaPaises;
+		return lista;
 	}
 	public int queryInsert(Area_Laboral areaLab) {
 		Connection con = null;

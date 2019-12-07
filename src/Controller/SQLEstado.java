@@ -21,14 +21,14 @@ public class SQLEstado {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		Estado est = null;
-		List<Estado> listaPaises = new ArrayList<>();
+		List<Estado> lista = new ArrayList<>();
 		try {
 			con = DBManager.getConnection();
 			stmt = con.prepareStatement(SELECT);
 			rs = stmt.executeQuery();
 			while (rs.next()) {
 				est = new Estado(rs.getInt(1), rs.getString(2));
-				listaPaises.add(est);
+				lista.add(est);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace(System.out);
@@ -37,7 +37,7 @@ public class SQLEstado {
 			DBManager.closePrepared(stmt);
 			DBManager.closeConnection(con);
 		}
-		return listaPaises;
+		return lista;
 	}
 
 	public int queryInsert(Estado est) {

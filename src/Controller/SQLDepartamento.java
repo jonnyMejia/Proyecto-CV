@@ -23,14 +23,14 @@ public class SQLDepartamento {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		Departamento dep= null;
-		List<Departamento> listaPaises=new ArrayList<>();
+		List<Departamento> lista=new ArrayList<>();
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(SELECT);
 			rs = stmt.executeQuery();
 			while(rs.next()) {
 				dep=new Departamento(rs.getInt(1),rs.getString(2));
-				listaPaises.add(dep);
+				lista.add(dep);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -39,7 +39,7 @@ public class SQLDepartamento {
 			DBManager.closePrepared(stmt);
 			DBManager.closeConnection(con);
 		}
-		return listaPaises;
+		return lista;
 	}
 	public int queryInsert(Departamento dep) {
 		Connection con = null;

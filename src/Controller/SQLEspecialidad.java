@@ -21,14 +21,14 @@ public class SQLEspecialidad {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		Especialidad esp = null;
-		List<Especialidad> listaPaises = new ArrayList<>();
+		List<Especialidad> lista = new ArrayList<>();
 		try {
 			con = DBManager.getConnection();
 			stmt = con.prepareStatement(SELECT);
 			rs = stmt.executeQuery();
 			while (rs.next()) {
 				esp = new Especialidad(rs.getInt(1), rs.getString(2));
-				listaPaises.add(esp);
+				lista.add(esp);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace(System.out);
@@ -37,7 +37,7 @@ public class SQLEspecialidad {
 			DBManager.closePrepared(stmt);
 			DBManager.closeConnection(con);
 		}
-		return listaPaises;
+		return lista;
 	}
 
 	public int queryInsert(Especialidad esp) {

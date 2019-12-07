@@ -20,14 +20,14 @@ public class SQLSector {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		Sector sector= null;
-		List<Sector> listaPaises=new ArrayList<>();
+		List<Sector> lista=new ArrayList<>();
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(SELECT);
 			rs = stmt.executeQuery();
 			while(rs.next()) {
 				sector=new Sector(rs.getInt(1),rs.getString(2));
-				listaPaises.add(sector);
+				lista.add(sector);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -36,7 +36,7 @@ public class SQLSector {
 			DBManager.closePrepared(stmt);
 			DBManager.closeConnection(con);
 		}
-		return listaPaises;
+		return lista;
 	}
 	public int queryInsert(Sector sector) {
 		Connection con = null;

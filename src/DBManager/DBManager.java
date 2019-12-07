@@ -10,7 +10,11 @@ import java.sql.Statement;
 public class DBManager {
 	
 	public static Connection getConnection() throws SQLException  {
+		if(DriverManager.getConnection(Config.URL, Config.USER, Config.PASS)!=null) {
+			System.out.println("Conexion exitosa");
+		}
 		return DriverManager.getConnection(Config.URL, Config.USER, Config.PASS);
+		
 	}
 	public static void closePrepared(PreparedStatement stmt){
 		try{
