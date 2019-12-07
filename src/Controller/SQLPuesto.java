@@ -11,7 +11,7 @@ import DBManager.DBManager;
 import Entidades.Puesto;
 
 public class SQLPuesto {
-	private static String SELECT = "SELECT * FROM PUESTP ";
+	private static String SELECT = "SELECT * FROM PUESTO ";
 	private static String DELETE = "DELETE FROM PUESTO WHERE puesto_id = ? ";
 	private static String INSERT = "INSERT INTO PUESTO VALUES ( ? , ? )";
 	private static String UPDATE = "UPDATE PUESTO SET nombre = ? WHERE puesto_id = ? ";

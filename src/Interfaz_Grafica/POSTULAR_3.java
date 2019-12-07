@@ -54,11 +54,11 @@ public class POSTULAR_3 extends javax.swing.JFrame {
 
         jLabel2.setText("Rama");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rama", "Item 2", "Item 3", "Item 4" }));
 
         jLabel3.setText("Nombre");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "nnicel", "Item 2", "Item 3", "Item 4" }));
 
         jLabel4.setText("Nivel de Instruccion");
 

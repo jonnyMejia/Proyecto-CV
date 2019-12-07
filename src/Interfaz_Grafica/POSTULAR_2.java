@@ -5,6 +5,17 @@
  */
 package Interfaz_Grafica;
 
+import java.util.List;
+
+import javax.swing.DefaultComboBoxModel;
+
+import Controller.SQLEspecialidad;
+import Controller.SQLGrado_Espec;
+import Controller.SQLIntitucion;
+import Entidades.Especialidad;
+import Entidades.Grado_Espec;
+import Entidades.Institucion;
+
 /**
  *
  * @author USER
@@ -61,39 +72,44 @@ public class POSTULAR_2 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jComboBox17.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel19.setText("Nombre de institucion");
+        SQLIntitucion inst=new SQLIntitucion();
+        List<Institucion> lista_inst=inst.querySelect();
+        jComboBox17.setModel(new javax.swing.DefaultComboBoxModel<>(lista_inst.stream().map(e->e.getNombre()).toArray()));
+
 
         jLabel20.setText("Mes de fin");
 
-        jComboBox18.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox18.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril" ,"Mayo"}));
 
-        jComboBox19.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel21.setText("Año de fin");
+        jComboBox19.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2019", "2018", "2017", "2015" }));
 
         jLabel22.setText("Grado de instruccion");
+        SQLGrado_Espec grado=new SQLGrado_Espec();
+        List<Grado_Espec> lista_grad=grado.querySelect();
+        
+        jComboBox20.setModel(new javax.swing.DefaultComboBoxModel<>(lista_grad.stream().map(e->e.getNombre()).toArray()));
 
-        jComboBox20.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBox21.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel23.setText("Ciclo");
+        jComboBox21.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ciclo 1", "Ciclo 2", "Ciclo 3", "Ciclo 4" }));
 
-        jComboBox22.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel24.setText("Mes de inicio");
-
-        jComboBox23.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox22.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril" ,"Mayo"}));
+        
 
         jLabel25.setText("Año de inicio");
+        jComboBox23.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2019", "2018", "2017", "2015"  }));
 
         jLabel26.setText("EDUCACION SUPERIOR");
 
         jLabel27.setText("Especialidad");
-
-        jComboBox24.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        SQLEspecialidad espec=new SQLEspecialidad();
+        List<Especialidad> lista_espec =espec.querySelect();
+        jComboBox24.setModel(new DefaultComboBoxModel<>(lista_espec.stream().map(e->e.getNombre()).toArray()));
 
         jButton4.setText("Agregar");
 
@@ -385,14 +401,14 @@ public class POSTULAR_2 extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox17;
-    private javax.swing.JComboBox<String> jComboBox18;
-    private javax.swing.JComboBox<String> jComboBox19;
-    private javax.swing.JComboBox<String> jComboBox20;
-    private javax.swing.JComboBox<String> jComboBox21;
-    private javax.swing.JComboBox<String> jComboBox22;
-    private javax.swing.JComboBox<String> jComboBox23;
-    private javax.swing.JComboBox<String> jComboBox24;
+    private javax.swing.JComboBox<Object> jComboBox17;
+    private javax.swing.JComboBox<Object> jComboBox18;
+    private javax.swing.JComboBox<Object> jComboBox19;
+    private javax.swing.JComboBox<Object> jComboBox20;
+    private javax.swing.JComboBox<Object> jComboBox21;
+    private javax.swing.JComboBox<Object> jComboBox22;
+    private javax.swing.JComboBox<Object> jComboBox23;
+    private javax.swing.JComboBox<Object> jComboBox24;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;

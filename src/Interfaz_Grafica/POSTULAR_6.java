@@ -5,6 +5,12 @@
  */
 package Interfaz_Grafica;
 
+import java.util.List;
+
+import Controller.SQLTipoFamiliar;
+import Entidades.Familiar;
+import Entidades.Tipo_Familiar;
+
 /**
  *
  * @author USER
@@ -58,8 +64,10 @@ public class POSTULAR_6 extends javax.swing.JFrame {
         jLabel4.setText("Telefono");
 
         jLabel5.setText("Relacion");
+        SQLTipoFamiliar familiar=new SQLTipoFamiliar();
+        List<Tipo_Familiar> lista_familiar=familiar.querySelect();
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(lista_familiar.stream().map(e->e.getNombre()).toArray()));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -275,7 +283,7 @@ public class POSTULAR_6 extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<Object> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

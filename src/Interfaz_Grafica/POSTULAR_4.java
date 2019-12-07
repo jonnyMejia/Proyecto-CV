@@ -5,6 +5,15 @@
  */
 package Interfaz_Grafica;
 
+import java.util.List;
+
+import Controller.SQLArea;
+import Controller.SQLCargo;
+import Controller.SQLMotivo;
+import Entidades.Area;
+import Entidades.Cargo;
+import Entidades.Motivo;
+
 /**
  *
  * @author USER
@@ -85,12 +94,16 @@ public class POSTULAR_4 extends javax.swing.JFrame {
         jLabel26.setText("DATOS DEL PUESTO");
 
         jLabel27.setText("Area");
-
-        jComboBox13.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        SQLArea area=new SQLArea();
+        List<Area> lista_area=area.querySelect();
+        
+        jComboBox13.setModel(new javax.swing.DefaultComboBoxModel<>(lista_area.stream().map(e->e.getNombre()).toArray()));
 
         jLabel28.setText("Cargo");
+        SQLCargo cargo= new SQLCargo();
+        List<Cargo> lista_cargo=cargo.querySelect();
 
-        jComboBox14.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox14.setModel(new javax.swing.DefaultComboBoxModel<>(lista_cargo.stream().map(e->e.getNombre()).toArray()));
 
         jLabel29.setText("Nom. Cargo");
 
@@ -119,7 +132,9 @@ public class POSTULAR_4 extends javax.swing.JFrame {
 
         jLabel4.setText("Motivo de cese");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        SQLMotivo motivo= new SQLMotivo();
+        List<Motivo> lista_motivo=motivo.querySelect();
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(lista_motivo.stream().map(e->e.getMotivo()).toArray()));
 
         jComboBox12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -438,14 +453,14 @@ public class POSTULAR_4 extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox12;
-    private javax.swing.JComboBox<String> jComboBox13;
-    private javax.swing.JComboBox<String> jComboBox14;
-    private javax.swing.JComboBox<String> jComboBox15;
-    private javax.swing.JComboBox<String> jComboBox16;
-    private javax.swing.JComboBox<String> jComboBox17;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox8;
+    private javax.swing.JComboBox<Object> jComboBox12;
+    private javax.swing.JComboBox<Object> jComboBox13;
+    private javax.swing.JComboBox<Object> jComboBox14;
+    private javax.swing.JComboBox<Object> jComboBox15;
+    private javax.swing.JComboBox<Object> jComboBox16;
+    private javax.swing.JComboBox<Object> jComboBox17;
+    private javax.swing.JComboBox<Object> jComboBox2;
+    private javax.swing.JComboBox<Object> jComboBox8;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;

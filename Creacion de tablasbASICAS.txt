@@ -2,12 +2,12 @@ TABLAS SIN NINGUN FOREIGN KEY
 
 CREATE TABLE AREA(
      area_id NUMBER(2),
-     nombre VARCHAR2(25)not null unique,
+     nombre VARCHAR2(25) not null unique,
      CONSTRAINT area_pk PRIMARY KEY(area_id)
 );
 CREATE TABLE AREA_LABORAL(
     area_lab_id NUMBER(2),
-    nombre VARCHAR2(15),
+    nombre VARCHAR2(15) not null unique,
     CONSTRAINT area_lab_pk PRIMARY KEY (area_lab_id)
 );
 CREATE TABLE CARGO(
