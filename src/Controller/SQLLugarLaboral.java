@@ -47,7 +47,7 @@ public class SQLLugarLaboral {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(INSERT);
 			stmt.setInt(1, lug.getLug_id());
-			stmt.setString(2, lug.getNombre());
+			stmt.setString(2, lug.getLug_nom());
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -81,7 +81,7 @@ public class SQLLugarLaboral {
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(UPDATE);
-			stmt.setString(1, lug.getNombre());
+			stmt.setString(1, lug.getLug_nom());
 			stmt.setInt(2, lug.getLug_id());
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {

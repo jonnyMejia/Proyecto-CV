@@ -1,24 +1,30 @@
 CREATE TABLE PENSIONES(
      pensiones_id NUMBER(2),
      nombre VARCHAR2(10) UNIQUE NOT NULL,
-     CONSTRAINT pensiones_pk PRIMARY KEY(pensiones_id)
 );
+ALTER TABLE PENSIONES
+   ADD CONSTRAINT pensiones_pk PRIMARY KEY(pensiones_id);
+
 CREATE TABLE ESTADO(
-     estado_id NUMBER(2)identity,
-     nombre VARCHAR2(10) UNIQUE NOT NULL,
-     CONSTRAINT estado_pk PRIMARY KEY(estado_id)
+     estado_id NUMBER(2),
+     nombre VARCHAR2(10) UNIQUE NOT NULL;
 );
+ALTER TABLE ESTADO
+   ADD CONSTRAINT estado_pk PRIMARY KEY(estado_id);
+
 CREATE TABLE PAIS(
-    pais_id NUMBER(2)identity,
-    nombre VARCHAR2(15) UNIQUE NOT NULL ,
-    CONSTRAINT pais_pk PRIMARY KEY(pais_id)
+    pais_id NUMBER(2),
+    nombre VARCHAR2(15) UNIQUE NOT NULL 
 );
+ALTER TABLE PAIS
+   ADD CONSTRAINT pais_pk PRIMARY KEY(pais_id);
+
 create TABLE POSTULANTE(
      postu_id NUMBER(8),
      nombre VARCHAR2(30)NOT NULL,
      ap_pat VARCHAR2(30)NOT NULL,
      ap_mat VARCHAR2(30) NOT NULL,
-     edad  NUMBER(2) check(edad>=18),
+     edad  NUMBER(2),
      fNac  DATE NOT NULl,
      pais_id NUMBER(2),
      genero CHAR(1) NOT NULl,
@@ -26,44 +32,53 @@ create TABLE POSTULANTE(
      email VARCHAR2(50) UNIQUE, 
      pensiones_id NUMBER(2)
 );
-alter table postulante add
-     CONSTRAINT pos_pk PRIMARY KEY(postu_id),
-     CONSTRAINT pais_fk FOREIGN KEY(pais_id) REFERENCES PAIS(pais_id),
-     CONSTRAINT estado_fk FOREIGN KEY(estado_id) REFERENCES ESTADO (estado_id),
-     CONSTRAINT pensiones_fk FOREIGN KEY(pensiones_id)REFERENCES PENSIONES(pensiones_id);
+
+ALTER TABLE POSTULANTE 
+    ADD (CONSTRAINT pos_pk PRIMARY KEY(postu_id),
+         CONSTRAINT pais_fk FOREIGN KEY(pais_id) REFERENCES PAIS(pais_id),
+         CONSTRAINT estado_fk FOREIGN KEY(estado_id) REFERENCES ESTADO (estado_id),
+         CONSTRAINT pensiones_fk FOREIGN KEY(pensiones_id)REFERENCES PENSIONES(pensiones_id),
+         CHECK(edad>=18))
+
 CREATE TABLE PUESTO(
-     puesto_id NUMBER(2)identity,
-     nombre VARCHAR2(15) UNIQUE NOT NULL,
-     CONSTRAINT puesto_pk PRIMARY KEY(puesto_id) 
+     puesto_id NUMBER(2),
+     nombre VARCHAR2(15) UNIQUE NOT NULL     
 );
+ALTER TABLE PUESTO
+ ADD CONSTRAINT puesto_pk PRIMARY KEY(puesto_id);
+
 CREATE TABLE CV(
-    cv_id NUMBER(4) identity,
+    cv_id NUMBER(4),
     pos_id NUMBER(8) not null,
     puesto_id NUMBER(2) not null,
-    fecha date not null,
-    CONSTRAINT cv_pk PRIMARY KEY(cv_id), 
-    CONSTRAINT pos_fk FOREIGN KEY(pos_id) REFERENCES POSTULANTE(postu_id),
-    CONSTRAINT puesto_fk FOREIGN KEY(puesto_id) REFERENCES PUESTO(puesto_id)
-    ON DELETE CASCADE
+    fecha date not null
 );
+ALTER TABLE CV
+   ADD( CONSTRAINT cv_pk PRIMARY KEY(cv_id), 
+    CONSTRAINT pos_fk FOREIGN KEY(pos_id) REFERENCES POSTULANTE(postu_id),
+    CONSTRAINT puesto_fk FOREIGN KEY(puesto_id) REFERENCES PUESTO(puesto_id)ON DELETE CASCADE);
 
 CREATE TABLE INSTITUCION(
-    inst_id NUMBER(2)identity,
-    nombre VARCHAR2(30) NOT NULL UNIQUE,
-    CONSTRAINT inst_pk PRIMARY KEY(inst_id)
+    inst_id NUMBER(2),
+    nombre VARCHAR2(30) NOT NULL UNIQUE
 );
+ALTER TABLE INSTITUCION
+   ADD CONSTRAINT inst_pk PRIMARY KEY(inst_id);
 
 CREATE TABLE GRADO_ESPEC(
-   grado_id NUMBER(2)identity,
-   nombre VARCHAR2(15) NOT NULL UNIQUE,
-   CONSTRAINT grado_pk PRIMARY KEY(grado_id)
+   grado_id NUMBER(2),
+   nombre VARCHAR2(15) NOT NULL UNIQUE
 );
+ALTER TABLE GRADO_ESPEC
+ ADD CONSTRAINT grado_pk PRIMARY KEY(grado_id);
 
 CREATE TABLE ESPECIALIDAD(
-   espec_id NUMBER(2)identity,
-   nombre VARCHAR(50 CHAR) NOT NULL UNIQUE,
-    CONSTRAINT espec_pk PRIMARY KEY(espec_id)
+   espec_id NUMBER(2),
+   nombre VARCHAR(50 CHAR) NOT NULL UNIQUE
 );
+ALTER TABLE EDPECIALIDAD
+    ADD CONSTRAINT espec_pk PRIMARY KEY(espec_id);
+
 CREATE TABLE EDUC_SUPERIOR(
     educ_sup_id NUMBER(2),
     inst_id NUMBER not null  ,
@@ -73,168 +88,184 @@ CREATE TABLE EDUC_SUPERIOR(
     anio_ini NUMBER(4) NOT NULL check(anio_ini>1919),
     anio_fin NUMBER(4) NOT NULL check(anio_fin<2019),
     anios NUMBER(4)default anio_fin-anio_ini,
-    espec_id NUMBER(2)not null,
-    orden_merito NUMBER(2) NOT NULL,
-    CONSTRAINT educ_sup_pk PRIMARY KEY(educ_sup_id),
+    espec_id NUMBER(2)not null
+);
+ALTER TABLE EDUC_SUPERIOR
+    ADD( CONSTRAINT educ_sup_pk PRIMARY KEY(educ_sup_id),
     CONSTRAINT inst_fk FOREIGN KEY(inst_id) REFERENCES INSTITUCION(inst_id),
     CONSTRAINT espec_fk FOREIGN KEY(espec_id) REFERENCES ESPECIALIDAD(espec_id),
     CONSTRAINT grado_fk FOREIGN KEY(grado_id) REFERENCES GRADO_ESPEC(grado_id)
-    ON DELETE CASCADE
-);
+    ON DELETE CASCADE);
+
 CREATE TABLE POS_EDUC_SUPERIOR(
     pos_id REFERENCES POSTULANTE(postu_id) ON DELETE CASCADE,
     educ_sup_id REFERENCES EDUC_SUPERIOR(educ_sup_id) ON DELETE CASCADE,
     CONSTRAINT pos_educ_sup_pk PRIMARY KEY(pos_id,educ_sup_id)
 );
 
-
 CREATE TABLE SECTOR(
-    sector_id NUMBER(1)identity,
-    nombre varchar2(15) NOT NULL UNIQUE,
-    CONSTRAINT sector_pk PRIMARY KEY(sector_id)
+    sector_id NUMBER(1),
+    nombre varchar2(15) NOT NULL UNIQUE
 );
+ALTER TABLE SECTOR
+    ADD CONSTRAINT sector_pk PRIMARY KEY(sector_id);
+
 CREATE TABLE DEPARTAMENTO(
-   depto_id NUMBER(2)identity,
-   nombre varchar2(15) NOT NULL UNIQUE,
-    CONSTRAINT depto_pk PRIMARY KEY(depto_id)
+   depto_id NUMBER(2),
+   nombre varchar2(15) NOT NULL UNIQUE
 );
+ALTER TABLE DEPARTAMENTO
+    ADD   CONSTRAINT depto_pk PRIMARY KEY(depto_id);
+
 CREATE TABLE EMPRESA(
     emp_nom  VARCHAR2(30),
     sector_id NUMBER(1) not null ,
     depto_id NUMBER(2) not null,
     rubro VARCHAR2(15) NOT NULl,
-    telf char(9) not null unique,
-    CONSTRAINT emp_pk PRIMARY KEY(emp_nom),
+    telf char(9) not null unique
+);
+ALTER TABLE EMPRESA
+   ADD(CONSTRAINT emp_pk PRIMARY KEY(emp_nom),
     CONSTRAINT sector_fk FOREIGN KEY(sector_id) REFERENCES SECTOR(sector_id),
-    CONSTRAINT depto_fk FOREIGN KEY(depto_id) REFERENCES DEPARTAMENTO(depto_id)
-);
+    CONSTRAINT depto_fk FOREIGN KEY(depto_id) REFERENCES DEPARTAMENTO(depto_id));
+
 CREATE TABLE CARGO(
-     cargo_id NUMBER(2)identity,
-     nombre VARCHAR2(15)not null unique,
-     CONSTRAINT cargo_pk PRIMARY KEY(cargo_id)
+     cargo_id NUMBER(2),
+     nombre VARCHAR2(15)not null unique
 );
+ALTER TABLE CARGO
+    ADD CONSTRAINT cargo_pk PRIMARY KEY(cargo_id);
+
 CREATE TABLE AREA(
-     area_id NUMBER(2)identity,
-     nombre VARCHAR2(25)not null unique,
-     CONSTRAINT area_pk PRIMARY KEY(area_id)
+     area_id NUMBER(2),
+     nombre VARCHAR2(25)not null unique
 );
+ALTER TABLE AREA
+     ADD CONSTRAINT area_pk PRIMARY KEY(area_id);
+
 CREATE TABLE MOTIVO(
-     motivo_id NUMBER(1)identity,
-     motivo VARCHAR2(15) not null unique,
-     CONSTRAINT motivo_pk PRIMARY KEY(motivo_id)
+     motivo_id NUMBER(1),
+     motivo VARCHAR2(15) not null unique
 );
+ALTER TABLE MOTIVO
+    ADD CONSTRAINT motivo_pk PRIMARY KEY(motivo_id);
+
 CREATE TABLE EXP_LABORAL(
-    exp_lab_id NUMBER(4) identity,
+    exp_lab_id NUMBER(4),
     emp_nom VARCHAR2(30)not null ,
     nom_puesto VARCHAR2(15) NOT NULl,
     f_ini DATE NOT NULL check((f_ini>1919),
     f_fin DATE not null check(f_fin<2019),
     area_id NUMBER(2) not null,
     cargo_id NUMBER(2) not null,
-    motivo_id NUMBER(1)not null,
-     CONSTRAINT exp_lab_pk PRIMARY KEY(exp_lab_id),
+    motivo_id NUMBER(1)not null
+);
+ALTER TABLE EXP_LABORAL
+    ADD(CONSTRAINT exp_lab_pk PRIMARY KEY(exp_lab_id),
      CONSTRAINT emp_fk FOREIGN KEY(emp_nom)REFERENCES EMPRESA(emp_nom),
      CONSTRAINT area_fk FOREIGN KEY(area_id)REFERENCES AREA(area_id),
      CONSTRAINT motivo_fk FOREIGN KEY (motivo_id)REFERENCES MOTIVO(motivo_id),
      constraint cargo_fk foreign key(cargo_id)references cargo(cargo_id)
-     ON DELETE CASCADE
-);
+     ON DELETE CASCADE);
+
 CREATE TABLE POS_EXP_LABORAL(
     pos_id not null REFERENCES POSTULANTE(postu_id) ON DELETE CASCADE,
     exp_lab_id not null REFERENCES EXP_LABORAL(exp_lab_id)ON DELETE CASCADE ,
     CONSTRAINT pos_exp_lab_pk PRIMARY KEY(pos_id,exp_lab_id)
 );
 CREATE TABLE NIVEL(
-    nivel_id NUMBER(1) identity,
-    nivel VARCHAR2(2) not null unique,
-    CONSTRAINT nivel_pk PRIMARY KEY(nivel_id)
+    nivel_id NUMBER(1),
+    nivel VARCHAR2(2) not null unique
 );
+ALTER TABLE NIVEL 
+    ADD CONSTRAINT nivel_pk PRIMARY KEY(nivel_id);
+
 CREATE TABLE ESTUDIO_EXTRA(
-    est_ext_id NUMBER(4) identity,
+    est_ext_id NUMBER(4),
     inst_id NUMBER(2) not null,
     rama VARCHAR2( 25) NOT NULL,
     nombre VARCHAR2(30) NOT NULL,
     nivel_id char(1) NOT NULL,
     pais_id number(2) NOT NULL,
     fecha DATE NOT NULL,
-    CONSTRAINT est_ext_pk PRIMARY KEY(est_ext_id),
+);
+ALTER TABLE ESTUDIO_EXTRA
+    ADD(CONSTRAINT est_ext_pk PRIMARY KEY(est_ext_id),
     CONSTRAINT inst_fk FOREIGN KEY(inst_id)references institucion(inst_id),
     CONSTRAINT pais_fk FOREIGN KEY(pais_id)references pais(pais_id)
-    ON DELETE CASCADE
-);
+    ON DELETE CASCADE)
+
 CREATE TABLE POS_EST_EXTRA(
     pos_id not null REFERENCES POSTULANTE(postu_id) ON DELETE CASCADE,
     est_ext_id not null  REFERENCES ESTudio_EXTRA(est_ext_id )ON DELETE CASCADE ,
     CONSTRAINT pos_est_ext_pk PRIMARY KEY(pos_id,est_ext_id )
 );
 CREATE TABLE REL_LAB(
-    rel_lab_id NUMBER(1)identity,
+    rel_lab_id NUMBER(1),
     descripcion  VARCHAR2(15) not null unique,
     CONSTRAINT rel_lab_pk PRIMARY KEY(rel_lab_id)
 );
 CREATE TABLE REF_LABORAL(
-    ref_lab_id NUMBER(4) identity,
+    ref_lab_id NUMBER(4),
     rel_lab_id NUMBER(1) not null,
     nom_ref VARCHAR2(30) NOT NULL,
     nom_emp_ref VARCHAR2(50) NOT NULL,
     nom_cargo_Ref VARCHAR(15) NOT NULL,
-    telf_ref NUMBER(9),
-    CONSTRAINT ref_lab_pk PRIMARY KEY(ref_lab_id),
-    CONSTRAINT rel_lab_fk FOREIGN KEY(rel_lab_id) REFERENCES REL_LAB(rel_lab_id)
+    telf_ref NUMBER(9)
 );
+ALTER TABLE REF_LABORAL
+   ADD(CONSTRAINT ref_lab_pk PRIMARY KEY(ref_lab_id),
+    CONSTRAINT rel_lab_fk FOREIGN KEY(rel_lab_id) REFERENCES REL_LAB(rel_lab_id));
+
 CREATE TABLE POS_REF_LABORAL(
     pos_id not null REFERENCES POSTULANTE(postu_id) ON DELETE CASCADE,
     ref_lab_id not null REFERENCES REF_LABORAL(ref_lab_id )ON DELETE CASCADE ,
     CONSTRAINT pos_ref_lab_pk PRIMARY KEY(pos_id,ref_lab_id )
 );
 CREATE TABLE TIPO_FAMILIAR(
-    tipo_id NUMBER(1)identity,
-    tipo_nom VARCHAR2(15) NOT NULL UNIQUE,
-    CONSTRAINT tipo_pk PRIMARY KEY(tipo_id)
+    tipo_id NUMBER(1),
+    tipo_nom VARCHAR2(15) NOT NULL UNIQUE
 );
+ALTER TABLE TIPO_FAMILIAR
+    ADD CONSTRAINT tipo_pk PRIMARY KEY(tipo_id);
+
 CREATE TABLE FAMILIAR(
-    fam_id NUMBER(4)identity,
+    fam_id NUMBER(4),
     fam_nom VARCHAR(50 CHAR) NOT NULL,
     tipo_id number(1) not null,
-    telf NUMBER(9)not null  UNIQUE,
-    CONSTRAINT fam_pk PRIMARY KEY(fam_id),
-    CONSTRAINT tipo_fk FOREIGN KEY(tipo_id) REFERENCES TIPO_FAMILIAR(tipo_id)
+    telf NUMBER(9)not null  UNIQUE
 );
+ALTER TABLE FAMILIAR
+     ADD( CONSTRAINT fam_pk PRIMARY KEY(fam_id),
+    CONSTRAINT tipo_fk FOREIGN KEY(tipo_id) REFERENCES TIPO_FAMILIAR(tipo_id));
+
 CREATE TABLE POS_FAMILIAR(
     pos_id not null REFERENCES POSTULANTE(postu_id) ON DELETE CASCADE,
     fam_id  not null REFERENCES FAMILIAR(fam_id )ON DELETE CASCADE ,
     CONSTRAINT pos_fam_pk PRIMARY KEY(pos_id,fam_id )
 );
+
 CREATE TABLE LUGAR_LABORAL(
     lug_id NUMBER,
-    lug_nom VARCHAR(50 CHAR) NOT NULL UNIQUE,
-    CONSTRAINT lug_id PRIMARY KEY(lug_id)
+    lug_nom VARCHAR(50 CHAR) NOT NULL UNIQUE
 );
+ALTER TABLE LUGAR_LABORAL
+    ADD  CONSTRAINT lug_pk PRIMARY KEY(lug_id);
 
-CREATE TABLE PREF_LUGAR_LABORAL(
-    pref_lug_lab_id NUMBER,
-    lug_lab_id NUMBER,
-    CONSTRAINT pref_lug_lab_pk PRIMARY KEY (pref_lug_lab_id),
-    CONSTRAINT lug_lab_fk FOREIGN KEY (lug_lab_id) REFERENCES LUGAR_LABORAL(lug_id)
-);
 CREATE TABLE POS_PREF_LUG_LAB(
     pos_id NUMBER REFERENCES POSTULANTE(postu_id) ON DELETE CASCADE,
-    pref_lug_lab_id REFERENCES PREF_LUGAR_LABORAL(pref_lug_lab_id  )ON DELETE CASCADE,
-    CONSTRAINT pos_pref_lug_lab_pk PRIMARY KEY(pos_id,pref_lug_lab_id)
+    lug_id REFERENCES PREF_LUGAR_LABORAL(lug_id  )ON DELETE CASCADE,
+    CONSTRAINT pos_lug_pk PRIMARY KEY(pos_id,lug_id)
 );
 CREATE TABLE AREA_LABORAL(
-    area_lab_id NUMBER(1)identity,
-    nombre VARCHAR2(15),
-    CONSTRAINT area_lab_pk PRIMARY KEY (area_lab_id)
+    area_id NUMBER(1),
+    area_nom VARCHAR2(15)
 );
-CREATE TABLE PREF_AREA_LABORAL(
-    pref_area_lab_id NUMBER(4)identity,
-    area_lab_id NUMBER(1) not null,
-    CONSTRAINT pref_area_lab_pk PRIMARY KEY (pref_area_lab_id),
-    CONSTRAINT area_lab_fk FOREIGN KEY (area_lab_id) REFERENCES AREA_LABORAL(area_lab_id)
-);
-CREATE TABLE POS_PREF_AREA_LAB(
+ALTER TABLE AREA_LABORAL
+   ADD CONSTRAINT area_pk PRIMARY KEY (area_id);
+
+CREATE TABLE POS_AREA_LAB(
     pos_id  REFERENCES POSTULANTE(postu_id) ON DELETE CASCADE,
-    pref_area_lab_id REFERENCES PREF_AREA_LABORAL(pref_area_lab_id  )ON DELETE CASCADE,
-    CONSTRAINT pos_pref_area_lab_pk PRIMARY KEY(pos_id,pref_area_lab_id)
+    area_lab_id REFERENCES PREF_AREA_LABORAL(pref_area_id)ON DELETE CASCADE,
+    CONSTRAINT pos_pref_area_pk PRIMARY KEY(pos_id,pref_area_id)
 );

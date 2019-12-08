@@ -10,30 +10,34 @@ package Entidades;
  * @author Dani Lucano
  */
 public class Area_Laboral {
-    int area_lab_id;
-    String nombre;
+    int area_id;
+    String area_nom;
+
+    public Area_Laboral(int area_id, String area_nom) {
+        this.area_id = area_id;
+        this.area_nom = area_nom;
+    }
     
-    public Area_Laboral(int area_lab_id, String nombre) {
-		super();
-		this.area_lab_id = area_lab_id;
-		this.nombre = nombre;
-	}
 
-	public int getArea_lab_id() {
-        return area_lab_id;
+    public int getArea_id() {
+        return area_id;
     }
 
-    public void setArea_lab_id(int area_lab_id) {
-        this.area_lab_id = area_lab_id;
+    public void setArea_id(int area_id) {
+        this.area_id = area_id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getArea_nom() {
+        return area_nom;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setArea_nom(String area_nom) {
+        this.area_nom = area_nom;
     }
+
+ 
+
+    
     
     
 }

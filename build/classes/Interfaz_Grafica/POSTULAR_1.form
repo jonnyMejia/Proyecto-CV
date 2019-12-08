@@ -201,13 +201,10 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="txt_dia" min="-2" pref="34" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                                              <Component id="text_fecha" min="-2" pref="128" max="-2" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="txt_mes" min="-2" pref="31" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="txt_anio" min="-2" pref="29" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                                               <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="genero" min="-2" max="-2" attributes="0"/>
@@ -220,7 +217,7 @@
                                               <EmptySpace max="32767" attributes="0"/>
                                               <Component id="pais" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="102" alignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Component id="txt_domi" min="-2" pref="223" max="-2" attributes="0"/>
@@ -274,9 +271,7 @@
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_dia" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="txt_mes" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="txt_anio" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="text_fecha" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                           <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="genero" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -330,14 +325,10 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel10">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Fecha Nac."/>
+                <Property name="text" type="java.lang.String" value="Fecha Nac  DD / MM / AA"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_dia">
-            </Component>
-            <Component class="javax.swing.JTextField" name="txt_mes">
-            </Component>
-            <Component class="javax.swing.JTextField" name="txt_anio">
+            <Component class="javax.swing.JTextField" name="text_fecha">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel11">
               <Properties>

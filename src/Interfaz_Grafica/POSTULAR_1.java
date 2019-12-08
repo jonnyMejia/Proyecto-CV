@@ -62,9 +62,7 @@ public class POSTULAR_1 extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         txt_ape = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        txt_dia = new javax.swing.JTextField();
-        txt_mes = new javax.swing.JTextField();
-        txt_anio = new javax.swing.JTextField();
+        text_fecha = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         genero = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
@@ -74,7 +72,7 @@ public class POSTULAR_1 extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        jcombo_pais = new javax.swing.JComboBox<>();
+        pais = new javax.swing.JComboBox<>();
         jLabel16 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         bContinuar = new javax.swing.JButton();
@@ -82,21 +80,18 @@ public class POSTULAR_1 extends javax.swing.JFrame {
         bCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        
+
         jLabel2.setText("Lugar de preferencia para trabajar");
-        SQLLugarLaboral lug= new SQLLugarLaboral();
-        List<Lugar_Laboral> lista_lug=lug.querySelect(); 
-        prefTrab.setModel(new DefaultComboBoxModel<Object>(lista_lug.stream().map(e->e.getNombre()).toArray()));
-        
+
+        prefTrab.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         jLabel3.setText("Area de preferencia para trabajar");
-        SQLAreaLaboral area_lab=new SQLAreaLaboral();
-        List<Area_Laboral> lista_area_lab=area_lab.querySelect(); 
-        areaPref.setModel(new DefaultComboBoxModel<Object>(lista_area_lab.stream().map(e->e.getNombre()).toArray()));
+
+        areaPref.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel4.setText("Codigo del puesto");
-        SQLPuesto puesto= new SQLPuesto();
-        List<Puesto> lista_puesto=puesto.querySelect(); 
-        codPuesto.setModel(new javax.swing.DefaultComboBoxModel<>(lista_area_lab.stream().map(e->e.getNombre()).toArray()));
+
+        codPuesto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("DETALLE DEL PUESTO");
@@ -109,27 +104,23 @@ public class POSTULAR_1 extends javax.swing.JFrame {
 
         jLabel9.setText("Apellidos");
 
-        jLabel10.setText("Fecha Nac.");
+        jLabel10.setText("Fecha Nac  DD / MM / AA");
 
         jLabel11.setText("Sexo");
-        
-        genero.setModel(new DefaultComboBoxModel<>(new Object[] {"M","F"}));
+
+        genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel12.setText("Estado Civil");
 
-        SQLEstado estado= new SQLEstado();
-        List<Estado> lista_estado=estado.querySelect();
-        jComboBox5.setModel(new DefaultComboBoxModel<Object>(lista_estado.stream().map(e->e.getNombre()).toArray()));
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel13.setText("Domicilio");
 
         jLabel14.setText("Telefono");
 
         jLabel15.setText("Nacionalidad");
-        
-        SQLPais pais= new SQLPais();
-        List<Pais> lista_pais=pais.querySelect();
-        jcombo_pais.setModel(new DefaultComboBoxModel<Object>(lista_pais.stream().map(e->e.getNombre()).toArray()));
+
+        pais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel16.setText("e-mail");
 
@@ -163,12 +154,9 @@ public class POSTULAR_1 extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(txt_dia, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(16, 16, 16)
+                                        .addComponent(text_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txt_mes, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txt_anio, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(44, 44, 44)
                                         .addComponent(jLabel11)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(genero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -179,7 +167,7 @@ public class POSTULAR_1 extends javax.swing.JFrame {
                                         .addGap(56, 56, 56)
                                         .addComponent(jLabel15)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jcombo_pais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(pais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -218,15 +206,13 @@ public class POSTULAR_1 extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(txt_dia, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_mes, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_anio, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
                     .addComponent(genero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12)
                     .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15)
-                    .addComponent(jcombo_pais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
@@ -378,13 +364,13 @@ public class POSTULAR_1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<Object> areaPref;
+    private javax.swing.JComboBox<String> areaPref;
     private javax.swing.JButton bCancel;
     private javax.swing.JButton bClean;
     private javax.swing.JButton bContinuar;
-    private javax.swing.JComboBox<Object> codPuesto;
-    private javax.swing.JComboBox<Object> genero;
-    private javax.swing.JComboBox<Object> jComboBox5;
+    private javax.swing.JComboBox<String> codPuesto;
+    private javax.swing.JComboBox<String> genero;
+    private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -404,14 +390,12 @@ public class POSTULAR_1 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JComboBox<Object> jcombo_pais;
-    private javax.swing.JComboBox<Object> prefTrab;
-    private javax.swing.JTextField txt_anio;
+    private javax.swing.JComboBox<String> pais;
+    private javax.swing.JComboBox<String> prefTrab;
+    private javax.swing.JTextField text_fecha;
     private javax.swing.JTextField txt_ape;
-    private javax.swing.JTextField txt_dia;
     private javax.swing.JTextField txt_dni;
     private javax.swing.JTextField txt_domi;
-    private javax.swing.JTextField txt_mes;
     private javax.swing.JTextField txt_nom;
     // End of variables declaration//GEN-END:variables
 }

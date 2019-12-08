@@ -13,9 +13,8 @@ import java.util.Date;
  */
 public class Estudio_Extra {
     int est_ext_id;
-    int inst_id;
-    String rama;
     String nombre;
+    String nom_institucion;
     int nivel;
     public int getEst_ext_id() {
         return est_ext_id;
@@ -25,21 +24,15 @@ public class Estudio_Extra {
         this.est_ext_id = est_ext_id;
     }
 
-    public int getInst_id() {
-        return inst_id;
+    public String getNom_institucion() {
+        return nom_institucion;
     }
 
-    public void setInst_id(int inst_id) {
-        this.inst_id = inst_id;
+    public void setNom_institucion(String nom_institucion) {
+        this.nom_institucion = nom_institucion;
     }
 
-    public String getRama() {
-        return rama;
-    }
 
-    public void setRama(String rama) {
-        this.rama = rama;
-    }
 
     public String getNombre() {
         return nombre;

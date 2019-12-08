@@ -21,7 +21,6 @@ public class Educ_Superior {
     Date f_fin;
     Date anios;
     int espec_id;
-    int orden_merito;
 
     public int getEduc_sup_id() {
         return educ_sup_id;
@@ -95,13 +94,6 @@ public class Educ_Superior {
         this.espec_id = espec_id;
     }
 
-    public int getOrden_merito() {
-        return orden_merito;
-    }
 
-    public void setOrden_merito(int orden_merito) {
-        this.orden_merito = orden_merito;
-    }
-    
     
 }

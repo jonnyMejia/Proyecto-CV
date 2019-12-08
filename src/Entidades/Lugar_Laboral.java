@@ -11,34 +11,33 @@ package Entidades;
  */
 public class Lugar_Laboral {
     int lug_id;
-    String nombre;
+    String lug_nom;
+
+    public Lugar_Laboral(int lug_id, String lug_nom) {
+        this.lug_id = lug_id;
+        this.lug_nom = lug_nom;
+    }
     
 
-    public Lugar_Laboral(int lug_id, String nombre) {
-		super();
-		this.lug_id = lug_id;
-		this.nombre = nombre;
-	}
+    public int getLug_id() {
+        return lug_id;
+    }
+
+    public void setLug_id(int lug_id) {
+        this.lug_id = lug_id;
+    }
+
+    public String getLug_nom() {
+        return lug_nom;
+    }
+
+    public void setLug_nom(String lug_nom) {
+        this.lug_nom = lug_nom;
+    }
+
+ 
 
 
-	public int getLug_id() {
-		return lug_id;
-	}
-
-
-	public void setLug_id(int lug_id) {
-		this.lug_id = lug_id;
-	}
-
-
-	public String getNombre() {
-		return nombre;
-	}
-
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	
+ 
+    
 }
