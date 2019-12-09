@@ -68,13 +68,13 @@
                                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jComboBox18" min="-2" pref="138" max="-2" attributes="0"/>
+                                          <Component id="box_institucion" min="-2" pref="138" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                                          <Component id="txt_inst2" min="-2" pref="334" max="-2" attributes="0"/>
+                                          <Component id="txt_institucion" min="-2" pref="334" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jComboBox21" min="-2" pref="138" max="-2" attributes="0"/>
+                                              <Component id="grado" min="-2" pref="138" max="-2" attributes="0"/>
                                               <Component id="text_fecha_ini" min="-2" pref="128" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
@@ -82,13 +82,13 @@
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                                                  <Component id="jComboBox22" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="ciclo" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
                                                   <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="32767" attributes="0"/>
-                                                  <Component id="jComboBox24" min="-2" pref="137" max="-2" attributes="0"/>
+                                                  <Component id="especialidad" min="-2" pref="137" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -98,16 +98,16 @@
                               <Group type="102" attributes="0">
                                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                  <Component id="cod_estudio" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cod_edu_sup" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jScrollPane1" min="-2" pref="717" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                          <Component id="bSeguirModi" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                          <Component id="bModi" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -131,27 +131,27 @@
                           <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cod_estudio" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cod_edu_sup" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel19" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                  <Component id="jComboBox18" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txt_inst2" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                  <Component id="box_institucion" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txt_institucion" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel22" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox21" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="grado" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel23" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox22" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="ciclo" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox24" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="especialidad" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="103" alignment="1" groupAlignment="3" attributes="0">
@@ -166,8 +166,8 @@
                   </Group>
                   <EmptySpace pref="47" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="bSeguirModi" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="bModi" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
               </Group>
@@ -245,7 +245,7 @@
             <Property name="text" type="java.lang.String" value="Codigo de educacion superiior a modificar"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cod_estudio">
+        <Component class="javax.swing.JComboBox" name="cod_edu_sup">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
@@ -265,7 +265,7 @@
             <Property name="text" type="java.lang.String" value="Nombre de institucion"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox18">
+        <Component class="javax.swing.JComboBox" name="box_institucion">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
@@ -280,14 +280,14 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="txt_inst2">
+        <Component class="javax.swing.JTextField" name="txt_institucion">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel22">
           <Properties>
             <Property name="text" type="java.lang.String" value="Grado de instruccion"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox21">
+        <Component class="javax.swing.JComboBox" name="grado">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
@@ -307,7 +307,7 @@
             <Property name="text" type="java.lang.String" value="Ciclo"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox22">
+        <Component class="javax.swing.JComboBox" name="ciclo">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
@@ -327,7 +327,7 @@
             <Property name="text" type="java.lang.String" value="Especialidad"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox24">
+        <Component class="javax.swing.JComboBox" name="especialidad">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
@@ -342,17 +342,17 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="bSeguirModi">
           <Properties>
             <Property name="text" type="java.lang.String" value="Seguir modificando"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="bModi">
           <Properties>
             <Property name="text" type="java.lang.String" value="Modificar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bModiActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">

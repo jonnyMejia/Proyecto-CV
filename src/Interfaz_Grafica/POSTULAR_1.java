@@ -46,7 +46,7 @@ public class POSTULAR_1 extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-    	
+
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         prefTrab = new javax.swing.JComboBox<>();
@@ -68,15 +68,15 @@ public class POSTULAR_1 extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         genero = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox<>();
+        Estado = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
         txt_domi = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        telefono = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         pais = new javax.swing.JComboBox<>();
         jLabel16 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        email = new javax.swing.JTextField();
         bContinuar = new javax.swing.JButton();
         bClean = new javax.swing.JButton();
         bCancel = new javax.swing.JButton();
@@ -84,23 +84,16 @@ public class POSTULAR_1 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel2.setText("Lugar de preferencia para trabajar");
-        SQLLugarLaboral lugar = new SQLLugarLaboral();
-        List<Lugar_Laboral> lista_lugar = lugar.querySelect();
-        
-        prefTrab.setModel(new javax.swing.DefaultComboBoxModel<>(lista_lugar.stream().map(e->e.getNombre()).toArray()));
+
+        prefTrab.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel3.setText("Area de preferencia para trabajar");
-        
-        SQLAreaLaboral area= new SQLAreaLaboral();
-        List<Area_Laboral> lista_area=area.querySelect();
 
-        areaPref.setModel(new DefaultComboBoxModel<>(lista_area.stream().map(e->e.getNombre()).toArray()));
+        areaPref.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel4.setText("Codigo del puesto");
 
-        SQLPuesto puesto= new SQLPuesto();
-        List<Puesto> lista_puesto =puesto.querySelect();
-        codPuesto.setModel(new javax.swing.DefaultComboBoxModel<>(lista_puesto.stream().map(e->e.getNombre()).toArray()));
+        codPuesto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("DETALLE DEL PUESTO");
@@ -117,23 +110,19 @@ public class POSTULAR_1 extends javax.swing.JFrame {
 
         jLabel11.setText("Sexo");
 
-        genero.setModel(new DefaultComboBoxModel<>(new Object[] {"F","M"}));
+        genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel12.setText("Estado Civil");
-        SQLEstado estado= new SQLEstado();
-        List<Estado> lista_estado=estado.querySelect();
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(lista_estado.stream().map(e->e.getNombre()).toArray()));
+        Estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel13.setText("Domicilio");
 
         jLabel14.setText("Telefono");
 
         jLabel15.setText("Nacionalidad");
-        SQLPais paises = new SQLPais();
-        List<Pais> lista_pais = paises.querySelect();
 
-        pais.setModel(new DefaultComboBoxModel<>(lista_pais.stream().map(e->e.getNombre()).toArray()));
+        pais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel16.setText("e-mail");
 
@@ -176,7 +165,7 @@ public class POSTULAR_1 extends javax.swing.JFrame {
                                         .addGap(34, 34, 34)
                                         .addComponent(jLabel12)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(Estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(56, 56, 56)
                                         .addComponent(jLabel15)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -188,8 +177,8 @@ public class POSTULAR_1 extends javax.swing.JFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(jLabel14)
                                                 .addGap(41, 41, 41)
-                                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(0, 0, Short.MAX_VALUE)))))
                         .addGap(59, 59, 59))))
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -223,7 +212,7 @@ public class POSTULAR_1 extends javax.swing.JFrame {
                     .addComponent(jLabel11)
                     .addComponent(genero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12)
-                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15)
                     .addComponent(pais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
@@ -231,11 +220,11 @@ public class POSTULAR_1 extends javax.swing.JFrame {
                     .addComponent(jLabel13)
                     .addComponent(txt_domi, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -380,13 +369,14 @@ public class POSTULAR_1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<Object> areaPref;
+    private javax.swing.JComboBox<String> Estado;
+    private javax.swing.JComboBox<String> areaPref;
     private javax.swing.JButton bCancel;
     private javax.swing.JButton bClean;
     private javax.swing.JButton bContinuar;
-    private javax.swing.JComboBox<Object> codPuesto;
-    private javax.swing.JComboBox<Object> genero;
-    private javax.swing.JComboBox<Object> jComboBox5;
+    private javax.swing.JComboBox<String> codPuesto;
+    private javax.swing.JTextField email;
+    private javax.swing.JComboBox<String> genero;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -404,10 +394,9 @@ public class POSTULAR_1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JComboBox<Object> pais;
-    private javax.swing.JComboBox<Object> prefTrab;
+    private javax.swing.JComboBox<String> pais;
+    private javax.swing.JComboBox<String> prefTrab;
+    private javax.swing.JTextField telefono;
     private javax.swing.JTextField text_fecha;
     private javax.swing.JTextField txt_ape;
     private javax.swing.JTextField txt_dni;
