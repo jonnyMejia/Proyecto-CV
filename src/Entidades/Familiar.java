@@ -12,8 +12,17 @@ package Entidades;
 public class Familiar {
     int fam_id;  //PUEDE SER UN DNI
     String fam_nom;
+    String fam_ape;
     int tipo_id;
     String telf;
+
+    public String getFam_ape() {
+        return fam_ape;
+    }
+
+    public void setFam_ape(String fam_ape) {
+        this.fam_ape = fam_ape;
+    }
 
     public int getFam_id() {
         return fam_id;
