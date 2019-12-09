@@ -16,7 +16,7 @@ public class Postulante {
     String nombre;
     String ap_pat;
     String ap_mat;
-    Date edad;
+    int edad;
     Date fNac;
     String pais_id;
     String genero;
@@ -27,7 +27,7 @@ public class Postulante {
     public Postulante() {
     }
 
-    public Postulante(int postu_id, String nombre, String ap_pat, String ap_mat, Date edad, Date fNac, String pais_id, String genero, String estado_id, String email, String pensiones_id) {
+    public Postulante(int postu_id, String nombre, String ap_pat, String ap_mat, int edad, Date fNac, String pais_id, String genero, String estado_id, String email, String pensiones_id) {
         this.postu_id = postu_id;
         this.nombre = nombre;
         this.ap_pat = ap_pat;
@@ -73,11 +73,11 @@ public class Postulante {
         this.ap_mat = ap_mat;
     }
 
-    public Date getEdad() {
+    public int getEdad() {
         return edad;
     }
 
-    public void setEdad(Date edad) {
+    public void setEdad(int edad) {
         this.edad = edad;
     }
 

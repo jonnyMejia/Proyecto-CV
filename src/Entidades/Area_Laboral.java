@@ -11,11 +11,11 @@ package Entidades;
  */
 public class Area_Laboral {
     int area_id;
-    String area_nom;
+    String nombre;
 
-    public Area_Laboral(int area_id, String area_nom) {
+    public Area_Laboral(int area_id, String nombre) {
         this.area_id = area_id;
-        this.area_nom = area_nom;
+        this.nombre = nombre;
     }
     
 
@@ -27,12 +27,12 @@ public class Area_Laboral {
         this.area_id = area_id;
     }
 
-    public String getArea_nom() {
-        return area_nom;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setArea_nom(String area_nom) {
-        this.area_nom = area_nom;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
  

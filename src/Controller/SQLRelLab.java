@@ -8,27 +8,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 import DBManager.DBManager;
-import Entidades.Materia;
+import Entidades.Rel_Lab;
 
-public class SQLMateria {
-	private static String SELECT = "SELECT * FROM MATERIA ";
-	private static String DELETE = "DELETE FROM MATERIA WHERE materia_id = ? ";
-	private static String INSERT = "INSERT INTO MATERIA VALUES ( ? , ? )";
-	private static String UPDATE = "UPDATE MATERIA SET nombre = ? WHERE materia_id = ? ";
+public class SQLRelLab {
+	private static String SELECT = "SELECT * FROM REL_LAB ";
+	private static String DELETE = "DELETE FROM REL_LAB WHERE  rel_lab_id = ? ";
+	private static String INSERT = "INSERT INTO REL_LAB VALUES ( ? , ? )";
+	private static String UPDATE = "UPDATE REL_LAB SET descripcion = ? WHERE rel_lab_id = ? ";
 	
-	public List<Materia> querySelect() {
+	public List<Rel_Lab> querySelect() {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		Materia mat= null;
-		List<Materia> lista=new ArrayList<>();
+		Rel_Lab relLab= null;
+		List<Rel_Lab> lista=new ArrayList<>();
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(SELECT);
 			rs = stmt.executeQuery();
 			while(rs.next()) {
-				mat=new Materia(rs.getInt(1),rs.getString(2));
-				lista.add(mat);
+				relLab=new Rel_Lab(rs.getInt(1),rs.getString(2));
+				lista.add(relLab);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -39,15 +39,15 @@ public class SQLMateria {
 		}
 		return lista;
 	}
-	public int queryInsert(Materia mat) {
+	public int queryInsert(Rel_Lab relLab) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		int rows=0;
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(INSERT);
-			stmt.setInt(1, mat.getMat_id());
-			stmt.setString(2, mat.getNombre());
+			stmt.setInt(1, relLab.getRel_lab_id());
+			stmt.setString(2, relLab.getDescripcion());
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -74,15 +74,15 @@ public class SQLMateria {
 		}
 		return rows;
 	}
-	public int queryUpdate(Materia mat) {
+	public int queryUpdate(Rel_Lab relLab) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		int rows=0;
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(UPDATE);
-			stmt.setString(1, mat.getNombre());
-			stmt.setInt(2, mat.getMat_id());
+			stmt.setString(1, relLab.getDescripcion());
+			stmt.setInt(2, relLab.getRel_lab_id());
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);

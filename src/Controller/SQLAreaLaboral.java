@@ -47,7 +47,7 @@ public class SQLAreaLaboral {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(INSERT);
 			stmt.setInt(1, areaLab.getArea_id());
-			stmt.setString(2, areaLab.getArea_nom());
+			stmt.setString(2, areaLab.getNombre());
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -81,7 +81,7 @@ public class SQLAreaLaboral {
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(UPDATE);
-			stmt.setString(1, areaLab.getArea_nom());
+			stmt.setString(1, areaLab.getNombre());
 			stmt.setInt(2, areaLab.getArea_id());
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {

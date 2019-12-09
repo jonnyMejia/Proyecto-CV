@@ -11,11 +11,11 @@ package Entidades;
  */
 public class Lugar_Laboral {
     int lug_id;
-    String lug_nom;
+    String nombre;
 
-    public Lugar_Laboral(int lug_id, String lug_nom) {
+    public Lugar_Laboral(int lug_id, String nombre) {
         this.lug_id = lug_id;
-        this.lug_nom = lug_nom;
+        this.nombre = nombre;
     }
     
 
@@ -27,12 +27,12 @@ public class Lugar_Laboral {
         this.lug_id = lug_id;
     }
 
-    public String getLug_nom() {
-        return lug_nom;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setLug_nom(String lug_nom) {
-        this.lug_nom = lug_nom;
+    public void setNonbre(String nombre) {
+        this.nombre = nombre;
     }
 
  
