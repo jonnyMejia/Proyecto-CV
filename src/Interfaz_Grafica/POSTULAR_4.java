@@ -18,6 +18,8 @@ import Entidades.Motivo;
  *
  * @author USER
  */
+
+
 public class POSTULAR_4 extends javax.swing.JFrame {
 
     /**
@@ -399,10 +401,10 @@ public class POSTULAR_4 extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox12;
-    private javax.swing.JComboBox<String> jComboBox13;
-    private javax.swing.JComboBox<String> jComboBox14;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<Object> jComboBox12;
+    private javax.swing.JComboBox<Object> jComboBox13;
+    private javax.swing.JComboBox<Object> jComboBox14;
+    private javax.swing.JComboBox<Object> jComboBox2;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel20;

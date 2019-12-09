@@ -10,12 +10,50 @@ package Entidades;
  * @author Dani Lucano
  */
 public class Familiar {
-    int fam_id;  //PUEDE SER UN DNI
     String fam_nom;
+    int fam_id; //PUEDE SER UN DNI
     int tipo_id;
     String telf;
+    
 
-    public int getFam_id() {
+    @Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + fam_id;
+		result = prime * result + ((fam_nom == null) ? 0 : fam_nom.hashCode());
+		result = prime * result + ((telf == null) ? 0 : telf.hashCode());
+		result = prime * result + tipo_id;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Familiar other = (Familiar) obj;
+		if (fam_id != other.fam_id)
+			return false;
+		if (fam_nom == null) {
+			if (other.fam_nom != null)
+				return false;
+		} else if (!fam_nom.equals(other.fam_nom))
+			return false;
+		if (telf == null) {
+			if (other.telf != null)
+				return false;
+		} else if (!telf.equals(other.telf))
+			return false;
+		if (tipo_id != other.tipo_id)
+			return false;
+		return true;
+	}
+
+	public int getFam_id() {
         return fam_id;
     }
 

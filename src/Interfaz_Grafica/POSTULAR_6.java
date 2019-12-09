@@ -70,6 +70,7 @@ public class POSTULAR_6 extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(lista_familiar.stream().map(e->e.getNombre()).toArray()));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        		
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -80,6 +81,7 @@ public class POSTULAR_6 extends javax.swing.JFrame {
                 "Nombres", "Apellidos", "Telefono", "Relacion"
             }
         ));
+        
         jScrollPane1.setViewportView(jTable1);
 
         jButton2.setText("Agregar");

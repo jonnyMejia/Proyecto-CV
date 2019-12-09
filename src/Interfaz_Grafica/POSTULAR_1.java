@@ -329,6 +329,8 @@ public class POSTULAR_1 extends javax.swing.JFrame {
 
     private void bContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bContinuarActionPerformed
         lista_postulante = new ArrayList<>();
+        
+        //lista_postulante.add(new Postulante(txt_dni.getText(), txt_nom.getText(), txt, ap_mat, edad, fNac, pais_id, genero, estado_id, email, pensiones_id))
     	
     	POSTULAR_2 P=new POSTULAR_2();
         P.setVisible(true);
