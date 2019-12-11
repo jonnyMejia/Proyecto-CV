@@ -65,10 +65,6 @@ public class SQLArea {
 		return area_id;
 	}
 	
-	
-	
-	
-	
 	public List<Area> querySelectAll() {
 		Connection con = null;
 		PreparedStatement stmt = null;
