@@ -13,7 +13,7 @@ import DBManager.DBManager;
 import Entidades.Tipo_Familiar;
 
 public class SQLTipoFamiliar {
-	private static String SELECT = "SELECT * FROM TIPO_FAMILIAR";
+	private static String SELECT = "SELECT * FROM TIPO_FAMILIAR"; 
 	private static String SELECT_WHERE = "SELECT * FROM TIPO_FAMILIAR WHERE tipo_id = ? ";
 	private static String DELETE = "DELETE FROM TIPO_FAMILIAR WHERE tipo_id = ? ";
 	private static String INSERT = "INSERT INTO TIPO_FAMILIAR VALUES ( ? , ? )";
