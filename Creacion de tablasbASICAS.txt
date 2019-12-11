@@ -45,11 +45,6 @@ CREATE TABLE LUGAR_LABORAL(
     lug_nom VARCHAR(50) NOT NULL UNIQUE,
     CONSTRAINT lugar_pk PRIMARY KEY(lug_id)
 );
-CREATE TABLE MATERIA(
-    materia_id NUMBER(2),
-     nombre VARCHAR2(15) not null unique,
-     CONSTRAINT materia_pk PRIMARY KEY(materia_id)
-);
 CREATE TABLE MOTIVO(
      motivo_id NUMBER(2),
      motivo VARCHAR2(15) not null unique,

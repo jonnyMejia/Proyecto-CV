@@ -4,12 +4,13 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+import Controller.SQLTipoFamiliar;
 import Entidades.Familiar;
+import Entidades.Tipo_Familiar;
 
 public class FamiliarModel extends AbstractTableModel{
-
-	List<Estudiante> data;
-	Object[] colNames = {"Codigo", "Apellido", "Nombre", "Promedio"};
+	List<Familiar> data;
+	Object[] colNames = {"Nombre", "Apellido", "Relacion", "Telefono"};
 	/**
 	 * @param estudianteApp
 	 */
@@ -35,16 +36,18 @@ public class FamiliarModel extends AbstractTableModel{
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		Estudiante e = data.get(rowIndex);
+		Familiar e = data.get(rowIndex);
+		SQLTipoFamiliar tipo= new SQLTipoFamiliar();
+		Tipo_Familiar temp=tipo.querySelect(e.getTipo_id());
 		switch (columnIndex) {
 		case 0:
-			return e.getCodigo();
+			return e.getNombre();
 		case 1:
 			return e.getApellido();
 		case 2:
-			return e.getNombre();
+			return temp.getNombre();
 		case 3:
-			return e.getPromedio();
+			return e.getTelefono();
 		default:
 			return null;
 		}
@@ -52,26 +55,11 @@ public class FamiliarModel extends AbstractTableModel{
 
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
-		if (columnIndex == 0)
-			return false;
-		return true;
+		return false;
 	}
 
 	@Override
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-		Estudiante e = data.get(rowIndex);
-		switch (columnIndex) {
-		case 1:
-			e.setApellido((String)aValue);
-			break;
-		case 2:
-			e.setNombre((String)aValue);
-			break;
-		case 3:
-			e.setPromedio(Double.parseDouble((String)aValue));
-			break;
-		default:
-			break;
-		}
+		Familiar e = data.get(rowIndex);
 	}
 }

@@ -5,6 +5,12 @@
  */
 package Interfaz_Grafica;
 
+
+import java.util.List;
+
+import Controller.SQLNivel;
+import Entidades.Nivel;
+
 /**
  *
  * @author USER
@@ -53,8 +59,10 @@ public class POSTULAR_3 extends javax.swing.JFrame {
         jLabel1.setText("OTROS ESTUDIOS(INGLES, COMPUTACION , etc.)");
 
         jLabel3.setText("Nombre");
-
-        nivel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        SQLNivel niveles= new SQLNivel();
+        List<Nivel> lista_nivel= niveles.querySelect();
+        
+        nivel.setModel(new javax.swing.DefaultComboBoxModel<>(lista_nivel.stream().map(e->e.getNivel()).toArray()));
 
         jLabel4.setText("Nivel de Instruccion");
 
@@ -279,7 +287,7 @@ public class POSTULAR_3 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JComboBox<String> nivel;
+    private javax.swing.JComboBox<Object> nivel;
     private javax.swing.JTextField nom_institucion;
     private java.awt.PopupMenu popupMenu1;
     private javax.swing.JTextField txt_nom;

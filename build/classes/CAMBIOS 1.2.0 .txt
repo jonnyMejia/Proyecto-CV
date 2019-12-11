@@ -1,0 +1,9 @@
+CAMBIOS 1.2.0
+
+-Se esta mostrando los datos de la bd en los jcombobox
+-Se modifico de Jcombobox<String> a Jcombobox<Object>
+-Se ingreso nuevas entidades 
+-Se cambio mi URL DE mi base de datos contrasela y usuario
+
+**RAGED
+-Se eliminó materia y rama de estudio extra

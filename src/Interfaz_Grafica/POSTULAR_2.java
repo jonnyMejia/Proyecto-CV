@@ -68,23 +68,32 @@ public class POSTULAR_2 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel19.setText("Nombre de institucion");
+        SQLIntitucion inst= new SQLIntitucion();
+        List<Institucion> lista_inst=inst.querySelect();
         
-
-        box_institucion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
+        box_institucion.setModel(new javax.swing.DefaultComboBoxModel<>(lista_inst.stream().map(e->e.getNombre()).toArray()));
+        
+        
         jLabel22.setText("Grado de instruccion");
-
-        grado_instituto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        SQLGrado_Espec grado= new SQLGrado_Espec();
+        List<Grado_Espec> lista_grado=grado.querySelect();
+        grado_instituto.setModel(new javax.swing.DefaultComboBoxModel<>(lista_grado.stream().map(e->e.getNombre()).toArray()));
 
         jLabel23.setText("Ciclo");
-
-        ciclo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        StringBuilder temp= new StringBuilder();
+        for(int i=1;i<=9;i++) {
+        	temp.append("Ciclo "+i +",");
+        }
+        temp.append("Ciclo 10");
+        
+        ciclo.setModel(new javax.swing.DefaultComboBoxModel(temp.toString().split(",")));
 
         jLabel26.setText("EDUCACION SUPERIOR");
 
         jLabel27.setText("Especialidad");
-
-        especialidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        SQLEspecialidad espec=new SQLEspecialidad();
+        List<Especialidad> lista_espec=espec.querySelect();
+        especialidad.setModel(new javax.swing.DefaultComboBoxModel<>(lista_espec.stream().map(e->e.getNombre()).toArray()));
 
         agregar.setText("Agregar");
 
@@ -360,11 +369,11 @@ public class POSTULAR_2 extends javax.swing.JFrame {
     private javax.swing.JButton agregar;
     private javax.swing.JButton bContinuar;
     private javax.swing.JButton bRegre;
-    private javax.swing.JComboBox<String> box_institucion;
+    private javax.swing.JComboBox<Object> box_institucion;
     private javax.swing.JButton cancelar;
-    private javax.swing.JComboBox<String> ciclo;
-    private javax.swing.JComboBox<String> especialidad;
-    private javax.swing.JComboBox<String> grado_instituto;
+    private javax.swing.JComboBox<Object> ciclo;
+    private javax.swing.JComboBox<Object> especialidad;
+    private javax.swing.JComboBox<Object> grado_instituto;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton9;

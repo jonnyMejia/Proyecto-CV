@@ -396,7 +396,6 @@ public class POSTULAR_4 extends javax.swing.JFrame {
     private javax.swing.JButton bContinuar;
     private javax.swing.JButton bLimpiar;
     private javax.swing.JButton bRegre;
-<<<<<<< HEAD
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -405,10 +404,7 @@ public class POSTULAR_4 extends javax.swing.JFrame {
     private javax.swing.JComboBox<Object> jComboBox13;
     private javax.swing.JComboBox<Object> jComboBox14;
     private javax.swing.JComboBox<Object> jComboBox2;
-=======
-    private javax.swing.JComboBox<String> cargo;
-    private javax.swing.JComboBox<String> jComboBox12;
->>>>>>> bc9763a87c818154f8380e3baffbdc63d3dd2906
+    private javax.swing.JComboBox<Object> cargo;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel20;
@@ -430,7 +426,7 @@ public class POSTULAR_4 extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField lugar;
-    private javax.swing.JComboBox<String> motivo_cese;
+    private javax.swing.JComboBox<Object> motivo_cese;
     private javax.swing.JTextField nom_cargo;
     private javax.swing.JTextField rubro;
     private javax.swing.JTextField telefono;

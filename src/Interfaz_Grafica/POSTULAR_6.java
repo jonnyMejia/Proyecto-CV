@@ -5,7 +5,15 @@
  */
 package Interfaz_Grafica;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.AbstractTableModel;
 
 import Controller.SQLTipoFamiliar;
 import Entidades.Familiar;
@@ -20,6 +28,7 @@ public class POSTULAR_6 extends javax.swing.JFrame {
     /**
      * Creates new form POSTULAR_
      */
+	Modo modo;
     public POSTULAR_6() {
         initComponents();
     }
@@ -32,7 +41,7 @@ public class POSTULAR_6 extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
+    	
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -64,24 +73,18 @@ public class POSTULAR_6 extends javax.swing.JFrame {
 
         jLabel5.setText("Relacion");
 
-        relacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-        		
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Nombres", "Apellidos", "Telefono", "Relacion"
-            }
-        ));
+        SQLTipoFamiliar tipo = new SQLTipoFamiliar();
+        List<Tipo_Familiar> lista_tipo=tipo.querySelectAll();
+        relacion.setModel(new javax.swing.DefaultComboBoxModel<>(lista_tipo.stream().map(e->e.getNombre()).toArray()));
+        AgregarModel();
         
-        jScrollPane1.setViewportView(jTable1);
 
         bAgregar.setText("Agregar");
+        bAgregar.addActionListener(e->{
+        	int id=tipo.querySelect_id(relacion.getSelectedItem().toString());
+        	Curriculum.data_familiar.add(new Familiar(nombre.getText(), apelllido.getText(), id, telefono.getText()));
+        	actualizarTable();
+        });
 
         bLimpiar.setText("Limpiar");
 
@@ -211,6 +214,11 @@ public class POSTULAR_6 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    void actualizarTable() {
+		// TODO Auto-generated method stub
+    	AbstractTableModel model = (AbstractTableModel)jTable1.getModel();
+		model.fireTableDataChanged();
+	}
     private void bConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConfirmarActionPerformed
         // TODO add your handling code here:
         INICIO I=new INICIO();
@@ -231,7 +239,31 @@ public class POSTULAR_6 extends javax.swing.JFrame {
         P.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bRegreActionPerformed
-
+    void AgregarModel() {
+		// TODO Auto-generated method stub
+    	ListSelectionModel selectionModel = jTable1.getSelectionModel();
+		selectionModel.addListSelectionListener(new ListSelectionListener() {
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				for (int i = e.getFirstIndex(); i <= e.getLastIndex(); i++) {
+					if (selectionModel.isSelectedIndex(i)) {
+						poblarCampos(i);
+						modo = Modo.Edicion;
+					}
+				}
+			}	
+		});
+        jTable1.setModel(new FamiliarModel(Curriculum.data_familiar, new String[] {"Nombre","Apellido","Relacion","Telefono"}));
+        
+        jScrollPane1.setViewportView(jTable1);
+    	
+	}
+    void poblarCampos(int i) {
+		nombre.setText(Curriculum.data_familiar.get(i).getNombre());
+		apelllido.setText(Curriculum.data_familiar.get(i).getApellido());
+		relacion.setSelectedItem(String.valueOf(Curriculum.data_familiar.get(i).getTipo_id()));
+		telefono.setText(Curriculum.data_familiar.get(i).getTelefono());
+	}
     /**
      * @param args the command line arguments
      */
@@ -287,7 +319,7 @@ public class POSTULAR_6 extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField nombre;
-    private javax.swing.JComboBox<String> relacion;
+    private javax.swing.JComboBox<Object> relacion;
     private javax.swing.JTextField telefono;
     // End of variables declaration//GEN-END:variables
 }
