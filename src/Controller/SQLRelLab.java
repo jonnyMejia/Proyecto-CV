@@ -41,15 +41,15 @@ public class SQLRelLab {
 		}
 		return lista;
 	}
-        public List<Rel_Lab> querySelectOne() {
+        public Rel_Lab querySelectOne(int id) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		Rel_Lab relLab= null;
-		List<Rel_Lab> lista=new ArrayList<>();
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(SELECT_ONE);
+			stmt.setInt(1, id);
 			rs = stmt.executeQuery();
 			if(rs.next()) {
 				relLab=new Rel_Lab(rs.getInt(1),rs.getString(2));
@@ -61,20 +61,20 @@ public class SQLRelLab {
 			DBManager.closePrepared(stmt);
 			DBManager.closeConnection(con);
 		}
-		return lista;
+		return relLab;
 	}	
-	public List<Rel_Lab> querySelectId() {
+	public int querySelectId(String nombre) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		Rel_Lab relLab= null;
-		List<Rel_Lab> lista=new ArrayList<>();
+		int id=0;
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(SELECT_ID);
+			stmt.setString(1, nombre);
 			rs = stmt.executeQuery();
 			if(rs.next()) {
-				relLab=new Rel_Lab(rs.getInt(1),rs.getString(2));
+				id=rs.getInt(1);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -83,16 +83,16 @@ public class SQLRelLab {
 			DBManager.closePrepared(stmt);
 			DBManager.closeConnection(con);
 		}
-		return lista;
+		return id;
 	}
-	public int queryInsert(Rel_Lab relLab) {
+	public int queryInsert(String relLab) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		int rows=0;
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(INSERT);
-			stmt.setString(1, relLab.getDescripcion());
+			stmt.setString(1, relLab);
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
