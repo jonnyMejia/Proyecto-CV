@@ -5,54 +5,51 @@
  */
 package Entidades;
 
-import java.util.*;
-import java.lang.*;
+import java.util.Date;
 
 /**
  *
  * @author Dani Lucano
  */
 public class Postulante {
-	String DNI;
+    int postu_id;
     String nombre;
     String ap_pat;
     String ap_mat;
     int edad;
-    String fNac;
+    Date fNac;
     String pais_id;
     String genero;
     String estado_id;
     String email;
     String pensiones_id;
-    
-	public Postulante(String dNI, String nombre, String ap_pat, String ap_mat, int edad, String fNac, String pais_id,
-			String genero, String estado_id, String email, String pensiones_id) {
-		super();
-		DNI = dNI;
-		this.nombre = nombre;
-		this.ap_pat = ap_pat;
-		this.ap_mat = ap_mat;
-		this.edad = edad;
-		this.fNac = fNac;
-		this.pais_id = pais_id;
-		this.genero = genero;
-		this.estado_id = estado_id;
-		this.email = email;
-		this.pensiones_id = pensiones_id;
-	}
 
-	
-	public String getDNI() {
-		return DNI;
-	}
+    public Postulante() {
+    }
 
+    public Postulante(int postu_id, String nombre, String ap_pat, String ap_mat, int edad, Date fNac, String pais_id, String genero, String estado_id, String email, String pensiones_id) {
+        this.postu_id = postu_id;
+        this.nombre = nombre;
+        this.ap_pat = ap_pat;
+        this.ap_mat = ap_mat;
+        this.edad = edad;
+        this.fNac = fNac;
+        this.pais_id = pais_id;
+        this.genero = genero;
+        this.estado_id = estado_id;
+        this.email = email;
+        this.pensiones_id = pensiones_id;
+    }
 
-	public void setDNI(String dNI) {
-		DNI = dNI;
-	}
+    public int getPostu_id() {
+        return postu_id;
+    }
 
+    public void setPostu_id(int postu_id) {
+        this.postu_id = postu_id;
+    }
 
-	public String getNombre() {
+    public String getNombre() {
         return nombre;
     }
 
@@ -84,11 +81,11 @@ public class Postulante {
         this.edad = edad;
     }
 
-    public String getfNac() {
+    public Date getfNac() {
         return fNac;
     }
 
-    public void setfNac(String fNac) {
+    public void setfNac(Date fNac) {
         this.fNac = fNac;
     }
 
@@ -132,14 +129,10 @@ public class Postulante {
         this.pensiones_id = pensiones_id;
     }
 
-
-	@Override
-	public String toString() {
-		return "Postulante [DNI=" + DNI + ", nombre=" + nombre + ", ap_pat=" + ap_pat + ", ap_mat=" + ap_mat + ", edad="
-				+ edad + ", fNac=" + fNac + ", pais_id=" + pais_id + ", genero=" + genero + ", estado_id=" + estado_id
-				+ ", email=" + email + ", pensiones_id=" + pensiones_id + "]";
-	}
-
-  
+    @Override
+    public String toString() {
+        return "Postulante{" + "postu_id=" + postu_id + ", nombre=" + nombre + ", ap_pat=" + ap_pat + ", ap_mat=" + ap_mat + ", edad=" + edad + ", fNac=" + fNac + ", pais_id=" + pais_id + ", genero=" + genero + ", estado_id=" + estado_id + ", email=" + email + ", pensiones_id=" + pensiones_id + '}';
+    }
+    
     
 }

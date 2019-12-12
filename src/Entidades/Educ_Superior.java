@@ -16,9 +16,8 @@ public class Educ_Superior {
     int inst_id;
     int grado_id;
     int pais_id;
-    Date f_ini;
-    Date f_fin;
-    Date anios;
+    int f_ini;
+    int f_fin;
     int espec_id;
 
     public int getEduc_sup_id() {
@@ -53,29 +52,22 @@ public class Educ_Superior {
         this.pais_id = pais_id;
     }
 
-    public Date getF_ini() {
+    public int getF_ini() {
         return f_ini;
     }
 
-    public void setF_ini(Date f_ini) {
+    public void setF_ini(int f_ini) {
         this.f_ini = f_ini;
     }
 
-    public Date getF_fin() {
+    public int getF_fin() {
         return f_fin;
     }
 
-    public void setF_fin(Date f_fin) {
+    public void setF_fin(int f_fin) {
         this.f_fin = f_fin;
     }
 
-    public Date getAnios() {
-        return anios;
-    }
-
-    public void setAnios(Date anios) {
-        this.anios = anios;
-    }
 
     public int getEspec_id() {
         return espec_id;
