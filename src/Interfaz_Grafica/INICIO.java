@@ -15,6 +15,8 @@ public class INICIO extends javax.swing.JFrame {
     /**
      * Creates new form INICIO
      */
+	
+	
     public INICIO() {
         initComponents();
     }

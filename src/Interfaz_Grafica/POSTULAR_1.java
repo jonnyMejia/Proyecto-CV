@@ -33,6 +33,7 @@ public class POSTULAR_1 extends javax.swing.JFrame {
     /**
      * Creates new form POSTULAR_1
      */
+	Estado estado;
 	List<Postulante> lista_postulante ;
     public POSTULAR_1() {
         initComponents();
@@ -46,7 +47,7 @@ public class POSTULAR_1 extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
+    	
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         prefTrab = new javax.swing.JComboBox<>();
@@ -95,8 +96,8 @@ public class POSTULAR_1 extends javax.swing.JFrame {
         
         jLabel4.setText("Codigo del puesto");
         SQLPuesto puesto= new SQLPuesto();
-        //List<Puesto> lista_puesto=puesto.querySelect();
-        //codPuesto.setModel(new javax.swing.DefaultComboBoxModel<>(lista_puesto.stream().map(e->e.getNombre()).toArray()));
+        List<Puesto> lista_puesto=puesto.querySelectAll();
+        codPuesto.setModel(new javax.swing.DefaultComboBoxModel<>(lista_puesto.stream().map(e->e.getNombre()).toArray()));
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("DETALLE DEL PUESTO");
@@ -110,7 +111,9 @@ public class POSTULAR_1 extends javax.swing.JFrame {
         jLabel9.setText("Apellidos");
 
         jLabel10.setText("Fecha Nac  DD / MM / AA");
-
+        text_fecha.setText("12/23/2016");
+        
+        
         jLabel11.setText("Sexo");
 
         genero.setModel(new javax.swing.DefaultComboBoxModel<>(new Object[] {"Masculino","Femenino"}));
@@ -127,11 +130,12 @@ public class POSTULAR_1 extends javax.swing.JFrame {
 
         jLabel15.setText("Nacionalidad");
         SQLPais paises= new SQLPais();
-        //List<Pais> lista_pais=paises.querySelect();
-        //pais.setModel(new javax.swing.DefaultComboBoxModel<>(lista_pais.stream().map(e->e.getNombre()).toArray()));
+        List<Pais> lista_pais=paises.querySelectAll();
+        
+        pais.setModel(new javax.swing.DefaultComboBoxModel<>(lista_pais.stream().map(e->e.getNombre()).toArray()));
 
         jLabel16.setText("e-mail");
-
+        
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(

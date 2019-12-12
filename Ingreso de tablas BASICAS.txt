@@ -146,16 +146,15 @@ INSERT INTO  PUESTO(nombre) VALUES('Arquitecto');
 INSERT INTO  PUESTO(nombre) VALUES('Ingeniero de Sistemas');
 INSERT INTO  PUESTO(nombre) VALUES('Ingeniero Industrial');
 INSERT INTO  PUESTO(nombre) VALUES('Ingeniero de Mecanico');
-INSERT INTO  PUESTO(nombre) VALUES('Ingeniero de Telecomunicaciones');
 INSERT INTO  PUESTO(nombre) VALUES('Jefe de Marketing');
 
 --RELACIONES LABORALES
 
-INSERT INTO(descripcion)  REL_LAB VALUES('Asesor');
-INSERT INTO(descripcion)  REL_LAB VALUES('Cooperativista');
-INSERT INTO(descripcion)  REL_LAB VALUES('Emp. Es');
-INSERT INTO(descripcion)  REL_LAB VALUES('Practicante');
-INSERT INTO(descripcion)  REL_LAB VALUES('Otra Relacion');
+INSERT INTO REL_LAB(descripcion)  VALUES('Asesor');
+INSERT INTO REL_LAB(descripcion)  VALUES('Cooperativista');
+INSERT INTO REL_LAB(descripcion)  VALUES('Emp. Es');
+INSERT INTO REL_LAB(descripcion)  VALUES('Practicante');
+INSERT INTO REL_LAB(descripcion)  VALUES('Otra Relacion');
 
 --SECTOR
 
@@ -167,5 +166,8 @@ INSERT INTO  SECTOR(nombre) VALUES('Privado');
 INSERT INTO  TIPO_FAMILIAR(nombre) VALUES('Padre');
 INSERT INTO  TIPO_FAMILIAR(nombre) VALUES('Madre');
 INSERT INTO  TIPO_FAMILIAR(nombre) VALUES('Hermano');
+
+
+
 
 
