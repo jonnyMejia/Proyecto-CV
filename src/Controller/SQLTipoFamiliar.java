@@ -20,8 +20,6 @@ public class SQLTipoFamiliar {
 	private static String UPDATE = "UPDATE TIPO_FAMILIAR SET nombre = ? WHERE tipo_id = ? ";
 	private static String SELECT_ID= "SELECT * FROM TIPO_FAMILIAR WHERE nombre =  ? ";
 	
-	
-	
 	public int querySelect_id(String nombre) {
 			Connection con = null;
 			PreparedStatement stmt = null;

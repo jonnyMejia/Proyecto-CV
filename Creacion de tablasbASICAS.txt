@@ -42,7 +42,7 @@ CREATE TABLE INSTITUCION(
 );
 CREATE TABLE LUGAR_LABORAL(
     lug_id NUMBER(2)generated always as identity,
-    lug_nom VARCHAR(30) NOT NULL UNIQUE,
+    nombre VARCHAR(30) NOT NULL UNIQUE,
     CONSTRAINT lugar_pk PRIMARY KEY(lug_id)
 );
 CREATE TABLE MOTIVO(

@@ -85,18 +85,18 @@ public class POSTULAR_1 extends javax.swing.JFrame {
 
         jLabel2.setText("Lugar de preferencia para trabajar");
         SQLLugarLaboral lugar = new SQLLugarLaboral();
-        List<Lugar_Laboral> lista_lugar=lugar.querySelect();
+        List<Lugar_Laboral> lista_lugar=lugar.querySelectAll();
         prefTrab.setModel(new DefaultComboBoxModel<Object>(lista_lugar.stream().map(e->e.getNombre()).toArray()));
 
         jLabel3.setText("Area de preferencia para trabajar");
         SQLAreaLaboral area= new SQLAreaLaboral();
-        List<Area_Laboral> lista_area= area.querySelect();
+        List<Area_Laboral> lista_area= area.querySelectAll();
         areaPref.setModel(new javax.swing.DefaultComboBoxModel<>(lista_area.stream().map(e->e.getNombre()).toArray()));
         
         jLabel4.setText("Codigo del puesto");
         SQLPuesto puesto= new SQLPuesto();
-        List<Puesto> lista_puesto=puesto.querySelect();
-        codPuesto.setModel(new javax.swing.DefaultComboBoxModel<>(lista_puesto.stream().map(e->e.getNombre()).toArray()));
+        //List<Puesto> lista_puesto=puesto.querySelect();
+        //codPuesto.setModel(new javax.swing.DefaultComboBoxModel<>(lista_puesto.stream().map(e->e.getNombre()).toArray()));
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("DETALLE DEL PUESTO");
@@ -118,7 +118,7 @@ public class POSTULAR_1 extends javax.swing.JFrame {
         jLabel12.setText("Estado Civil");
 
         SQLEstado estado= new SQLEstado();
-        List<Estado> lista_estado=estado.querySelect();
+        List<Estado> lista_estado=estado.querySelectAll();
         Estado.setModel(new javax.swing.DefaultComboBoxModel<>(lista_estado.stream().map(e->e.getNombre()).toArray()));
 
         jLabel13.setText("Domicilio");
@@ -127,8 +127,8 @@ public class POSTULAR_1 extends javax.swing.JFrame {
 
         jLabel15.setText("Nacionalidad");
         SQLPais paises= new SQLPais();
-        List<Pais> lista_pais=paises.querySelect();
-        pais.setModel(new javax.swing.DefaultComboBoxModel<>(lista_pais.stream().map(e->e.getNombre()).toArray()));
+        //List<Pais> lista_pais=paises.querySelect();
+        //pais.setModel(new javax.swing.DefaultComboBoxModel<>(lista_pais.stream().map(e->e.getNombre()).toArray()));
 
         jLabel16.setText("e-mail");
 

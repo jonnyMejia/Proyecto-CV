@@ -11,20 +11,22 @@ import DBManager.DBManager;
 import Entidades.Lugar_Laboral;
 
 public class SQLLugarLaboral {
-	private static String SELECT = "SELECT * FROM LUGAR_LABORAL";
+	private static String SELECT_ALL = "SELECT * FROM LUGAR_LABORAL ";
+	private static String SELECT_ID = "SELECT lug_id FROM LUGAR_LABORAL WHERE nombre = ? ";
+	private static String SELECT_ONE = "SELECT * FROM LUGAR_LABORAL WHERE lug_id= ? ";
 	private static String DELETE = "DELETE FROM LUGAR_LABORAL WHERE lug_id = ? ";
-	private static String INSERT = "INSERT INTO LUGAR_LABORAL VALUES ( ? , ? )";
+	private static String INSERT = "INSERT INTO LUGAR_LABORAL(nombre) VALUES ( ? )";
 	private static String UPDATE = "UPDATE LUGAR_LABORAL SET nombre = ? WHERE lug_id = ? ";
 	
-	public ArrayList<Lugar_Laboral> querySelect() {
+	public List<Lugar_Laboral> querySelectAll() {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		Lugar_Laboral lug= null;
-		ArrayList<Lugar_Laboral> lista=new ArrayList<>();
+		List<Lugar_Laboral> lista=new ArrayList<>();
 		try {
 			con=DBManager.getConnection();
-			stmt=con.prepareStatement(SELECT);
+			stmt=con.prepareStatement(SELECT_ALL);
 			rs = stmt.executeQuery();
 			while(rs.next()) {
 				lug=new Lugar_Laboral(rs.getInt(1),rs.getString(2));
@@ -39,15 +41,58 @@ public class SQLLugarLaboral {
 		}
 		return lista;
 	}
-	public int queryInsert(Lugar_Laboral lug) {
+	public int querySelectId(String nombre) {
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		int id= 0;
+		try {
+			con=DBManager.getConnection();
+			stmt=con.prepareStatement(SELECT_ID);
+			stmt.setString(1, nombre);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				id=rs.getInt(1);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace(System.out);
+		}finally {
+			DBManager.closeResult(rs);
+			DBManager.closePrepared(stmt);
+			DBManager.closeConnection(con);
+		}
+		return id;
+	}
+	public Lugar_Laboral querySelectOne(int id) {
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Lugar_Laboral lug= null;
+		try {
+			con=DBManager.getConnection();
+			stmt=con.prepareStatement(SELECT_ALL);
+			stmt.setInt(1, id);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				lug=new Lugar_Laboral(rs.getInt(1),rs.getString(2));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace(System.out);
+		}finally {
+			DBManager.closeResult(rs);
+			DBManager.closePrepared(stmt);
+			DBManager.closeConnection(con);
+		}
+		return lug;
+	}
+	public int queryInsert(String nombre) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		int rows=0;
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(INSERT);
-			stmt.setInt(1, lug.getLug_id());
-			stmt.setString(2, lug.getNombre());
+			stmt.setString(1, nombre);
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);

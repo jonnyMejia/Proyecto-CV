@@ -11,11 +11,15 @@ import DBManager.DBManager;
 import Entidades.Especialidad;
 
 public class SQLEspecialidad {
-	private static String SELECT = "SELECT * FROM ESPECIALIDAD ";
-	private static String DELETE = "DELETE FROM ESPECIALIDAD WHERE area_id = ? ";
-	private static String INSERT = "INSERT INTO ESPECIALIDAD VALUES ( ? , ? )";
-	private static String UPDATE = "UPDATE ESPECIALIDAD SET nombre = ? WHERE area_id = ? ";
+	private static String SELECT_ALL = "SELECT * FROM ESPECIALIDAD ";
+	private static String SELECT_ID = "SELECT espec_id FROM ESPECIALIDAD WHERE nombre = ? ";
+	private static String SELECT_ONE = "SELECT * FROM ESPECIALIDAD WHERE espec_id= ? ";
+	private static String DELETE = "DELETE FROM ESPECIALIDAD WHERE espec_id = ? ";
+	private static String INSERT = "INSERT INTO ESPECIALIDAD(nombre) VALUES ( ? )";
+	private static String UPDATE = "UPDATE ESPECIALIDAD SET nombre = ? WHERE espec_id = ? ";
 
+	
+	
 	public List<Especialidad> querySelect() {
 		Connection con = null;
 		PreparedStatement stmt = null;
@@ -24,7 +28,7 @@ public class SQLEspecialidad {
 		List<Especialidad> lista = new ArrayList<>();
 		try {
 			con = DBManager.getConnection();
-			stmt = con.prepareStatement(SELECT);
+			stmt = con.prepareStatement(SELECT_ALL);
 			rs = stmt.executeQuery();
 			while (rs.next()) {
 				esp = new Especialidad(rs.getInt(1), rs.getString(2));
@@ -39,16 +43,61 @@ public class SQLEspecialidad {
 		}
 		return lista;
 	}
+	public int querySelectID(String nombre) {
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		int id=0;
+		try {
+			con = DBManager.getConnection();
+			stmt = con.prepareStatement(SELECT_ID);
+			stmt.setString(1, nombre);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace(System.out);
+		} finally {
+			DBManager.closeResult(rs);
+			DBManager.closePrepared(stmt);
+			DBManager.closeConnection(con);
+		}
+		return id;
+	}
+	
+	
+	public Especialidad querySelectOne(int id) {
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Especialidad esp = null;
+		try {
+			con = DBManager.getConnection();
+			stmt = con.prepareStatement(SELECT_ONE);
+			stmt.setInt(1, id);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				esp = new Especialidad(rs.getInt(1), rs.getString(2));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace(System.out);
+		} finally {
+			DBManager.closeResult(rs);
+			DBManager.closePrepared(stmt);
+			DBManager.closeConnection(con);
+		}
+		return esp;
+	}
 
-	public int queryInsert(Especialidad esp) {
+	public int queryInsert(String nombre) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		int rows = 0;
 		try {
 			con = DBManager.getConnection();
 			stmt = con.prepareStatement(INSERT);
-			stmt.setInt(1, esp.getEspec_id());
-			stmt.setString(2, esp.getNombre());
+			stmt.setString(1, nombre);
 			rows = stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace(System.out);

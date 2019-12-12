@@ -13,12 +13,58 @@ import Entidades.Departamento;
 
 public class SQLDepartamento {
 	
-	private static String SELECT = "SELECT * FROM DEPARTAMENTO ";
-	private static String DELETE = "DELETE FROM DEPARTAMENTO  WHERE depto_id = ? ";
-	private static String INSERT = "INSERT INTO DEPARTAMENTO  VALUES ( ? , ? )";
+	private static String SELECT_ALL = "SELECT * FROM DEPARTAMENTO ";
+	private static String SELECT_ID = "SELECT depto_id FROM DEPARTAMENTO WHERE nombre = ? ";
+	private static String SELECT_ONE = "SELECT * FROM DEPARTAMENTO WHERE depto_id= ? ";
+	private static String DELETE = "DELETE FROM DEPARTAMENTO WHERE depto_id = ? ";
+	private static String INSERT = "INSERT INTO DEPARTAMENTO(nombre) VALUES ( ? )";
 	private static String UPDATE = "UPDATE DEPARTAMENTO  SET nombre = ? WHERE depto_id = ? ";
 	
-	public List<Departamento> querySelect() {
+	public int querySelectId(String nombre) {
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		int id=0;
+		try {
+			con=DBManager.getConnection();
+			stmt=con.prepareStatement(SELECT_ID);
+			stmt.setString(1, nombre);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				id=rs.getInt(1);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace(System.out);
+		}finally {
+			DBManager.closeResult(rs);
+			DBManager.closePrepared(stmt);
+			DBManager.closeConnection(con);
+		}
+		return id;
+	}
+	public Departamento querySelectOne(int id) {
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Departamento dep= null;
+		try {
+			con=DBManager.getConnection();
+			stmt=con.prepareStatement(SELECT_ONE);
+			stmt.setInt(1, id);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				dep=new Departamento(rs.getInt(1),rs.getString(2));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace(System.out);
+		}finally {
+			DBManager.closeResult(rs);
+			DBManager.closePrepared(stmt);
+			DBManager.closeConnection(con);
+		}
+		return dep;
+	}
+	public List<Departamento> querySelectAll() {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -26,7 +72,7 @@ public class SQLDepartamento {
 		List<Departamento> lista=new ArrayList<>();
 		try {
 			con=DBManager.getConnection();
-			stmt=con.prepareStatement(SELECT);
+			stmt=con.prepareStatement(SELECT_ALL);
 			rs = stmt.executeQuery();
 			while(rs.next()) {
 				dep=new Departamento(rs.getInt(1),rs.getString(2));
@@ -41,15 +87,14 @@ public class SQLDepartamento {
 		}
 		return lista;
 	}
-	public int queryInsert(Departamento dep) {
+	public int queryInsert(String nombre) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		int rows=0;
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(INSERT);
-			stmt.setInt(1, dep.getDepto_id());
-			stmt.setString(2, dep.getNombre());
+			stmt.setString(1, nombre);
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
