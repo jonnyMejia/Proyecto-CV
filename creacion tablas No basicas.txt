@@ -1,13 +1,13 @@
 --POSTULANTE
 create TABLE POSTULANTE(
-     dni_id NUMBER(8) generated always as identity ,
+     dni_id char(8) ,
      nombre VARCHAR2(30) NOT NULL ,
      ap_pat VARCHAR2(30) NOT NULL ,
      ap_mat VARCHAR2(30) NOT NULL ,
      edad  NUMBER(2) check(edad>=18),
      fNac  DATE NOT NULl,
      pais_id NUMBER(2),
-     genero CHAR(1) NOT NULl unique,
+     genero CHAR(1) NOT NULl,
      estado_id NUMBER(2),
      email VARCHAR2(50) UNIQUE, 
      pensiones_id NUMBER(2),
