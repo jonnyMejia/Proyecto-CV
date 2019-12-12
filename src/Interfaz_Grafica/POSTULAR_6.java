@@ -5,6 +5,8 @@
  */
 package Interfaz_Grafica;
 
+import Models.Curriculum;
+import Models.FamiliarModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -55,8 +57,9 @@ public class POSTULAR_6 extends javax.swing.JFrame {
         relacion = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        bAgregar = new javax.swing.JButton();
-        bLimpiar = new javax.swing.JButton();
+        bAgregar1 = new javax.swing.JButton();
+        bGuardar = new javax.swing.JButton();
+        bEliminar = new javax.swing.JButton();
         bConfirmar = new javax.swing.JButton();
         bCancel = new javax.swing.JButton();
         bRegre = new javax.swing.JButton();
@@ -88,9 +91,11 @@ public class POSTULAR_6 extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        bAgregar.setText("Agregar");
+        bAgregar1.setText("Agregar");
 
-        bLimpiar.setText("Limpiar");
+        bGuardar.setText("Guardar");
+
+        bEliminar.setText("Eliminar");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -118,11 +123,16 @@ public class POSTULAR_6 extends javax.swing.JFrame {
                                     .addComponent(relacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addComponent(bAgregar)
-                        .addGap(34, 34, 34)
-                        .addComponent(bLimpiar)))
+                        .addGap(197, 197, 197)
+                        .addComponent(bAgregar1)))
                 .addContainerGap(26, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(298, 298, 298)
+                    .addComponent(bGuardar)
+                    .addGap(18, 18, 18)
+                    .addComponent(bEliminar)
+                    .addContainerGap(207, Short.MAX_VALUE)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,13 +155,18 @@ public class POSTULAR_6 extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(relacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bAgregar)
-                    .addComponent(bLimpiar))
                 .addGap(18, 18, 18)
+                .addComponent(bAgregar1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(274, 274, 274)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(bEliminar)
+                        .addComponent(bGuardar))
+                    .addContainerGap(275, Short.MAX_VALUE)))
         );
 
         bConfirmar.setText("CONFIRMAR Y GUARDAR");
@@ -308,10 +323,11 @@ public class POSTULAR_6 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField apelllido;
-    private javax.swing.JButton bAgregar;
+    private javax.swing.JButton bAgregar1;
     private javax.swing.JButton bCancel;
     private javax.swing.JButton bConfirmar;
-    private javax.swing.JButton bLimpiar;
+    private javax.swing.JButton bEliminar;
+    private javax.swing.JButton bGuardar;
     private javax.swing.JButton bRegre;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

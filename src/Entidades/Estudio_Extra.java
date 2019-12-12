@@ -15,7 +15,15 @@ public class Estudio_Extra {
     int est_ext_id;
     String nombre;
     String nom_institucion;
-    int nivel;
+    int nivel_id;
+
+    public int getNivel_id() {
+        return nivel_id;
+    }
+
+    public void setNivel_id(int nivel_id) {
+        this.nivel_id = nivel_id;
+    }
     public int getEst_ext_id() {
         return est_ext_id;
     }
@@ -42,13 +50,6 @@ public class Estudio_Extra {
         this.nombre = nombre;
     }
 
-    public int getNivel() {
-        return nivel;
-    }
-
-    public void setNivel(int nivel) {
-        this.nivel = nivel;
-    }
 
    
     

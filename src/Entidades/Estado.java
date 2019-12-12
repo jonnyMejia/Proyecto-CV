@@ -11,7 +11,7 @@ package Entidades;
  */
 public class Estado {
     int estado_id;
-    String nombre;
+    String nombre;    
 
     public Estado(int estado_id, String nombre) {
 		super();

@@ -9,10 +9,11 @@ package Entidades;
  *
  * @author Dani Lucano
  */
-public class Rel_Laboral {
+public class Ref_Laboral {
+    
     int ref_lab_id;
-    int rel_lab_id;
     String nom_ref;
+    String ape_ref;
     String nom_emp_ref;
     String cargo_ref;
     String telf_ref;
@@ -25,13 +26,14 @@ public class Rel_Laboral {
         this.ref_lab_id = ref_lab_id;
     }
 
-    public int getRel_lab_id() {
-        return rel_lab_id;
+    public String getApe_ref() {
+        return ape_ref;
     }
 
-    public void setRel_lab_id(int rel_lab_id) {
-        this.rel_lab_id = rel_lab_id;
+    public void setApe_ref(String ape_ref) {
+        this.ape_ref = ape_ref;
     }
+
 
     public String getNom_ref() {
         return nom_ref;
