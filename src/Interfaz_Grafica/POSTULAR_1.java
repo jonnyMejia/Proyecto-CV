@@ -121,7 +121,7 @@ public class POSTULAR_1 extends javax.swing.JFrame {
         
         
         jLabel11.setText("Sexo");
-
+        
         genero.setModel(new javax.swing.DefaultComboBoxModel<>(new Object[] {"Masculino","Femenino"}));
         jLabel12.setText("Estado Civil");
 
@@ -345,22 +345,25 @@ public class POSTULAR_1 extends javax.swing.JFrame {
     	LocalDate fechaNac = LocalDate.parse(text_fecha.getText(), fmt);
     	LocalDate ahora = LocalDate.now();
     	Period periodo = Period.between(fechaNac, ahora);
-    	System.out.printf("Tu edad es: %s años, %s meses y %s días",
-    	                    periodo.getYears(), periodo.getMonths(), periodo.getDays());
+    	
     	SQLPais paises= new SQLPais();
     	int pais_id=paises.querySelectId(pais.getSelectedItem().toString());
     	SQLEstado estado= new SQLEstado();
     	int est_id= estado.querySelectId(Estado.getSelectedItem().toString());
-    	Curriculum.data_postulante.add(new Postulante(txt_dni.getText(), txt_nom.getText(), apellido[0], apellido[1], periodo.getYears(), text_fecha.getText() ,pais_id,sexo,est_id, email.getText(), 1));
-	}
+    	SQLAreaLaboral area= new SQLAreaLaboral();
+    	int area_id=area.querySelectId(prefTrab.getSelectedItem().toString());
+    	SQLLugarLaboral lugar= new SQLLugarLaboral();
+    	int lugar_id= lugar.querySelectId(areaPref.getSelectedItem().toString());
+    	
+    	Curriculum.data_postulante.add(new Postulante(txt_dni.getText(), txt_nom.getText(), apellido[0], apellido[1],txt_domi.getText(),
+    			periodo.getYears(), text_fecha.getText() ,pais_id,sexo,est_id, email.getText(), 1,lugar_id,area_id));
+    }
     private void bContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bContinuarActionPerformed
     	agregarPostulante();
     	System.out.println(Curriculum.data_postulante.get(0).toString());
     	POSTULAR_2 P=new POSTULAR_2();
         P.setVisible(true);
-        this.setVisible(false);
-        
-        
+        this.setVisible(false); 
     }//GEN-LAST:event_bContinuarActionPerformed
 
     private void bCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelActionPerformed

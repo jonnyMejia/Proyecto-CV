@@ -17,6 +17,7 @@ public class Postulante {
     String nombre;
     String ap_pat;
     String ap_mat;
+    String domiciilio;
     int edad;
     String fNac;
     int pais_id;
@@ -24,14 +25,16 @@ public class Postulante {
     int estado_id;
     String email;
     int pensiones_id;
-    
-	public Postulante(String dNI, String nombre, String ap_pat, String ap_mat, int edad, String fNac, int pais_id,
-			String genero, int estado_id, String email, int pensiones_id) {
+    int lugar_id;
+    int area_id;
+	public Postulante(String dNI, String nombre, String ap_pat, String ap_mat, String domiciilio, int edad, String fNac,
+			int pais_id, String genero, int estado_id, String email, int pensiones_id, int lugar_id, int area_id) {
 		super();
 		DNI = dNI;
 		this.nombre = nombre;
 		this.ap_pat = ap_pat;
 		this.ap_mat = ap_mat;
+		this.domiciilio = domiciilio;
 		this.edad = edad;
 		this.fNac = fNac;
 		this.pais_id = pais_id;
@@ -39,6 +42,8 @@ public class Postulante {
 		this.estado_id = estado_id;
 		this.email = email;
 		this.pensiones_id = pensiones_id;
+		this.lugar_id = lugar_id;
+		this.area_id = area_id;
 	}
 	public String getDNI() {
 		return DNI;
@@ -63,6 +68,12 @@ public class Postulante {
 	}
 	public void setAp_mat(String ap_mat) {
 		this.ap_mat = ap_mat;
+	}
+	public String getDomiciilio() {
+		return domiciilio;
+	}
+	public void setDomiciilio(String domiciilio) {
+		this.domiciilio = domiciilio;
 	}
 	public int getEdad() {
 		return edad;
@@ -106,14 +117,26 @@ public class Postulante {
 	public void setPensiones_id(int pensiones_id) {
 		this.pensiones_id = pensiones_id;
 	}
+	public int getLugar_id() {
+		return lugar_id;
+	}
+	public void setLugar_id(int lugar_id) {
+		this.lugar_id = lugar_id;
+	}
+	public int getArea_id() {
+		return area_id;
+	}
+	public void setArea_id(int area_id) {
+		this.area_id = area_id;
+	}
 	@Override
 	public String toString() {
-		return "Postulante [DNI=" + DNI + ", nombre=" + nombre + ", ap_pat=" + ap_pat + ", ap_mat=" + ap_mat + ", edad="
-				+ edad + ", fNac=" + fNac + ", pais_id=" + pais_id + ", genero=" + genero + ", estado_id=" + estado_id
-				+ ", email=" + email + ", pensiones_id=" + pensiones_id + "]";
+		return "Postulante [DNI=" + DNI + ", nombre=" + nombre + ", ap_pat=" + ap_pat + ", ap_mat=" + ap_mat
+				+ ", domiciilio=" + domiciilio + ", edad=" + edad + ", fNac=" + fNac + ", pais_id=" + pais_id
+				+ ", genero=" + genero + ", estado_id=" + estado_id + ", email=" + email + ", pensiones_id="
+				+ pensiones_id + ", lugar_id=" + lugar_id + ", area_id=" + area_id + "]";
 	}
     
-
   
     
 }

@@ -68,7 +68,7 @@ public class POSTULAR_5 extends javax.swing.JFrame {
 
         jLabel3.setText("Apellido");
 
-        jLabel4.setText("            Empresa");
+        jLabel4.setText"Empresa");
 
         jLabel6.setText("Cargo");
 
@@ -83,7 +83,7 @@ public class POSTULAR_5 extends javax.swing.JFrame {
         jLabel5.setText("Datos del puesto");
 
         jLabel27.setText("Area");
-
+        
         AreaLab.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         AreaLab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
