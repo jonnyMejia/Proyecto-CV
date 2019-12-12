@@ -11,12 +11,14 @@ import DBManager.DBManager;
 import Entidades.Nivel;
 
 public class SQLNivel {
-	private static String SELECT = "SELECT * FROM NIVEL ";
-	private static String DELETE = "DELETE FROM NIVEL WHERE nivel_id = ? ";
-	private static String INSERT = "INSERT INTO NIVEL VALUES ( ? , ? )";
-	private static String UPDATE = "UPDATE NIVEL SET nivel = ? WHERE nivel_id = ? ";
-	
-	public List<Nivel> querySelect() {
+        private static String SELECT_ALL = "SELECT * FROM NIVEL ";
+	private static String SELECT_ONE = "SELECT * FROM NIVEL where nivel_id = ? ";
+	private static String SELECT_ID = "SELECT nivel_id FROM NIVEL WHERE NIVEL = ? ";
+	private static String DELETE = "DELETE FROM NIVEL  WHERE NIVEL = ? ";
+	private static String UPDATE = "UPDATE NIVEL SET NIVEL = ? WHERE nivel_id = ? ";
+	private static String INSERT = "INSERT INTO NIVEL(NIVEL) VALUES ( ? )";
+
+	public List<Nivel> querySelectAll() {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -24,11 +26,56 @@ public class SQLNivel {
 		List<Nivel> lista=new ArrayList<>();
 		try {
 			con=DBManager.getConnection();
-			stmt=con.prepareStatement(SELECT);
+			stmt=con.prepareStatement(SELECT_ALL);
 			rs = stmt.executeQuery();
 			while(rs.next()) {
 				nivel=new Nivel(rs.getInt(1),rs.getString(2));
 				lista.add(nivel);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace(System.out);
+		}finally {
+			DBManager.closeResult(rs);
+			DBManager.closePrepared(stmt);
+			DBManager.closeConnection(con);
+		}
+		return lista;
+	}
+        	public List<Nivel> querySelectOne() {
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Nivel nivel= null;
+		List<Nivel> lista=new ArrayList<>();
+		try {
+			con=DBManager.getConnection();
+			stmt=con.prepareStatement(SELECT_ONE);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				nivel=new Nivel(rs.getInt(1),rs.getString(2));
+				lista.add(nivel);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace(System.out);
+		}finally {
+			DBManager.closeResult(rs);
+			DBManager.closePrepared(stmt);
+			DBManager.closeConnection(con);
+		}
+		return lista;
+	}
+	public List<Nivel> querySelectId() {
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Nivel nivel= null;
+		List<Nivel> lista=new ArrayList<>();
+		try {
+			con=DBManager.getConnection();
+			stmt=con.prepareStatement(SELECT_ID);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				nivel=new Nivel(rs.getInt(1),rs.getString(2));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -46,8 +93,7 @@ public class SQLNivel {
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(INSERT);
-			stmt.setInt(1, nivel.getNivel_id());
-			stmt.setString(2, nivel.getNivel());
+			stmt.setString(1, nivel.getNivel());
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -82,7 +128,7 @@ public class SQLNivel {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(UPDATE);
 			stmt.setString(1, nivel.getNivel());
-			stmt.setInt(2, nivel.getNivel_id());
+                        stmt.setInt(2, nivel.getNivel_id());
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);

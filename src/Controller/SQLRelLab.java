@@ -11,12 +11,14 @@ import DBManager.DBManager;
 import Entidades.Rel_Lab;
 
 public class SQLRelLab {
-	private static String SELECT = "SELECT * FROM REL_LAB ";
-	private static String DELETE = "DELETE FROM REL_LAB WHERE  rel_lab_id = ? ";
-	private static String INSERT = "INSERT INTO REL_LAB VALUES ( ? , ? )";
-	private static String UPDATE = "UPDATE REL_LAB SET descripcion = ? WHERE rel_lab_id = ? ";
-	
-	public List<Rel_Lab> querySelect() {
+        private static String SELECT_ALL = "SELECT * FROM REL_LABORAL ";
+	private static String SELECT_ONE = "SELECT * FROM REL_LABORAL where rel_lab_id = ? ";
+	private static String SELECT_ID = "SELECT rel_lab_id FROM REL_LABORAL WHERE descripcion = ? ";
+	private static String DELETE = "DELETE FROM REL_LABORAL WHERE descripcion  = ? ";
+	private static String UPDATE = "UPDATE REL_LABORAL SET descripcion = ? WHERE rel_lab_id = ? ";
+	private static String INSERT = "INSERT INTO REL_LABORAL(descripcion) VALUES ( ? )";
+
+	public List<Rel_Lab> querySelectAll() {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -24,11 +26,55 @@ public class SQLRelLab {
 		List<Rel_Lab> lista=new ArrayList<>();
 		try {
 			con=DBManager.getConnection();
-			stmt=con.prepareStatement(SELECT);
+			stmt=con.prepareStatement(SELECT_ALL);
 			rs = stmt.executeQuery();
 			while(rs.next()) {
 				relLab=new Rel_Lab(rs.getInt(1),rs.getString(2));
 				lista.add(relLab);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace(System.out);
+		}finally {
+			DBManager.closeResult(rs);
+			DBManager.closePrepared(stmt);
+			DBManager.closeConnection(con);
+		}
+		return lista;
+	}
+        public List<Rel_Lab> querySelectOne() {
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Rel_Lab relLab= null;
+		List<Rel_Lab> lista=new ArrayList<>();
+		try {
+			con=DBManager.getConnection();
+			stmt=con.prepareStatement(SELECT_ONE);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				relLab=new Rel_Lab(rs.getInt(1),rs.getString(2));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace(System.out);
+		}finally {
+			DBManager.closeResult(rs);
+			DBManager.closePrepared(stmt);
+			DBManager.closeConnection(con);
+		}
+		return lista;
+	}	
+	public List<Rel_Lab> querySelectId() {
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Rel_Lab relLab= null;
+		List<Rel_Lab> lista=new ArrayList<>();
+		try {
+			con=DBManager.getConnection();
+			stmt=con.prepareStatement(SELECT_ID);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				relLab=new Rel_Lab(rs.getInt(1),rs.getString(2));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -46,8 +92,7 @@ public class SQLRelLab {
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(INSERT);
-			stmt.setInt(1, relLab.getRel_lab_id());
-			stmt.setString(2, relLab.getDescripcion());
+			stmt.setString(1, relLab.getDescripcion());
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);

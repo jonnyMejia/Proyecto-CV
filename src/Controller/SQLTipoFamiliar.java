@@ -13,10 +13,11 @@ import DBManager.DBManager;
 import Entidades.Tipo_Familiar;
 
 public class SQLTipoFamiliar {
-	private static String SELECT = "SELECT * FROM TIPO_FAMILIAR"; 
-	private static String SELECT_WHERE = "SELECT * FROM TIPO_FAMILIAR WHERE tipo_id = ? ";
+         
+	private static String SELECT_ALL = "SELECT * FROM TIPO_FAMILIAR"; 
+	private static String SELECT_ONE = "SELECT * FROM TIPO_FAMILIAR WHERE tipo_id = ? ";
 	private static String DELETE = "DELETE FROM TIPO_FAMILIAR WHERE tipo_id = ? ";
-	private static String INSERT = "INSERT INTO TIPO_FAMILIAR VALUES ( ? , ? )";
+	private static String INSERT = "INSERT INTO TIPO_FAMILIAR VALUES(NOMBRE) ( ? )";
 	private static String UPDATE = "UPDATE TIPO_FAMILIAR SET nombre = ? WHERE tipo_id = ? ";
 	private static String SELECT_ID= "SELECT * FROM TIPO_FAMILIAR WHERE nombre =  ? ";
 	
@@ -44,14 +45,14 @@ public class SQLTipoFamiliar {
 			}
 			return id;
 	}
-	public Tipo_Familiar querySelect(int id) {
+	public Tipo_Familiar querySelect_one(int id) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		Tipo_Familiar familiar= null;
 		try {
 			con=DBManager.getConnection();
-			stmt=con.prepareStatement(SELECT_WHERE);
+			stmt=con.prepareStatement(SELECT_ONE);
 			stmt.setInt(1, id);
 			rs = stmt.executeQuery();
 			if (rs.next()) { 
@@ -75,7 +76,7 @@ public class SQLTipoFamiliar {
 		List<Tipo_Familiar> lista=new ArrayList<>();
 		try {
 			con=DBManager.getConnection();
-			stmt=con.prepareStatement(SELECT);
+			stmt=con.prepareStatement(SELECT_ALL);
 			rs = stmt.executeQuery();
 			while(rs.next()) {
 				familiar=new Tipo_Familiar(rs.getInt(1),rs.getString(2));
@@ -97,8 +98,7 @@ public class SQLTipoFamiliar {
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(INSERT);
-			stmt.setInt(1, familiar.getTipo_id());
-			stmt.setString(2, familiar.getNombre());
+			stmt.setString(1, familiar.getNombre());
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
