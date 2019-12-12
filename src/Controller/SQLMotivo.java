@@ -11,7 +11,7 @@ import DBManager.DBManager;
 import Entidades.Motivo;
 
 public class SQLMotivo {
-    	private static String SELECT_ALL = "SELECT * FROM MOTIVO ";
+    private static String SELECT_ALL = "SELECT * FROM MOTIVO ";
 	private static String SELECT_ONE = "SELECT * FROM MOTIVO where motivo_id = ? ";
 	private static String SELECT_ID = "SELECT motivo_id FROM MOTIVO WHERE MOTIVO = ? ";
 	private static String DELETE = "DELETE FROM MOTIVO  WHERE MOTIVO = ? ";
@@ -41,19 +41,18 @@ public class SQLMotivo {
 		}
 		return lista;
 	}
-        public List<Motivo> querySelectOne() {
+        public Motivo querySelectOne() {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		Motivo motivo= null;
-		List<Motivo> lista=new ArrayList<>();
 		try {
 			con=DBManager.getConnection();  
 			stmt=con.prepareStatement(SELECT_ONE);
+			
 			rs = stmt.executeQuery();
 			if(rs.next()) {
-				motivo=new Motivo(rs.getInt(1),rs.getString(2));
-				
+				motivo=new Motivo(rs.getInt(1),rs.getString(2));				
 			}
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -62,7 +61,7 @@ public class SQLMotivo {
 			DBManager.closePrepared(stmt);
 			DBManager.closeConnection(con);
 		}
-		return lista;
+		return motivo;
 	}
 	public List<Motivo> querySelectId() {
 		Connection con = null;

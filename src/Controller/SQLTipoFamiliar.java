@@ -17,7 +17,7 @@ public class SQLTipoFamiliar {
 	private static String SELECT_ALL = "SELECT * FROM TIPO_FAMILIAR"; 
 	private static String SELECT_ONE = "SELECT * FROM TIPO_FAMILIAR WHERE tipo_id = ? ";
 	private static String DELETE = "DELETE FROM TIPO_FAMILIAR WHERE tipo_id = ? ";
-	private static String INSERT = "INSERT INTO TIPO_FAMILIAR VALUES(NOMBRE) ( ? )";
+	private static String INSERT = "INSERT INTO TIPO_FAMILIAR(NOMBRE)  VALUES( ? )";
 	private static String UPDATE = "UPDATE TIPO_FAMILIAR SET nombre = ? WHERE tipo_id = ? ";
 	private static String SELECT_ID= "SELECT * FROM TIPO_FAMILIAR WHERE nombre =  ? ";
 	
@@ -89,14 +89,14 @@ public class SQLTipoFamiliar {
 		}
 		return lista;
 	}
-	public int queryInsert(Tipo_Familiar familiar) {
+	public int queryInsert(String familiar) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		int rows=0;
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(INSERT);
-			stmt.setString(1, familiar.getNombre());
+			stmt.setString(1, familiar);
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
