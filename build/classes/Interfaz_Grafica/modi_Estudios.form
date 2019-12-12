@@ -190,8 +190,8 @@
                     <Column editable="true" title="Institucion" type="java.lang.Object"/>
                     <Column editable="true" title="Grado" type="java.lang.Object"/>
                     <Column editable="true" title="Especialidad" type="java.lang.Object"/>
-                    <Column editable="true" title="Fecha Inicio" type="java.lang.Object"/>
-                    <Column editable="true" title="Fecha Fin" type="java.lang.Object"/>
+                    <Column editable="true" title="A&#xf1;o Inicio" type="java.lang.Object"/>
+                    <Column editable="true" title="A&#xf1;o Fin" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -357,14 +357,14 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Fecha  inicio   MM / AA"/>
+            <Property name="text" type="java.lang.String" value="A&#xf1;o Inicio "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="text_fecha_ini">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel12">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Fecha  fin   MM / AA"/>
+            <Property name="text" type="java.lang.String" value="A&#xf1;o fin"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="text_fecha_fin">

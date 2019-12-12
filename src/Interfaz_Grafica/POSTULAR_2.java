@@ -104,7 +104,7 @@ public class POSTULAR_2 extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Institucion", "Grado", "Especialidad", "Fecha Inicio", "Fecha Fin", "Pais"
+                "Institucion", "Grado", "Especialidad", "Año Inicio", "Año Fin", "Pais"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -113,9 +113,9 @@ public class POSTULAR_2 extends javax.swing.JFrame {
 
         jButton9.setText("jButton9");
 
-        jLabel10.setText("Fecha inicio  MM / AA");
+        jLabel10.setText("Año inicio ");
 
-        jLabel11.setText("Fecha  fin   MM / AA");
+        jLabel11.setText("Año fin  ");
 
         bEliminar.setText("Eliminar");
 
@@ -170,10 +170,10 @@ public class POSTULAR_2 extends javax.swing.JFrame {
                             .addComponent(jButton9))
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addGap(44, 44, 44)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(jPanel4Layout.createSequentialGroup()
                                     .addComponent(jLabel10)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(text_fecha_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel4Layout.createSequentialGroup()
                                     .addComponent(jLabel11)

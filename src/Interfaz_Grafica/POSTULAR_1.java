@@ -84,19 +84,16 @@ public class POSTULAR_1 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel2.setText("Lugar de preferencia para trabajar");
-        SQLLugarLaboral lugar = new SQLLugarLaboral();
-        List<Lugar_Laboral> lista_lugar=lugar.querySelectAll();
-        prefTrab.setModel(new DefaultComboBoxModel<Object>(lista_lugar.stream().map(e->e.getNombre()).toArray()));
+
+        prefTrab.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel3.setText("Area de preferencia para trabajar");
-        SQLAreaLaboral area= new SQLAreaLaboral();
-        List<Area_Laboral> lista_area= area.querySelectAll();
-        areaPref.setModel(new javax.swing.DefaultComboBoxModel<>(lista_area.stream().map(e->e.getNombre()).toArray()));
-        
+
+        areaPref.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         jLabel4.setText("Codigo del puesto");
-        SQLPuesto puesto= new SQLPuesto();
-        //List<Puesto> lista_puesto=puesto.querySelect();
-        //codPuesto.setModel(new javax.swing.DefaultComboBoxModel<>(lista_puesto.stream().map(e->e.getNombre()).toArray()));
+
+        codPuesto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("DETALLE DEL PUESTO");
@@ -113,22 +110,19 @@ public class POSTULAR_1 extends javax.swing.JFrame {
 
         jLabel11.setText("Sexo");
 
-        genero.setModel(new javax.swing.DefaultComboBoxModel<>(new Object[] {"Masculino","Femenino"}));
+        genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel12.setText("Estado Civil");
 
-        SQLEstado estado= new SQLEstado();
-        List<Estado> lista_estado=estado.querySelectAll();
-        Estado.setModel(new javax.swing.DefaultComboBoxModel<>(lista_estado.stream().map(e->e.getNombre()).toArray()));
+        Estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel13.setText("Domicilio");
 
         jLabel14.setText("Telefono");
 
         jLabel15.setText("Nacionalidad");
-        SQLPais paises= new SQLPais();
-        //List<Pais> lista_pais=paises.querySelect();
-        //pais.setModel(new javax.swing.DefaultComboBoxModel<>(lista_pais.stream().map(e->e.getNombre()).toArray()));
+
+        pais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel16.setText("e-mail");
 
@@ -375,14 +369,14 @@ public class POSTULAR_1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<Object> Estado;
-    private javax.swing.JComboBox<Object> areaPref;
+    private javax.swing.JComboBox<String> Estado;
+    private javax.swing.JComboBox<String> areaPref;
     private javax.swing.JButton bCancel;
     private javax.swing.JButton bClean;
     private javax.swing.JButton bContinuar;
-    private javax.swing.JComboBox<Object> codPuesto;
+    private javax.swing.JComboBox<String> codPuesto;
     private javax.swing.JTextField email;
-    private javax.swing.JComboBox<Object> genero;
+    private javax.swing.JComboBox<String> genero;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -400,8 +394,8 @@ public class POSTULAR_1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JComboBox<Object> pais;
-    private javax.swing.JComboBox<Object> prefTrab;
+    private javax.swing.JComboBox<String> pais;
+    private javax.swing.JComboBox<String> prefTrab;
     private javax.swing.JTextField telefono;
     private javax.swing.JTextField text_fecha;
     private javax.swing.JTextField txt_ape;

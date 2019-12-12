@@ -233,7 +233,7 @@ public class POSTULAR_3 extends javax.swing.JFrame {
 
     private void bContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bContinuarActionPerformed
         // TODO add your handling code here:
-        POSTULAR_4 P=new POSTULAR_4();
+        POSTULAR_5 P=new POSTULAR_5();
         P.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bContinuarActionPerformed
