@@ -221,8 +221,8 @@
                     <Column editable="true" title="Rubro" type="java.lang.Object"/>
                     <Column editable="true" title="Area" type="java.lang.Object"/>
                     <Column editable="true" title="Cargo" type="java.lang.Object"/>
-                    <Column editable="true" title="Fecha Inicio" type="java.lang.Object"/>
-                    <Column editable="true" title="Fecha Fin" type="java.lang.Object"/>
+                    <Column editable="true" title="A&#xf1;o Inicio" type="java.lang.Object"/>
+                    <Column editable="true" title="A&#xf1;o Fin" type="java.lang.Object"/>
                     <Column editable="true" title="Motivo de cese" type="java.lang.Object"/>
                   </Table>
                 </Property>
@@ -447,14 +447,14 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Fecha  inicio   MM / AA"/>
+            <Property name="text" type="java.lang.String" value="A&#xf1;o inicio  "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="text_fecha_ini">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel12">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Fecha  fin   MM / AA"/>
+            <Property name="text" type="java.lang.String" value="A&#xf1;o  fin "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="text_fecha_fin">

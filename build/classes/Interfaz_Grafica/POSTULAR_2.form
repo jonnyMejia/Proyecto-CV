@@ -142,13 +142,13 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
                                           <Component id="text_fecha_inicio" min="-2" pref="128" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="102" alignment="1" attributes="0">
+                                      <Group type="102" attributes="0">
                                           <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="text_fecha_fin" min="-2" pref="128" max="-2" attributes="0"/>
@@ -203,7 +203,7 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="text_fecha_inicio" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Component id="text_fecha_inicio" alignment="0" min="-2" pref="31" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -346,8 +346,8 @@
                         <Column editable="true" title="Institucion" type="java.lang.Object"/>
                         <Column editable="true" title="Grado" type="java.lang.Object"/>
                         <Column editable="true" title="Especialidad" type="java.lang.Object"/>
-                        <Column editable="true" title="Fecha Inicio" type="java.lang.Object"/>
-                        <Column editable="true" title="Fecha Fin" type="java.lang.Object"/>
+                        <Column editable="true" title="A&#xf1;o Inicio" type="java.lang.Object"/>
+                        <Column editable="true" title="A&#xf1;o Fin" type="java.lang.Object"/>
                         <Column editable="true" title="Pais" type="java.lang.Object"/>
                       </Table>
                     </Property>
@@ -404,14 +404,14 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel10">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Fecha inicio  MM / AA"/>
+                <Property name="text" type="java.lang.String" value="A&#xf1;o inicio "/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="text_fecha_inicio">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel11">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Fecha  fin   MM / AA"/>
+                <Property name="text" type="java.lang.String" value="A&#xf1;o fin  "/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="text_fecha_fin">

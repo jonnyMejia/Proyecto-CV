@@ -62,7 +62,7 @@ public class modi_Estudios extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Codigo", "Institucion", "Grado", "Especialidad", "Fecha Inicio", "Fecha Fin"
+                "Codigo", "Institucion", "Grado", "Especialidad", "Año Inicio", "Año Fin"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -98,9 +98,9 @@ public class modi_Estudios extends javax.swing.JFrame {
             }
         });
 
-        jLabel11.setText("Fecha  inicio   MM / AA");
+        jLabel11.setText("Año Inicio ");
 
-        jLabel12.setText("Fecha  fin   MM / AA");
+        jLabel12.setText("Año fin");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
