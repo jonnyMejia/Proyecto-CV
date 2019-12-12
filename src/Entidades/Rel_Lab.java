@@ -1,7 +1,7 @@
 package Entidades;
 
 public class Rel_Lab {
-	int rel_lab_id;
+    int rel_lab_id;
     String descripcion;
 	public Rel_Lab(int rel_lab_id, String descripcion) {
 		super();
@@ -20,6 +20,4 @@ public class Rel_Lab {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-    
-    
 }

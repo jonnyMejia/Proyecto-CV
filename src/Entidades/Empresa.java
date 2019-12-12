@@ -10,18 +10,18 @@ package Entidades;
  * @author Dani Lucano
  */
 public class Empresa {
-    String emo_nom;
+    String emp_nom;
     int sector_id;
     int depto_id;
     String rubro;
     String telf;
 
     public String getEmo_nom() {
-        return emo_nom;
+        return emp_nom;
     }
 
     public void setEmo_nom(String emo_nom) {
-        this.emo_nom = emo_nom;
+        this.emp_nom = emo_nom;
     }
 
     public int getSector_id() {

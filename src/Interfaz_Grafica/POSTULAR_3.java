@@ -45,12 +45,13 @@ public class POSTULAR_3 extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         nom_institucion = new javax.swing.JTextField();
         bContinuar = new javax.swing.JButton();
-        bagregar = new javax.swing.JButton();
-        blimpiar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         bCancel = new javax.swing.JButton();
         bRegre = new javax.swing.JButton();
+        bAgregar = new javax.swing.JButton();
+        bGuardar = new javax.swing.JButton();
+        bEliminar1 = new javax.swing.JButton();
 
         popupMenu1.setLabel("popupMenu1");
 
@@ -59,10 +60,8 @@ public class POSTULAR_3 extends javax.swing.JFrame {
         jLabel1.setText("OTROS ESTUDIOS(INGLES, COMPUTACION , etc.)");
 
         jLabel3.setText("Nombre");
-        SQLNivel niveles= new SQLNivel();
-        List<Nivel> lista_nivel= niveles.querySelect();
-        
-        nivel.setModel(new javax.swing.DefaultComboBoxModel<>(lista_nivel.stream().map(e->e.getNivel()).toArray()));
+
+        nivel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel4.setText("Nivel de Instruccion");
 
@@ -75,19 +74,15 @@ public class POSTULAR_3 extends javax.swing.JFrame {
             }
         });
 
-        bagregar.setText("Agregar");
-
-        blimpiar.setText("Limpiar");
-
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Rama", "Nombre", "Institucion", "Nivel"
+                "Nombre", "Institucion", "Nivel"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -105,6 +100,12 @@ public class POSTULAR_3 extends javax.swing.JFrame {
                 bRegreActionPerformed(evt);
             }
         });
+
+        bAgregar.setText("Agregar");
+
+        bGuardar.setText("Guardar");
+
+        bEliminar1.setText("Eliminar");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -133,18 +134,24 @@ public class POSTULAR_3 extends javax.swing.JFrame {
                                 .addComponent(txt_nom)))
                         .addContainerGap())
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(bagregar)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(bAgregar)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4)
                                 .addComponent(jLabel6)))
-                        .addGap(43, 43, 43)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(50, 50, 50)
-                                .addComponent(nom_institucion, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(blimpiar))
+                                .addGap(43, 43, 43)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(50, 50, 50)
+                                        .addComponent(nom_institucion, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addComponent(bGuardar)
+                                .addGap(33, 33, 33)
+                                .addComponent(bEliminar1)))
                         .addGap(0, 81, Short.MAX_VALUE))))
         );
         jPanel3Layout.setVerticalGroup(
@@ -164,11 +171,12 @@ public class POSTULAR_3 extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(nom_institucion, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
+                .addGap(38, 38, 38)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bagregar)
-                    .addComponent(blimpiar))
-                .addGap(68, 68, 68)
+                    .addComponent(bAgregar)
+                    .addComponent(bGuardar)
+                    .addComponent(bEliminar1))
+                .addGap(79, 79, 79)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -273,11 +281,12 @@ public class POSTULAR_3 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bAgregar;
     private javax.swing.JButton bCancel;
     private javax.swing.JButton bContinuar;
+    private javax.swing.JButton bEliminar1;
+    private javax.swing.JButton bGuardar;
     private javax.swing.JButton bRegre;
-    private javax.swing.JButton bagregar;
-    private javax.swing.JButton blimpiar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -287,7 +296,7 @@ public class POSTULAR_3 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JComboBox<Object> nivel;
+    private javax.swing.JComboBox<String> nivel;
     private javax.swing.JTextField nom_institucion;
     private java.awt.PopupMenu popupMenu1;
     private javax.swing.JTextField txt_nom;

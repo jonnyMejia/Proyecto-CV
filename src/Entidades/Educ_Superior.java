@@ -15,7 +15,6 @@ public class Educ_Superior {
     int educ_sup_id;
     int inst_id;
     int grado_id;
-    String esduc_sup_ciclo;
     int pais_id;
     Date f_ini;
     Date f_fin;
@@ -44,14 +43,6 @@ public class Educ_Superior {
 
     public void setGrado_id(int grado_id) {
         this.grado_id = grado_id;
-    }
-
-    public String getEsduc_sup_ciclo() {
-        return esduc_sup_ciclo;
-    }
-
-    public void setEsduc_sup_ciclo(String esduc_sup_ciclo) {
-        this.esduc_sup_ciclo = esduc_sup_ciclo;
     }
 
     public int getPais_id() {

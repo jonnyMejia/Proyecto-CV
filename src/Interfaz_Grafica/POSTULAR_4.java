@@ -61,8 +61,6 @@ public class POSTULAR_4 extends javax.swing.JFrame {
         motivo_cese = new javax.swing.JComboBox<>();
         telefono = new javax.swing.JTextField();
         jComboBox12 = new javax.swing.JComboBox<>();
-        bAgregar = new javax.swing.JButton();
-        bLimpiar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         bContinuar = new javax.swing.JButton();
@@ -72,6 +70,9 @@ public class POSTULAR_4 extends javax.swing.JFrame {
         text_fecha_ini = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         text_fecha_fin = new javax.swing.JTextField();
+        bAgregar = new javax.swing.JButton();
+        bGuardar = new javax.swing.JButton();
+        bEliminar = new javax.swing.JButton();
         jLabel33 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -107,10 +108,6 @@ public class POSTULAR_4 extends javax.swing.JFrame {
         motivo_cese.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jComboBox12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        bAgregar.setText("Agregar");
-
-        bLimpiar.setText("Limpiar");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -150,16 +147,16 @@ public class POSTULAR_4 extends javax.swing.JFrame {
 
         jLabel12.setText("Fecha  fin   MM / AA");
 
+        bAgregar.setText("Agregar");
+
+        bGuardar.setText("Guardar");
+
+        bEliminar.setText("Eliminar");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(131, 131, 131)
-                .addComponent(bAgregar)
-                .addGap(63, 63, 63)
-                .addComponent(bLimpiar)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(bCancelar)
@@ -233,6 +230,14 @@ public class POSTULAR_4 extends javax.swing.JFrame {
                             .addComponent(jLabel26)
                             .addComponent(jLabel20))
                         .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(230, 230, 230)
+                .addComponent(bAgregar)
+                .addGap(18, 18, 18)
+                .addComponent(bGuardar)
+                .addGap(18, 18, 18)
+                .addComponent(bEliminar)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -280,7 +285,8 @@ public class POSTULAR_4 extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bAgregar)
-                    .addComponent(bLimpiar))
+                    .addComponent(bEliminar)
+                    .addComponent(bGuardar))
                 .addGap(23, 23, 23)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -394,17 +400,11 @@ public class POSTULAR_4 extends javax.swing.JFrame {
     private javax.swing.JButton bAgregar;
     private javax.swing.JButton bCancelar;
     private javax.swing.JButton bContinuar;
-    private javax.swing.JButton bLimpiar;
+    private javax.swing.JButton bEliminar;
+    private javax.swing.JButton bGuardar;
     private javax.swing.JButton bRegre;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<Object> jComboBox12;
-    private javax.swing.JComboBox<Object> jComboBox13;
-    private javax.swing.JComboBox<Object> jComboBox14;
-    private javax.swing.JComboBox<Object> jComboBox2;
-    private javax.swing.JComboBox<Object> cargo;
+    private javax.swing.JComboBox<String> cargo;
+    private javax.swing.JComboBox<String> jComboBox12;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel20;
@@ -426,7 +426,7 @@ public class POSTULAR_4 extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField lugar;
-    private javax.swing.JComboBox<Object> motivo_cese;
+    private javax.swing.JComboBox<String> motivo_cese;
     private javax.swing.JTextField nom_cargo;
     private javax.swing.JTextField rubro;
     private javax.swing.JTextField telefono;

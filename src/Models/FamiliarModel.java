@@ -1,4 +1,4 @@
-package Interfaz_Grafica;
+package Models;
 
 import java.util.List;
 
