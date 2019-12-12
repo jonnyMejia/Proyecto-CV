@@ -56,11 +56,17 @@ CREATE TABLE REF_LABORAL(
     rel_lab_id NUMBER(2) not null,
     nom_ref VARCHAR2(30) NOT NULL,
     nom_emp_ref VARCHAR2(30) NOT NULL,
-    cargo_id number(2) NOT NULL,
     telf_ref VARCHAR(9) NOT NULL,
+    f_ini DATE NOT NULL check(EXTRACT (YEAR FROM f_ini)>1919),
+    f_fin DATE not null check(EXTRACT(YEAR FROM f_fin) <2020),
+    area_lab_id NUMBER(2) not null,
+    cargo_id NUMBER(2) not null,
+    motivo_id NUMBER(2) not null,
     constraint ref_pk primary key (ref_lab_id),
-    constraint ref_rel_fk foreign key(rel_lab_id) references REL_LAB(rel_lab_id),  
-    constraint ref_cargo_fk foreign key(cargo_id) references Cargo(cargo_id)
+    constraint ref_rel_fk foreign key(rel_lab_id) references REL_LAB(rel_lab_id) on delete cascade,  
+    constraint ref_cargo_fk foreign key(cargo_id) references Cargo(cargo_id) on delete cascade,
+    constraint exp_area_fk foreign key (area_lab_id) references AREA_laboral(area_LAB_id) on delete cascade,
+    CONSTRAINT exp_motivo_fk foreign key(motivo_id) references Motivo(motivo_id)on delete cascade
 );
 CREATE TABLE POS_REF_LABORAL(
     pos_id number(5),
@@ -114,30 +120,6 @@ CREATE TABLE POS_EST_EXTRA(
     CONSTRAINT pos_estudio_fk FOREIGN KEY(pos_id) REFERENCES POSTULANTE(postu_id),
     CONSTRAINT estudio_extra_fk FOREIGN KEY(est_ext_id) REFERENCES ESTUDIO_EXTRA(est_ext_id)
 );
-
---POSTULANTE - ESPERIENCIAS LABORALES
-
-CREATE TABLE EXP_LABORAL(
-    exp_lab_id NUMBER(4) generated always as identity,
-    emp_nom VARCHAR(30),
-    nom_puesto VARCHAR(35) NOT NULl,
-    f_ini DATE NOT NULL check(EXTRACT (YEAR FROM f_ini)>1919),
-    f_fin DATE not null check(EXTRACT(YEAR FROM f_fin) <2020),
-    area_lab_id NUMBER(2) not null,
-    cargo_id NUMBER(2) not null,
-    motivo_id NUMBER(1) not null,
-    constraint exp_lab_pk primary key (exp_lab_id),
-    constraint exp_area_fk foreign key (area_lab_id) references AREA_laboral(area_LAB_id) on delete cascade,
-    constraint exp_cargo_fk foreign key (cargo_id) references Cargo(cargo_id) on delete cascade,
-    CONSTRAINT exp_motivo_fk foreign key(motivo_id) references Motivo(motivo_id)on delete cascade
-);
-CREATE TABLE POS_EXP_LABORAL(
-    pos_id number(5) not null,
-    exp_lab_id number(4) not null ,
-    CONSTRAINT pos_exp_fk foreign key(pos_id) REFERENCES POSTULANTE(postu_id) ON DELETE CASCADE,
-    constraint pos_exp_lab_fk foreign key (exp_lab_id)REFERENCES EXP_LABORAL(exp_lab_id)ON DELETE CASCADE 
-);
-
 
 CREATE TABLE CV(
     cv_id NUMBER(5) generated always as identity,
