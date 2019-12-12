@@ -5,24 +5,23 @@
  */
 package Entidades;
 
-import java.util.*;
-import java.lang.*;
+import java.util.Date;
 
 /**
  *
  * @author Dani Lucano
  */
 public class Postulante {
-	String DNI;
+    int postu_id;
     String nombre;
     String ap_pat;
     String ap_mat;
     String domiciilio;
     int edad;
-    String fNac;
-    int pais_id;
+    Date fNac;
+    String pais_id;
     String genero;
-    int estado_id;
+    String estado_id;
     String email;
     int pensiones_id;
     int lugar_id;
