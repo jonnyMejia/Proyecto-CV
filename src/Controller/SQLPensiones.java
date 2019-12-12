@@ -42,15 +42,16 @@ public class SQLPensiones {
 		}
 		return lista;
 	}
-	public List<Pensiones> querySelectOne() {
+	public  Pensiones querySelectOne(int id) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		Pensiones pen= null;
-		List<Pensiones> lista=new ArrayList<>();
+	
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(SELECT_ONE);
+                        stmt.setInt(1, id);
 			rs = stmt.executeQuery();
 			if(rs.next()) {
 				pen=new Pensiones(rs.getInt(1),rs.getString(2));
@@ -62,20 +63,21 @@ public class SQLPensiones {
 			DBManager.closePrepared(stmt);
 			DBManager.closeConnection(con);
 		}
-		return lista;
+		return pen;
 	}	
-	public List<Pensiones> querySelectId() {
+	public  int querySelectId(String pensiones) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		Pensiones pen= null;
-		List<Pensiones> lista=new ArrayList<>();
+		int id=0;
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(SELECT);
+                        stmt.setString(1,pensiones);
 			rs = stmt.executeQuery();
 			if(rs.next()) {
-				pen=new Pensiones(rs.getInt(1),rs.getString(2));
+				id=rs.getInt(1);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -84,16 +86,16 @@ public class SQLPensiones {
 			DBManager.closePrepared(stmt);
 			DBManager.closeConnection(con);
 		}
-		return lista;
+		return id;
 	}
-	public int queryInsert(Pensiones pen) {
+	public int queryInsert(String pen) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		int rows=0;
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(INSERT);
-			stmt.setString(1, pen.getNombre());
+			stmt.setString(1, pen);
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);

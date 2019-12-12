@@ -41,15 +41,16 @@ public class SQLPais {
 		}
 		return lista;
 	}
-            public List<Pais> querySelectOne() {
+            public Pais querySelectOne(int id) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		Pais pais= null;
-		List<Pais> lista=new ArrayList<>();
+		
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(SELECT_ONE);
+                        stmt.setInt(1, id);
 			rs = stmt.executeQuery();
 			if(rs.next()) {
 				pais=new Pais(rs.getInt(1),rs.getString(2));
@@ -61,20 +62,20 @@ public class SQLPais {
 			DBManager.closePrepared(stmt);
 			DBManager.closeConnection(con);
 		}
-		return lista;
+		return pais;
 	}
-	public List<Pais> querySelectId() {
+	public  int  querySelectId(String p) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		Pais pais= null;
-		List<Pais> lista=new ArrayList<>();
+	        int id=0;
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(SELECT_ID);
+                        stmt.setString(1, p);
 			rs = stmt.executeQuery();
 			if(rs.next()) {
-				pais=new Pais(rs.getInt(1),rs.getString(2));
+				id=rs.getInt(1);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -83,16 +84,16 @@ public class SQLPais {
 			DBManager.closePrepared(stmt);
 			DBManager.closeConnection(con);
 		}
-		return lista;
+		return id;
 	}
-	public int queryInsert(Pais pais) {
+	public int queryInsert(String pais) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		int rows=0;
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(INSERT);
-			stmt.setString(1, pais.getNombre());
+			stmt.setString(1, pais);
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);

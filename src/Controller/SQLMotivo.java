@@ -41,16 +41,17 @@ public class SQLMotivo {
 		}
 		return lista;
 	}
-        public List<Motivo> querySelectOne() {
+        public Motivo querySelectOne(int id) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		Motivo motivo= null;
-		List<Motivo> lista=new ArrayList<>();
+		
 		try {
 			con=DBManager.getConnection();  
 			stmt=con.prepareStatement(SELECT_ONE);
-			rs = stmt.executeQuery();
+                        stmt.setInt(1, id);
+                        rs = stmt.executeQuery();
 			if(rs.next()) {
 				motivo=new Motivo(rs.getInt(1),rs.getString(2));
 				
@@ -62,20 +63,21 @@ public class SQLMotivo {
 			DBManager.closePrepared(stmt);
 			DBManager.closeConnection(con);
 		}
-		return lista;
+		return motivo;
 	}
-	public List<Motivo> querySelectId() {
+	public int  querySelectId(String motivo) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		Motivo motivo= null;
-		List<Motivo> lista=new ArrayList<>();
+		
+		int id=0;
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(SELECT_ID);
+                        stmt.setString(1, motivo);
 			rs = stmt.executeQuery();
 			if(rs.next()) {
-				motivo=new Motivo(rs.getInt(1),rs.getString(2));
+				id=rs.getInt(1);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -84,16 +86,16 @@ public class SQLMotivo {
 			DBManager.closePrepared(stmt);
 			DBManager.closeConnection(con);
 		}
-		return lista;
+		return id;
 	}
-	public int queryInsert(Motivo motivo) {
+	public int queryInsert(String  motivo) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		int rows=0;
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(INSERT);
-			stmt.setString(1, motivo.getMotivo());
+			stmt.setString(1, motivo);
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
