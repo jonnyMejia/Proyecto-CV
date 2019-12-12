@@ -1,0 +1,152 @@
+--POSTULANTE
+create TABLE POSTULANTE(
+     postu_id NUMBER(8) generated always as identity ,
+     nombre VARCHAR2(30) NOT NULL ,
+     ap_pat VARCHAR2(30) NOT NULL ,
+     ap_mat VARCHAR2(30) NOT NULL ,
+     edad  NUMBER(2) check(edad>=18),
+     fNac  DATE NOT NULl,
+     pais_id NUMBER(2),
+     genero CHAR(2) NOT NULl unique,
+     estado_id NUMBER(2),
+     email VARCHAR2(50) UNIQUE, 
+     pensiones_id NUMBER(2),
+     CONSTRAINT pos_pk PRIMARY KEY(postu_id) ,
+     CONSTRAINT pais_fk FOREIGN KEY(pais_id) REFERENCES PAIS(pais_id) on delete cascade ,
+     CONSTRAINT estado_fk FOREIGN KEY(estado_id) REFERENCES ESTADO (estado_id) on delete cascade,
+     CONSTRAINT pensiones_fk FOREIGN KEY(pensiones_id)REFERENCES PENSIONES(pensiones_id)on delete cascade
+);
+
+--POSTULANTE- PREFRENCIAS
+
+CREATE TABLE POS_PREF_LUG_LAB(
+    pos_id NUMBER(5) not null,
+    lug_id NUMBER(2) not null,
+    CONSTRAINT pref_lugar_fk FOREIGN KEY(lug_id) REFERENCES LUGAR_LABORAL(lug_id)ON DELETE CASCADE,
+    CONSTRAINT pos_lugar_fk FOREIGN KEY(pos_id) REFERENCES POSTULANTE(postu_id) ON DELETE CASCADE
+);
+CREATE TABLE POS_AREA_LAB(
+    pos_id NUMBER(5) not null,
+    area_lab_id NUMBER(3) not null,
+    CONSTRAINT pref_area_fk FOREIGN KEY(area_lab_id) REFERENCES AREA_LABORAL(area_lab_id)ON DELETE CASCADE,
+    CONSTRAINT pos_area_fk FOREIGN KEY(pos_id) REFERENCES POSTULANTE(postu_id) ON DELETE CASCADE
+);
+
+--POSTULANTE - FAMILIARES
+
+CREATE TABLE FAMILIAR(
+    fam_id NUMBER(4) generated always as identity,
+    fam_nom VARCHAR(30) NOT NULL,
+    tipo_id number(2) ,
+    telf varchar(9) not null,
+    CONSTRAINT fam_pk PRIMARY KEY(fam_id),
+    CONSTRAINT tipo_fk FOREIGN KEY(tipo_id) REFERENCES TIPO_FAMILIAR(tipo_id)on delete cascade
+);
+CREATE TABLE POS_FAMILIAR(
+    pos_id number(5),
+    fam_id number(4),
+     CONSTRAINT fam_fk FOREIGN KEY(fam_id) REFERENCES FAMILIAR(fam_id)ON DELETE CASCADE,
+    CONSTRAINT pos_familiar_fk FOREIGN KEY(pos_id) REFERENCES POSTULANTE(postu_id) ON DELETE CASCADE
+);
+
+--POSTULANTE- REFERENCIAS LABORALES
+
+CREATE TABLE REF_LABORAL(
+    ref_lab_id NUMBER(4) GENERATED ALWAYS AS IDENTITY,
+    rel_lab_id NUMBER(2) not null,
+    nom_ref VARCHAR2(30) NOT NULL,
+    nom_emp_ref VARCHAR2(30) NOT NULL,
+    cargo_id number(2) NOT NULL,
+    telf_ref VARCHAR(9) NOT NULL,
+    constraint ref_pk primary key (ref_lab_id),
+    constraint ref_rel_fk foreign key(rel_lab_id) references REL_LAB(rel_lab_id),  
+    constraint ref_cargo_fk foreign key(cargo_id) references Cargo(cargo_id)
+);
+CREATE TABLE POS_REF_LABORAL(
+    pos_id number(5),
+    ref_lab_id number(4),
+     CONSTRAINT pos_ref_lab_fk FOREIGN KEY(ref_lab_id) REFERENCES REF_LABORAL(ref_lab_id)ON DELETE CASCADE,
+    CONSTRAINT pos_ref_fk FOREIGN KEY(pos_id) REFERENCES POSTULANTE(postu_id) ON DELETE CASCADE
+);
+
+--POSTULANTE - EDUCACION SUPERIOR
+
+CREATE TABLE EDUC_SUPERIOR(
+    educ_sup_id NUMBER(4) GENERATED ALWAYS AS IDENTITY,
+    inst_id NUMBER(2) not null,
+    grado_id NUMBER(2) not null,
+    educ_sup_ciclo NUMBER(2) NOT NULL,
+    pais_id NUMBER(2) not null,
+    anio_ini NUMBER(4) NOT NULL check(anio_ini>1919),
+    anio_fin NUMBER(4) NOT NULL check(anio_fin<2020),
+    espec_id NUMBER(2)not null,
+    CONSTRAINT educ_sup_pk PRIMARY KEY(educ_sup_id),
+    CONSTRAINT sup_inst_fk FOREIGN KEY(inst_id) REFERENCES INSTITUCION(inst_id)ON DELETE CASCADE,
+    CONSTRAINT sup_espec_fk FOREIGN KEY(espec_id) REFERENCES ESPECIALIDAD(espec_id)ON DELETE CASCADE,
+    CONSTRAINT sup_grado_fk FOREIGN KEY(grado_id) REFERENCES GRADO_ESPEC(grado_id)ON DELETE CASCADE,
+    constraint sup_pais_fk foreign key(pais_id) references PAIS(pais_id) on delete cascade
+);
+
+CREATE TABLE POS_EDUC_SUPERIOR(
+    pos_id number(5),
+    educ_sup_id number(4),
+    constraint pos_educ_fk foreign key(pos_id) references POSTULANTE(postu_id) ON DELETE CASCADE,
+    CONSTRAINT pos_educ_sup_fk foreign key (educ_sup_id) references EDUC_SUPERIOR(educ_sup_id) ON DELETE CASCADE
+);
+
+--POSTULANTE - ESTUDIOS EXTRAS 
+
+CREATE TABLE ESTUDIO_EXTRA(
+    est_ext_id NUMBER(4) GENERATED ALWAYS AS IDENTITY,
+    inst_id NUMBER(2) not null,
+    nombre VARCHAR2(30) NOT NULL,
+    nivel_id number(2) NOT NULL,
+    pais_id number(2) NOT NULL,
+    fecha DATE NOT NULL,
+    CONSTRAINT est_ext_pk PRIMARY KEY(est_ext_id),
+    CONSTRAINT estudio_inst_fk FOREIGN KEY(inst_id)references institucion(inst_id)on delete cascade,
+    CONSTRAINT estudio_pais_fk FOREIGN KEY(pais_id)references pais(pais_id) ON DELETE CASCADE,
+    CONSTRAINT Estudio_nivel_fk FOREIGN KEY(nivel_id)references NIVEL(nivel_id) ON DELETE CASCADE
+);
+CREATE TABLE POS_EST_EXTRA(
+    pos_id  number(5) not null,
+    est_ext_id number(4)not null ,
+    CONSTRAINT pos_estudio_fk FOREIGN KEY(pos_id) REFERENCES POSTULANTE(postu_id),
+    CONSTRAINT estudio_extra_fk FOREIGN KEY(est_ext_id) REFERENCES ESTUDIO_EXTRA(est_ext_id)
+);
+
+--POSTULANTE - ESPERIENCIAS LABORALES
+
+CREATE TABLE EXP_LABORAL(
+    exp_lab_id NUMBER(4) generated always as identity,
+    emp_nom VARCHAR(30),
+    nom_puesto VARCHAR(35) NOT NULl,
+    f_ini DATE NOT NULL check(EXTRACT (YEAR FROM f_ini)>1919),
+    f_fin DATE not null check(EXTRACT(YEAR FROM f_fin) <2020),
+    area_lab_id NUMBER(2) not null,
+    cargo_id NUMBER(2) not null,
+    motivo_id NUMBER(1) not null,
+    constraint exp_lab_pk primary key (exp_lab_id),
+    constraint exp_area_fk foreign key (area_lab_id) references AREA_laboral(area_LAB_id) on delete cascade,
+    constraint exp_cargo_fk foreign key (cargo_id) references Cargo(cargo_id) on delete cascade,
+    CONSTRAINT exp_motivo_fk foreign key(motivo_id) references Motivo(motivo_id)on delete cascade
+);
+CREATE TABLE POS_EXP_LABORAL(
+    pos_id number(5) not null,
+    exp_lab_id number(4) not null ,
+    CONSTRAINT pos_exp_fk foreign key(pos_id) REFERENCES POSTULANTE(postu_id) ON DELETE CASCADE,
+    constraint pos_exp_lab_fk foreign key (exp_lab_id)REFERENCES EXP_LABORAL(exp_lab_id)ON DELETE CASCADE 
+);
+
+
+CREATE TABLE CV(
+    cv_id NUMBER(5) generated always as identity,
+    pos_id NUMBER(5) not null,
+    puesto_id NUMBER(2) not null,
+    fecha date not null ,
+    CONSTRAINT cv_pk PRIMARY KEY(cv_id), 
+    CONSTRAINT pos_fk FOREIGN KEY(pos_id) REFERENCES POSTULANTE(postu_id)ON DELETE CASCADE,
+    CONSTRAINT puesto_fk FOREIGN KEY(puesto_id) REFERENCES PUESTO(puesto_id)
+    ON DELETE CASCADE
+);
+

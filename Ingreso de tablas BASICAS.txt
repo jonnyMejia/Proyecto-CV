@@ -1,157 +1,171 @@
 --INGRESO DE TABLAS BASICAS
 
+--AREA
+
+INSERT INTO  AREA(nombre) VALUES('Administracion');
+INSERT INTO  AREA(nombre) VALUES('Administracion de personal');
+INSERT INTO  AREA(nombre) VALUES('Almacenes');
+INSERT INTO  AREA(nombre) VALUES('Auditoria');
+INSERT INTO  AREA(nombre) VALUES('Capacitacion');
+INSERT INTO  AREA(nombre) VALUES('Gerencia General');
+INSERT INTO  AREA(nombre) VALUES('Finanzas');
+INSERT INTO  AREA(nombre) VALUES('Contabilidad General');
+INSERT INTO  AREA(nombre) VALUES('Fiscalizacion');
+INSERT INTO  AREA(nombre) VALUES('Marketing');
+
 --AREA LABORAL
 
-INSERT INTO  AREA_LABORAL(Nombre) VALUES('Auditoria');
-INSERT INTO  AREA_LABORAL(Nombre) VALUES('Calidad');
-INSERT INTO  AREA_LABORAL(Nombre) VALUES('Contabilidad');
-INSERT INTO  AREA_LABORAL(Nombre) VALUES('Finanzas');
-INSERT INTO  AREA_LABORAL(Nombre) VALUES('Imagen y Comunicacion');
-INSERT INTO  AREA_LABORAL(Nombre) VALUES('Legal');
-INSERT INTO  AREA_LABORAL(Nombre) VALUES('Marqueting');
-INSERT INTO  AREA_LABORAL(Nombre) VALUES('Logistica');
-INSERT INTO  AREA_LABORAL(Nombre) VALUES('Recursos Humanos');
+INSERT INTO  AREA_LABORAL(nombre) VALUES('Auditoria');
+INSERT INTO  AREA_LABORAL(nombre) VALUES('Calidad');
+INSERT INTO  AREA_LABORAL(nombre) VALUES('Contabilidad');
+INSERT INTO  AREA_LABORAL(nombre) VALUES('Finanzas');
+INSERT INTO  AREA_LABORAL(nombre) VALUES('Imagen y Comunicacion');
+INSERT INTO  AREA_LABORAL(nombre) VALUES('Legal');
+INSERT INTO  AREA_LABORAL(nombre) VALUES('Marqueting');
+INSERT INTO  AREA_LABORAL(nombre) VALUES('Logistica');
+INSERT INTO  AREA_LABORAL(nombre) VALUES('Recursos Humanos');
+INSERT INTO  AREA_LABORAL(nombre) VALUES('Recursos Humanos');
 
 --CARGO
 
-INSERT INTO  CARGO(Nombre) VALUES('Administrador');
-INSERT INTO  CARGO(Nombre) VALUES('Analista');
-INSERT INTO  CARGO(Nombre) VALUES('Asistente');
-INSERT INTO  CARGO(Nombre) VALUES('Consultor');
-INSERT INTO  CARGO(Nombre) VALUES('Ingeniero Industrial');
-INSERT INTO  CARGO(Nombre) VALUES('Asistente Social');
-INSERT INTO  CARGO(Nombre) VALUES('Arquitecto');
-INSERT INTO  CARGO(Nombre) VALUES('Programador');
+INSERT INTO  CARGO(nombre) VALUES('Administrador');
+INSERT INTO  CARGO(nombre) VALUES('Analista');
+INSERT INTO  CARGO(nombre) VALUES('Asistente');
+INSERT INTO  CARGO(nombre) VALUES('Consultor');
+INSERT INTO  CARGO(nombre) VALUES('Ingeniero Industrial');
+INSERT INTO  CARGO(nombre) VALUES('Asistente Social');
+INSERT INTO  CARGO(nombre) VALUES('Arquitecto');
+INSERT INTO  CARGO(nombre) VALUES('Programador');
 
 --DEPARTAMENTO
 
-INSERT INTO  DEPARTAMENTO(Nombre) VALUES('Extranjero');
-INSERT INTO  DEPARTAMENTO(Nombre) VALUES('-----------');
-INSERT INTO  DEPARTAMENTO(Nombre) VALUES('Arequipa');
-INSERT INTO  DEPARTAMENTO(Nombre) VALUES('Lima');
-INSERT INTO  DEPARTAMENTO(Nombre) VALUES('Ancash');
-INSERT INTO  DEPARTAMENTO(Nombre) VALUES('Madre de Dios');
-INSERT INTO  DEPARTAMENTO(Nombre) VALUES('Cuzco');
-INSERT INTO  DEPARTAMENTO(Nombre) VALUES('Ayacucho');
-INSERT INTO  DEPARTAMENTO(Nombre) VALUES('Trujillo');
-INSERT INTO  DEPARTAMENTo(Nombre) VALUES('Piura');
-INSERT INTO  DEPARTAMENTo(Nombre) VALUES('Tumbes');
-INSERT INTO  DEPARTAMENTo(Nombre) VALUES('Junin');
+INSERT INTO  DEPARTAMENTO(nombre) VALUES('Extranjero');
+INSERT INTO  DEPARTAMENTO(nombre) VALUES('-----------');
+INSERT INTO  DEPARTAMENTO(nombre) VALUES('Arequipa');
+INSERT INTO  DEPARTAMENTO(nombre) VALUES('Lima');
+INSERT INTO  DEPARTAMENTO(nombre) VALUES('Ancash');
+INSERT INTO  DEPARTAMENTO(nombre) VALUES('Madre de Dios');
+INSERT INTO  DEPARTAMENTO(nombre) VALUES('Cuzco');
+INSERT INTO  DEPARTAMENTO(nombre) VALUES('Ayacucho');
+INSERT INTO  DEPARTAMENTO(nombre) VALUES('Trujillo');
+INSERT INTO  DEPARTAMENTO(nombre) VALUES('Piura');
+INSERT INTO  DEPARTAMENTO(nombre) VALUES('Tumbes');
+INSERT INTO  DEPARTAMENTO(nombre) VALUES('Junin');
 
 
 --ESPECIALIDAD
 
-INSERT INTO  ESPECIALIDAD(Nombre) VALUES('Administracion de negocios');
-INSERT INTO  ESPECIALIDAD(Nombre) VALUES('Contabilidad');
-INSERT INTO  ESPECIALIDAD(Nombre) VALUES('Arquitectura');
-INSERT INTO  ESPECIALIDAD(Nombre) VALUES('Ing. Industrial');
-INSERT INTO  ESPECIALIDAD(Nombre) VALUES('Ing. de Sistemas');
-INSERT INTO  ESPECIALIDAD(Nombre) VALUES('Ing. de Software');
-INSERT INTO  ESPECIALIDAD(Nombre) VALUES('Diseño Grafico');
-INSERT INTO  ESPECIALIDAD(Nombre) VALUES('Marketing');
-INSERT INTO  ESPECIALIDAD(Nombre) VALUES('Economia');
-INSERT INTO  ESPECIALIDAD(Nombre) VALUES('Trabajo Social');
+INSERT INTO  ESPECIALIDAD(nombre) VALUES('Administracion de negocios');
+INSERT INTO  ESPECIALIDAD(nombre) VALUES('Contabilidad');
+INSERT INTO  ESPECIALIDAD(nombre) VALUES('Arquitectura');
+INSERT INTO  ESPECIALIDAD(nombre) VALUES('Ing. Industrial');
+INSERT INTO  ESPECIALIDAD(nombre) VALUES('Ing. de Sistemas');
+INSERT INTO  ESPECIALIDAD(nombre) VALUES('Ing. de Software');
+INSERT INTO  ESPECIALIDAD(nombre) VALUES('Diseño Grafico');
+INSERT INTO  ESPECIALIDAD(nombre) VALUES('Marketing');
+INSERT INTO  ESPECIALIDAD(nombre) VALUES('Economia');
+INSERT INTO  ESPECIALIDAD(nombre) VALUES('Trabajo Social');
 
 --ESTADO
 
-INSERT INTO  ESTADO(Nombre) VALUES('Soltero');
-INSERT INTO  ESTADO(Nombre) VALUES('Casado');
-INSERT INTO  ESTADO(Nombre) VALUES('Viudo');
-INSERT INTO  ESTADO(Nombre) VALUES('Divorciado');
+INSERT INTO  ESTADO(nombre) VALUES('Soltero');
+INSERT INTO  ESTADO(nombre) VALUES('Casado');
+INSERT INTO  ESTADO(nombre) VALUES('Viudo');
+INSERT INTO  ESTADO(nombre) VALUES('Divorciado');
 
 --GRADO ESPEC
 
-INSERT INTO  GRADO_ESPEC(Nombre) VALUES('Incompleto');
-INSERT INTO  GRADO_ESPEC(Nombre) VALUES('Estudiante');
-INSERT INTO  GRADO_ESPEC(Nombre) VALUES('Egresado');
-INSERT INTO  GRADO_ESPEC(Nombre) VALUES('Bachiller');
-INSERT INTO  GRADO_ESPEC(Nombre) VALUES('Titulado s/colegiatura');
-INSERT INTO  GRADO_ESPEC(Nombre) VALUES('Titulado c/colegiatura');
-INSERT INTO  GRADO_ESPEC(Nombre) VALUES('Egresado maestria');
-INSERT INTO  GRADO_ESPEC(Nombre) VALUES('Magister');
+INSERT INTO  GRADO_ESPEC(nombre) VALUES('Incompleto');
+INSERT INTO  GRADO_ESPEC(nombre) VALUES('Estudiante');
+INSERT INTO  GRADO_ESPEC(nombre) VALUES('Egresado');
+INSERT INTO  GRADO_ESPEC(nombre) VALUES('Bachiller');
+INSERT INTO  GRADO_ESPEC(nombre) VALUES('Titulado s/colegiatura');
+INSERT INTO  GRADO_ESPEC(nombre) VALUES('Titulado c/colegiatura');
+INSERT INTO  GRADO_ESPEC(nombre) VALUES('Egresado maestria');
+INSERT INTO  GRADO_ESPEC(nombre) VALUES('Magister');
 
 --INSTITUCION
 
-INSERT INTO  INSTITUCION(Nombre) VALUES ('UNMSM');
-INSERT INTO  INSTITUCION(Nombre) VALUES ('PUCP');
-INSERT INTO  INSTITUCION(Nombre) VALUES ('UNFV');
-INSERT INTO  INSTITUCION(Nombre) VALUES ('UNAC');
-INSERT INTO  INSTITUCION(Nombre) VALUES ('U. Lima');
-INSERT INTO  INSTITUCION(Nombre) VALUES ('U.Pacifio');
-INSERT INTO  INSTITUCION(Nombre) VALUES ('UPC');
-INSERT INTO  INSTITUCION(Nombre) VALUES ('SENATI');
-INSERT INTO  INSTITUCION(Nombre) VALUES ('TELESUP');
+INSERT INTO  INSTITUCION(nombre) VALUES ('UNMSM');
+INSERT INTO  INSTITUCION(nombre) VALUES ('PUCP');
+INSERT INTO  INSTITUCION(nombre) VALUES ('UNFV');
+INSERT INTO  INSTITUCION(nombre) VALUES ('UNAC');
+INSERT INTO  INSTITUCION(nombre) VALUES ('UNMSM');
+INSERT INTO  INSTITUCION(nombre) VALUES ('U. Lima');
+INSERT INTO  INSTITUCION(nombre) VALUES ('U.Pacifio');
+INSERT INTO  INSTITUCION(nombre) VALUES ('UPC');
+INSERT INTO  INSTITUCION(nombre) VALUES ('SENATI');
+INSERT INTO  INSTITUCION(nombre) VALUES ('TELESUP');
 
 --LUGAR LABORAL
 
-INSERT INTO  LUGAR_LABORAL(Nombre) VALUES('Zona de Selva');
-INSERT INTO  LUGAR_LABORAL(Nombre) VALUES('Zona de Sierra');
-INSERT INTO  LUGAR_LABORAL(Nombre) VALUES('Zona de Costa');
-INSERT INTO  LUGAR_LABORAL(Nombre) VALUES('Zona Norte');
-INSERT INTO  LUGAR_LABORAL(Nombre) VALUES('Zona Centro');
-INSERT INTO  LUGAR_LABORAL(Nombre) VALUES('Sur');
-
+INSERT INTO  LUGAR_LABORAL(nombre) VALUES('Zona de Selva');
+INSERT INTO  LUGAR_LABORAL(nombre) VALUES('Zona de Sierra');
+INSERT INTO  LUGAR_LABORAL(nombre) VALUES('Zona de Costa');
+INSERT INTO  LUGAR_LABORAL(nombre) VALUES('Zona Norte');
+INSERT INTO  LUGAR_LABORAL(nombre) VALUES('Zona Centro');
+INSERT INTO  LUGAR_LABORAL(nombre) VALUES('Sur');
 
 --MATERIA
 
 --MOTIVO DE CESE
 
 INSERT INTO  MOTIVO(motivo) VALUES('Renuncia');
-INSERT INTO  MOTIVO() VALUES('Despido');
-INSERT INTO  MOTIVO VALUES(3,'Termino de contrato');
+INSERT INTO  MOTIVO(motivo) VALUES('Despido');
+INSERT INTO  MOTIVO(motivo) VALUES('Termino de contrato');
 
 --NIVEL 
 
-INSERT INTO  NIVEL VALUES(1,'B');
-INSERT INTO  NIVEL VALUES(2,'M');
-INSERT INTO  NIVEL VALUES(3,'A');
+INSERT INTO  NIVEL(nivel) VALUES('B');
+INSERT INTO  NIVEL(nivel) VALUES('M');
+INSERT INTO  NIVEL(nivel) VALUES('A');
 
 --PAISES
 
-insert into  pais values(1,'Peru');
-insert into  pais values(2,'Chile');
-insert into  pais values(3,'Brasil');
-insert into  pais values(4,'Argentina');
-insert into  pais values(5,'Holanda');
-insert into  pais values(6,'España');
-insert into  pais values(7,'EE.UU');
-insert into  pais values(8,'Inglaterra');
-insert into  pais values(9,'Rusia');
+insert into  pais(nombre) values('Peru');
+insert into  pais(nombre) values('Chile');
+insert into  pais(nombre) values('Brasil');
+insert into  pais(nombre) values('Argentina');
+insert into  pais(nombre) values('Holanda');
+insert into  pais(nombre) values('España');
+insert into  pais(nombre) values('EE.UU');
+insert into  pais(nombre) values('Inglaterra');
+insert into  pais(nombre) values('Rusia');
 
 --PENSIONES
-INSERT INTO  PENSIONES VALUES(1,'AFP');
-INSERT INTO  PENSIONES VALUES(2,'ONP');
+INSERT INTO  PENSIONES(nombre) VALUES('AFP');
+INSERT INTO  PENSIONES(nombre) VALUES('ONP');
 
 --PUESTO
 
-INSERT INTO  PUESTO VALUES(1,'Auditor Principal');
-INSERT INTO  PUESTO VALUES(2,'Analista de Medios Electricos');
-INSERT INTO  PUESTO VALUES(3,'Trabajador Social');
-INSERT INTO  PUESTO VALUES(4,'Diseñador de Interiores');
-INSERT INTO  PUESTO VALUES(5,'Arquitecto');
-INSERT INTO  PUESTO VALUES(6,'Ingeniero de Sistemas');
-INSERT INTO  PUESTO VALUES(7,'Ingeniero Industrial');
-INSERT INTO  PUESTO VALUES(8,'Ingeniero de Mecanico');
-INSERT INTO  PUESTO VALUES(9,'Ingeniero de Telecomunicaciones');
-INSERT INTO  PUESTO VALUES(10,'Jefe de Marketing');
+INSERT INTO  PUESTO(nombre) VALUES('Auditor Principal');
+INSERT INTO  PUESTO(nombre) VALUES('Analista de Medios Electricos');
+INSERT INTO  PUESTO(nombre) VALUES('Trabajador Social');
+INSERT INTO  PUESTO(nombre) VALUES('Diseñador de Interiores');
+INSERT INTO  PUESTO(nombre) VALUES('Arquitecto');
+INSERT INTO  PUESTO(nombre) VALUES('Ingeniero de Sistemas');
+INSERT INTO  PUESTO(nombre) VALUES('Ingeniero Industrial');
+INSERT INTO  PUESTO(nombre) VALUES('Ingeniero de Mecanico');
+INSERT INTO  PUESTO(nombre) VALUES('Ingeniero de Telecomunicaciones');
+INSERT INTO  PUESTO(nombre) VALUES('Jefe de Marketing');
 
 --RELACIONES LABORALES
 
-INSERT INTO  REL_LAB VALUES(1,'Asesor');
-INSERT INTO  REL_LAB VALUES(2,'Cooperativista');
-INSERT INTO  REL_LAB VALUES(3,'Emp. Es');
-INSERT INTO  REL_LAB VALUES(4,'Practicante');
-INSERT INTO  REL_LAB VALUES(5,'Otra Relacion');
+INSERT INTO(descripcion)  REL_LAB VALUES('Asesor');
+INSERT INTO(descripcion)  REL_LAB VALUES('Cooperativista');
+INSERT INTO(descripcion)  REL_LAB VALUES('Emp. Es');
+INSERT INTO(descripcion)  REL_LAB VALUES('Practicante');
+INSERT INTO(descripcion)  REL_LAB VALUES('Otra Relacion');
 
 --SECTOR
 
-INSERT INTO  SECTOR VALUES(1,'Publico');
-INSERT INTO  SECTOR VALUES(2,'Privado');
+INSERT INTO  SECTOR(nombre) VALUES('Publico');
+INSERT INTO  SECTOR(nombre) VALUES('Privado');
 
 --TIPO DE FAMILIAR
 
-INSERT INTO  TIPO_FAMILIAR VALUES(1,'Padre');
-INSERT INTO  TIPO_FAMILIAR VALUES(2,'Madre');
-INSERT INTO  TIPO_FAMILIAR VALUES(3,'Hermano');
+INSERT INTO  TIPO_FAMILIAR(nombre) VALUES('Padre');
+INSERT INTO  TIPO_FAMILIAR(nombre) VALUES('Madre');
+INSERT INTO  TIPO_FAMILIAR(nombre) VALUES('Hermano');
 
 

@@ -7,10 +7,8 @@ package Interfaz_Grafica;
 
 import java.util.List;
 
-import Controller.SQLArea;
 import Controller.SQLCargo;
 import Controller.SQLMotivo;
-import Entidades.Area;
 import Entidades.Cargo;
 import Entidades.Motivo;
 
