@@ -50,7 +50,7 @@ public class SQLNivel {
 		List<Nivel> lista=new ArrayList<>();
 		try {
 			con=DBManager.getConnection();
-			stmt=con.prepareStatement(SELECT);
+			stmt=con.prepareStatement(SELECT_ALL);
 			rs = stmt.executeQuery();
 			while(rs.next()) {
 				nivel=new Nivel(rs.getInt(1),rs.getString(2));
