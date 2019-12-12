@@ -11,12 +11,14 @@ import DBManager.DBManager;
 import Entidades.Institucion;
 
 public class SQLIntitucion {
-	private static String SELECT = "SELECT * FROM INSTITUCION";
+	private static String SELECT_ALL = "SELECT * FROM INSTITUCION ";
+	private static String SELECT_ID = "SELECT inst_id FROM INSTITUCION WHERE nombre = ? ";
+	private static String SELECT_ONE = "SELECT * FROM INSTITUCION WHERE inst_id= ? ";
 	private static String DELETE = "DELETE FROM INSTITUCION WHERE inst_id = ? ";
-	private static String INSERT = "INSERT INTO INSTITUCION VALUES ( ? , ? )";
+	private static String INSERT = "INSERT INTO INSTITUCION(NOMBRE) VALUES ( ? )";
 	private static String UPDATE = "UPDATE INSTITUCION SET nombre = ? WHERE inst_id = ? ";
 	
-	public List<Institucion> querySelect() {
+	public List<Institucion> querySelectAll() {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -24,7 +26,7 @@ public class SQLIntitucion {
 		List<Institucion> lista=new ArrayList<>();
 		try {
 			con=DBManager.getConnection();
-			stmt=con.prepareStatement(SELECT);
+			stmt=con.prepareStatement(SELECT_ALL);
 			rs = stmt.executeQuery();
 			while(rs.next()) {
 				inst=new Institucion(rs.getInt(1),rs.getString(2));
@@ -39,15 +41,58 @@ public class SQLIntitucion {
 		}
 		return lista;
 	}
-	public int queryInsert(Institucion inst) {
+	public int querySelectId(String nombre) {
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		int id=0;
+		try {
+			con=DBManager.getConnection();
+			stmt=con.prepareStatement(SELECT_ID);
+			stmt.setString(1, nombre);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				id=rs.getInt(1);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace(System.out);
+		}finally {
+			DBManager.closeResult(rs);
+			DBManager.closePrepared(stmt);
+			DBManager.closeConnection(con);
+		}
+		return id;
+	}
+	public Institucion querySelectOne(int id) {
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Institucion inst= null;
+		try {
+			con=DBManager.getConnection();
+			stmt=con.prepareStatement(SELECT_ONE);
+			stmt.setInt(1, id);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				inst=new Institucion(rs.getInt(1),rs.getString(2));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace(System.out);
+		}finally {
+			DBManager.closeResult(rs);
+			DBManager.closePrepared(stmt);
+			DBManager.closeConnection(con);
+		}
+		return inst;
+	}
+	public int queryInsert(String nombre) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		int rows=0;
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(INSERT);
-			stmt.setInt(1, inst.getInst_id());
-			stmt.setString(2, inst.getNombre());
+			stmt.setString(1, nombre);
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
