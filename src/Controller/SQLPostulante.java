@@ -33,7 +33,6 @@ public class SQLPostulante {
 			+ ", area_lab_id = ? "
 			+ " WHERE dni_id = ? ";
 	
-	
 	public int querySelectId(String nombre) {
 		Connection con = null;
 		PreparedStatement stmt = null;
