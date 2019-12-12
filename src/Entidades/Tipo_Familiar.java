@@ -13,16 +13,12 @@ public class Tipo_Familiar {
     int tipo_id;
     String nombre;
     
-    
-
-    public Tipo_Familiar(int tipo_id, String nombre) {
+    public Tipo_Familiar( String nombre) {
 		super();
-		this.tipo_id = tipo_id;
 		this.nombre = nombre;
 	}
 
-
-	public int getTipo_id() {
+    public int getTipo_id() {
         return tipo_id;
     }
 

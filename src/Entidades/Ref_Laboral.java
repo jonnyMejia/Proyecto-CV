@@ -12,26 +12,15 @@ import java.util.Date;
  * @author Dani Lucano
  */
 public class Ref_Laboral {
-    
-    int ref_lab_id;
+    int exp_lab_id;
+    String emp_nom;
     String nom_ref;
     String ape_ref;
     String nom_emp_ref;
     String cargo_ref;
     String telf_ref;
-    Date A_ini;
-    Date A_fin;
-    String cargo_id;
-    String motivo_id;
-    String area_id;
-
-    public int getRef_lab_id() {
-        return ref_lab_id;
-    }
-
-    public void setRef_lab_id(int ref_lab_id) {
-        this.ref_lab_id = ref_lab_id;
-    }
+    int f_ini;
+    int f_fin;
 
     public String getNom_ref() {
         return nom_ref;
@@ -72,48 +61,65 @@ public class Ref_Laboral {
     public void setTelf_ref(String telf_ref) {
         this.telf_ref = telf_ref;
     }
+    int srea_id;
+    int cargo_id;
+    int motivo_id;
 
-    public Date getA_ini() {
-        return A_ini;
+    public int getExp_lab_id() {
+        return exp_lab_id;
     }
 
-    public void setA_ini(Date A_ini) {
-        this.A_ini = A_ini;
+    public void setExp_lab_id(int exp_lab_id) {
+        this.exp_lab_id = exp_lab_id;
     }
 
-    public Date getA_fin() {
-        return A_fin;
+    public String getEmp_nom() {
+        return emp_nom;
     }
 
-    public void setA_fin(Date A_fin) {
-        this.A_fin = A_fin;
+    public void setEmp_nom(String emp_nom) {
+        this.emp_nom = emp_nom;
     }
 
-    public String getCargo_id() {
+    public int getF_ini() {
+        return f_ini;
+    }
+
+    public void setF_ini(int f_ini) {
+        this.f_ini = f_ini;
+    }
+
+    public int getF_fin() {
+        return f_fin;
+    }
+
+    public void setF_fin(int f_fin) {
+        this.f_fin = f_fin;
+    }
+
+    public int getSrea_id() {
+        return srea_id;
+    }
+
+    public void setSrea_id(int srea_id) {
+        this.srea_id = srea_id;
+    }
+
+    public int getCargo_id() {
         return cargo_id;
     }
 
-    public void setCargo_id(String cargo_id) {
+    public void setCargo_id(int cargo_id) {
         this.cargo_id = cargo_id;
     }
 
-    public String getMotivo_id() {
+    public int getMotivo_id() {
         return motivo_id;
     }
 
-    public void setMotivo_id(String motivo_id) {
+    public void setMotivo_id(int motivo_id) {
         this.motivo_id = motivo_id;
     }
-
-    public String getArea_id() {
-        return area_id;
-    }
-
-    public void setArea_id(String area_id) {
-        this.area_id = area_id;
-    }
     
     
-
-     
 }
