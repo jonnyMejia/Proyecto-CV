@@ -11,12 +11,15 @@ import DBManager.DBManager;
 import Entidades.Puesto;
 
 public class SQLPuesto {
-	private static String SELECT = "SELECT * FROM PUESTO ";
-	private static String DELETE = "DELETE FROM PUESTO WHERE puesto_id = ? ";
-	private static String INSERT = "INSERT INTO PUESTO VALUES ( ? , ? )";
-	private static String UPDATE = "UPDATE PUESTO SET nombre = ? WHERE puesto_id = ? ";
-	
-	public List<Puesto> querySelect() {
+         private static String SELECT_ALL = "SELECT * FROM PUESTO ";
+	private static String SELECT_ONE = "SELECT * FROM PUESTO where puesto_id = ? ";
+	private static String SELECT_ID = "SELECT puesto_id FROM PAIS WHERE PUESTO = ? ";
+	private static String DELETE = "DELETE FROM PUESTO  WHERE NOMBRE = ? ";
+	private static String UPDATE = "UPDATE PUESTO SET NOMBRE = ? WHERE puesto_id = ? ";
+	private static String INSERT = "INSERT INTO PUESTO(NOMBRE) VALUES ( ? )";
+
+
+  	public List<Puesto> querySelectAll() {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -24,11 +27,58 @@ public class SQLPuesto {
 		List<Puesto> lista=new ArrayList<>();
 		try {
 			con=DBManager.getConnection();
-			stmt=con.prepareStatement(SELECT);
+			stmt=con.prepareStatement(SELECT_ALL);
 			rs = stmt.executeQuery();
 			while(rs.next()) {
 				puesto=new Puesto(rs.getInt(1),rs.getString(2));
 				lista.add(puesto);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace(System.out);
+		}finally {
+			DBManager.closeResult(rs);
+			DBManager.closePrepared(stmt);
+			DBManager.closeConnection(con);
+		}
+		return lista;
+	}      
+        
+	public List<Puesto> querySelectOne() {
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Puesto puesto= null;
+		List<Puesto> lista=new ArrayList<>();
+		try {
+			con=DBManager.getConnection();
+			stmt=con.prepareStatement(SELECT_ONE);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				puesto=new Puesto(rs.getInt(1),rs.getString(2));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace(System.out);
+		}finally {
+			DBManager.closeResult(rs);
+			DBManager.closePrepared(stmt);
+			DBManager.closeConnection(con);
+		}
+		return lista;
+	}
+        
+	public List<Puesto> querySelectId() {
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Puesto puesto= null;
+		List<Puesto> lista=new ArrayList<>();
+		try {
+			con=DBManager.getConnection();
+			stmt=con.prepareStatement(SELECT_ID);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				puesto=new Puesto(rs.getInt(1),rs.getString(2));
+			
 			}
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -46,8 +96,7 @@ public class SQLPuesto {
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(INSERT);
-			stmt.setInt(1, puesto.getPuest_id());
-			stmt.setString(2, puesto.getNombre());
+			stmt.setString(1, puesto.getNombre());
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -82,7 +131,7 @@ public class SQLPuesto {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(UPDATE);
 			stmt.setString(1, puesto.getNombre());
-			stmt.setInt(2, puesto.getPuest_id());
+                        stmt.setInt(2, puesto.getPuest_id());
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);

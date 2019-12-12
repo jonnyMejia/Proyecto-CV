@@ -10,12 +10,14 @@ import DBManager.DBManager;
 import Entidades.Sector;
 
 public class SQLSector {
-	private static String SELECT = "SELECT * FROM SECTOR ";
-	private static String DELETE = "DELETE FROM SECTOR WHERE sector_id = ? ";
-	private static String INSERT = "INSERT INTO SECTOR VALUES ( ? , ? )";
-	private static String UPDATE = "UPDATE SECTOR SET nombre = ? WHERE sector_id = ? ";
-	
-	public List<Sector> querySelect() {
+        private static String SELECT_ALL = "SELECT * FROM SECTOR  ";
+	private static String SELECT_ONE = "SELECT * FROM SECTOR  where sector_id; = ? ";
+	private static String SELECT_ID = "SELECT sector_id; FROM SECTOR  WHERE nombre= ? ";
+	private static String DELETE = "DELETE FROM SECTOR  WHERE nombre = ? ";
+	private static String UPDATE = "UPDATE SECTOR  SET nombre = ? WHERE sector_id; = ? ";
+	private static String INSERT = "INSERT INTO SECTOR (nombre) VALUES ( ? )";
+
+        public List<Sector> querySelectAll() {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -23,11 +25,56 @@ public class SQLSector {
 		List<Sector> lista=new ArrayList<>();
 		try {
 			con=DBManager.getConnection();
-			stmt=con.prepareStatement(SELECT);
+			stmt=con.prepareStatement(SELECT_ALL);
 			rs = stmt.executeQuery();
 			while(rs.next()) {
 				sector=new Sector(rs.getInt(1),rs.getString(2));
 				lista.add(sector);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace(System.out);
+		}finally {
+			DBManager.closeResult(rs);
+			DBManager.closePrepared(stmt);
+			DBManager.closeConnection(con);
+		}
+		return lista;
+	}
+	public List<Sector> querySelectOne() {
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Sector sector= null;
+		List<Sector> lista=new ArrayList<>();
+		try {
+			con=DBManager.getConnection();
+			stmt=con.prepareStatement(SELECT_ONE);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				sector=new Sector(rs.getInt(1),rs.getString(2));
+			
+			}
+		}catch(SQLException e) {
+			e.printStackTrace(System.out);
+		}finally {
+			DBManager.closeResult(rs);
+			DBManager.closePrepared(stmt);
+			DBManager.closeConnection(con);
+		}
+		return lista;
+	}	
+	public List<Sector> querySelectId() {
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Sector sector= null;
+		List<Sector> lista=new ArrayList<>();
+		try {
+			con=DBManager.getConnection();
+			stmt=con.prepareStatement(SELECT_ID);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				sector=new Sector(rs.getInt(1),rs.getString(2));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
@@ -46,7 +93,6 @@ public class SQLSector {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(INSERT);
 			stmt.setInt(1, sector.getSector_id());
-			stmt.setString(2, sector.getNombre());
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);
