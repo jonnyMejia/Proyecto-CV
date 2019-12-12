@@ -4,13 +4,17 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-import Controller.SQLIntitucion;
 import Entidades.Ref_Laboral;
-
+import Controller.SQLAreaLaboral;
+import Controller.SQLMotivo;    
+import Controller.SQLCargo;
+import Entidades.Area_Laboral;
+import Entidades.Motivo;
+import Entidades.Cargo;
 
 public class Ref_Lab_Model extends AbstractTableModel{
 	List<Ref_Laboral> data;
-	Object[] colNames = {"Nombre", "Apellido", "Telefono", "Empresa","Cargo"};
+	Object[] colNames = {"Nombre", "Apellido", "Telefono", "Empresa","Area","Cargo","Año inicio","Año fin","Motivo de cese"};
 	/**
 	 * @param estudianteApp
 	 */
@@ -37,7 +41,12 @@ public class Ref_Lab_Model extends AbstractTableModel{
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		Ref_Laboral e = data.get(rowIndex);
-		
+		SQLAreaLaboral a= new SQLAreaLaboral ();
+		Area_Laboral tempArea=a.querySelectOne(e.getSrea_id());
+		SQLMotivo m= new SQLMotivo ();
+		Motivo tempM=m.querySelectOne(e.getMotivo_id());
+		SQLCargo c= new SQLCargo ();
+		Cargo tempC=c.querySelectOne(e.getCargo_id());
 		switch (columnIndex) {
 		case 0:
 			return e.getNom_ref();
@@ -48,7 +57,15 @@ public class Ref_Lab_Model extends AbstractTableModel{
 		case 3:
 			return e.getNom_emp_ref();
                 case 4: 
-                        return e.getCargo_ref();
+                        return tempArea.getNombre();
+                case 5:
+                        return tempC.getNombre();
+                case 6: 
+                        return e.getF_ini();
+                case 7:
+                       return e.getF_fin();
+                case 8:
+                       return tempM.getMotivo();
                 default: 
                           return null;
 		}
