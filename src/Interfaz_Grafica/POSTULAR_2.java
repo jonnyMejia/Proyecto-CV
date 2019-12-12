@@ -12,9 +12,11 @@ import javax.swing.DefaultComboBoxModel;
 import Controller.SQLEspecialidad;
 import Controller.SQLGrado_Espec;
 import Controller.SQLIntitucion;
+import Controller.SQLPais;
 import Entidades.Especialidad;
 import Entidades.Grado_Espec;
 import Entidades.Institucion;
+import Entidades.Pais;
 
 /**
  *
@@ -72,16 +74,21 @@ public class POSTULAR_2 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel19.setText("Nombre de institucion");
-
-        box_institucion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        
+        SQLIntitucion ins= new SQLIntitucion();
+        List<Institucion> lista_inst=ins.querySelectAll();
+        
+        box_institucion.setModel(new javax.swing.DefaultComboBoxModel<>(lista_inst.stream().map(e->e.getNombre()).toArray()));
 
         jLabel22.setText("Grado de instruccion");
 
-        grado_instituto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        SQLGrado_Espec grado= new SQLGrado_Espec();
+        List<Grado_Espec> lista_grad=grado.querySelectAll();
+        grado_instituto.setModel(new javax.swing.DefaultComboBoxModel<>(lista_grad.stream().map(e->e.getNombre()).toArray()));
 
         jLabel23.setText("Ciclo");
-
-        ciclo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        String[] ciclos="1 2 3 4 5 6 7 8 9 10".split(" ");
+        ciclo.setModel(new javax.swing.DefaultComboBoxModel<>(ciclos));
         ciclo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cicloActionPerformed(evt);
@@ -91,8 +98,9 @@ public class POSTULAR_2 extends javax.swing.JFrame {
         jLabel26.setText("EDUCACION SUPERIOR");
 
         jLabel27.setText("Especialidad");
-
-        especialidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        SQLEspecialidad esp= new SQLEspecialidad();
+        List<Especialidad> lista_eso=esp.querySelect();
+        especialidad.setModel(new javax.swing.DefaultComboBoxModel<>(lista_eso.stream().map(e->e.getNombre()).toArray()));
 
         bAgregar.setText("Agregar");
 
@@ -122,8 +130,9 @@ public class POSTULAR_2 extends javax.swing.JFrame {
         bGuardar.setText("Guardar");
 
         jLabel1.setText("Pais");
-
-        pais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        SQLPais paises= new SQLPais();
+        List<Pais> lista_pais=paises.querySelectAll();
+        pais.setModel(new javax.swing.DefaultComboBoxModel<>(lista_pais.stream().map(e->e.getNombre()).toArray()));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -389,18 +398,18 @@ public class POSTULAR_2 extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAgregar;
     private javax.swing.JButton bContinuar;
     private javax.swing.JButton bEliminar;
     private javax.swing.JButton bGuardar;
     private javax.swing.JButton bRegre;
-    private javax.swing.JComboBox<String> box_institucion;
+    private javax.swing.JComboBox<Object> box_institucion;
     private javax.swing.JButton cancelar;
-    private javax.swing.JComboBox<String> ciclo;
-    private javax.swing.JComboBox<String> especialidad;
-    private javax.swing.JComboBox<String> grado_instituto;
+    private javax.swing.JComboBox<Object> ciclo;
+    private javax.swing.JComboBox<Object> especialidad;
+    private javax.swing.JComboBox<Object> grado_instituto;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton9;
@@ -417,7 +426,7 @@ public class POSTULAR_2 extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JButton limpiar;
-    private javax.swing.JComboBox<String> pais;
+    private javax.swing.JComboBox<Object> pais;
     private javax.swing.JTextField text_fecha_fin;
     private javax.swing.JTextField text_fecha_inicio;
     private javax.swing.JTextField txt_institucion;
