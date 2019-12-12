@@ -43,7 +43,7 @@ public class POSTULAR_1 extends javax.swing.JFrame {
     public POSTULAR_1() {
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
