@@ -15,8 +15,10 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.AbstractTableModel;
 
+import Controller.SQLRelLab;
 import Controller.SQLTipoFamiliar;
 import Entidades.Familiar;
+import Entidades.Rel_Lab;
 import Entidades.Tipo_Familiar;
 
 /**
@@ -72,23 +74,19 @@ public class POSTULAR_6 extends javax.swing.JFrame {
         jLabel4.setText("Telefono");
 
         jLabel5.setText("Relacion");
+        SQLTipoFamiliar tipo= new SQLTipoFamiliar();
+        List<Tipo_Familiar> lista_tipo=tipo.querySelectAll();
+        relacion.setModel(new javax.swing.DefaultComboBoxModel<>(lista_tipo.stream().map(e->e.getNombre()).toArray()));
 
-        relacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Nombres", "Apellidos", "Telefono", "Relacion"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
+        AgregarModel();
+        
         bAgregar.setText("Agregar");
+        bAgregar.addActionListener(e->{
+        	SQLTipoFamiliar fam= new SQLTipoFamiliar();
+        	int rela=fam.querySelect_id(relacion.getSelectedItem().toString());
+        	Curriculum.data_familiar.add(new Familiar(nombre.getText(),apelllido.getText(),rela,telefono.getText()));
+        	actualizarTable();
+        });
 
         bLimpiar.setText("Limpiar");
 
@@ -245,6 +243,10 @@ public class POSTULAR_6 extends javax.swing.JFrame {
     }//GEN-LAST:event_bRegreActionPerformed
     void AgregarModel() {
 		// TODO Auto-generated method stub
+    	
+    	jTable1.setModel(new FamiliarModel(Curriculum.data_familiar, new String[] {"Nombre","Apellido","Relacion","Telefono"}));
+        
+        jScrollPane1.setViewportView(jTable1);
     	ListSelectionModel selectionModel = jTable1.getSelectionModel();
 		selectionModel.addListSelectionListener(new ListSelectionListener() {
 			@Override
@@ -257,9 +259,7 @@ public class POSTULAR_6 extends javax.swing.JFrame {
 				}
 			}	
 		});
-        jTable1.setModel(new FamiliarModel(Curriculum.data_familiar, new String[] {"Nombre","Apellido","Relacion","Telefono"}));
         
-        jScrollPane1.setViewportView(jTable1);
     	
 	}
     void poblarCampos(int i) {
@@ -323,7 +323,7 @@ public class POSTULAR_6 extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField nombre;
-    private javax.swing.JComboBox<String> relacion;
+    private javax.swing.JComboBox<Object> relacion;
     private javax.swing.JTextField telefono;
     // End of variables declaration//GEN-END:variables
 }

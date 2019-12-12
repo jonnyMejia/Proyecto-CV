@@ -44,7 +44,7 @@ public class SQLNivel {
 		return lista;
 	}
 
-        	public Nivel querySelectOne(int id) {
+	public Nivel querySelectOne(int id) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -52,7 +52,7 @@ public class SQLNivel {
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(SELECT_ONE);
-                        stmt.setInt(1, id);
+            stmt.setInt(1, id);
 			rs = stmt.executeQuery();
 			if(rs.next()) {
 				nivel=new Nivel(rs.getInt(1),rs.getString(2));
@@ -66,6 +66,7 @@ public class SQLNivel {
 		}
 		return nivel;
 	}
+      
 	public int querySelectId(String n) {
 		Connection con = null;
 		PreparedStatement stmt = null;
@@ -78,7 +79,7 @@ public class SQLNivel {
 			rs = stmt.executeQuery();
 			if(rs.next()) {
 				id=rs.getInt(1);
-				
+			
 			}
 		}catch(SQLException e) {
 			e.printStackTrace(System.out);

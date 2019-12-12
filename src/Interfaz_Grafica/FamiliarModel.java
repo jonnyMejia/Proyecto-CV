@@ -38,7 +38,7 @@ public class FamiliarModel extends AbstractTableModel{
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		Familiar e = data.get(rowIndex);
 		SQLTipoFamiliar tipo= new SQLTipoFamiliar();
-		Tipo_Familiar temp=tipo.querySelect(e.getTipo_id());
+		Tipo_Familiar temp=tipo.querySelect_one(e.getTipo_id());
 		switch (columnIndex) {
 		case 0:
 			return e.getNombre();
