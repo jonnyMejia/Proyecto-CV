@@ -14,7 +14,7 @@ public class FamiliarModel extends AbstractTableModel{
 	/**
 	 * @param estudianteApp
 	 */
-	FamiliarModel(List<Familiar> data, Object[] colNames) {
+	public FamiliarModel(List<Familiar> data, Object[] colNames) {
 		this.data = data;
 		this.colNames = colNames;
 	}
