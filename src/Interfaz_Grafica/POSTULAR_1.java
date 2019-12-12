@@ -7,10 +7,14 @@ package Interfaz_Grafica;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.lang.String;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.lang.*;
 
 import javax.swing.DefaultComboBoxModel;
 
-import com.sun.org.apache.xpath.internal.operations.String;
 
 import Controller.SQLAreaLaboral;
 import Controller.SQLEstado;
@@ -23,6 +27,7 @@ import Entidades.Lugar_Laboral;
 import Entidades.Pais;
 import Entidades.Postulante;
 import Entidades.Puesto;
+import Models.Curriculum;
 
 /**
  *
@@ -118,7 +123,6 @@ public class POSTULAR_1 extends javax.swing.JFrame {
         jLabel11.setText("Sexo");
 
         genero.setModel(new javax.swing.DefaultComboBoxModel<>(new Object[] {"Masculino","Femenino"}));
-
         jLabel12.setText("Estado Civil");
 
         SQLEstado estado= new SQLEstado();
@@ -328,14 +332,35 @@ public class POSTULAR_1 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    void agregarPostulante() {
+		// TODO Auto-generated method stub
+    	String sexo;
+    	if(genero.getSelectedItem().toString().matches("M.+")){
+    		 sexo = "M";
+    	}else {
+    		 sexo = "F";
+    	}
+    	String apellido[]= txt_ape.getText().split(" ");
+    	DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    	LocalDate fechaNac = LocalDate.parse(text_fecha.getText(), fmt);
+    	LocalDate ahora = LocalDate.now();
+    	Period periodo = Period.between(fechaNac, ahora);
+    	System.out.printf("Tu edad es: %s años, %s meses y %s días",
+    	                    periodo.getYears(), periodo.getMonths(), periodo.getDays());
+    	SQLPais paises= new SQLPais();
+    	int pais_id=paises.querySelectId(pais.getSelectedItem().toString());
+    	SQLEstado estado= new SQLEstado();
+    	int est_id= estado.querySelectId(Estado.getSelectedItem().toString());
+    	Curriculum.data_postulante.add(new Postulante(txt_dni.getText(), txt_nom.getText(), apellido[0], apellido[1], periodo.getYears(), text_fecha.getText() ,pais_id,sexo,est_id, email.getText(), 1));
+	}
     private void bContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bContinuarActionPerformed
-        lista_postulante = new ArrayList<>();
-        
-        //lista_postulante.add(new Postulante(txt_dni.getText(), txt_nom.getText(), txt, ap_mat, edad, fNac, pais_id, genero, estado_id, email, pensiones_id))
-    	
+    	agregarPostulante();
+    	System.out.println(Curriculum.data_postulante.get(0).toString());
     	POSTULAR_2 P=new POSTULAR_2();
         P.setVisible(true);
         this.setVisible(false);
+        
+        
     }//GEN-LAST:event_bContinuarActionPerformed
 
     private void bCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelActionPerformed

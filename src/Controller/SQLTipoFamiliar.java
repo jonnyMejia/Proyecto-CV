@@ -128,6 +128,7 @@ public class SQLTipoFamiliar {
 		PreparedStatement stmt = null;
 		int rows=0;
 		try {
+			
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(UPDATE);
 			stmt.setString(1, familiar.getNombre());
