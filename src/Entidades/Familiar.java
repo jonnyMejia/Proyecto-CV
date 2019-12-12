@@ -12,15 +12,15 @@ package Entidades;
 public class Familiar {
     String nombre;
     String apellido; //PUEDE SER UN DNI
-    int tipo_id;
     String telefono;
+    int tipo_id;
     
-	public Familiar(String nombre, String apellido, int tipo_id, String telefono) {
+	public Familiar(String nombre, String apellido, String telefono, int tipo_id) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.tipo_id = tipo_id;
 		this.telefono = telefono;
+		this.tipo_id = tipo_id;
 	}
 	public String getNombre() {
 		return nombre;

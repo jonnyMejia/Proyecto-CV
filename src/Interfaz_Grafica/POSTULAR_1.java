@@ -117,7 +117,7 @@ public class POSTULAR_1 extends javax.swing.JFrame {
         jLabel9.setText("Apellidos");
 
         jLabel10.setText("Fecha Nac  DD / MM / AA");
-        text_fecha.setText("12/23/2016");
+        text_fecha.setText("12/12/2016");
         
         
         jLabel11.setText("Sexo");

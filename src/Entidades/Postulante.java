@@ -5,31 +5,29 @@
  */
 package Entidades;
 
-import java.util.Date;
-
 /**
  *
  * @author Dani Lucano
  */
 public class Postulante {
-    int postu_id;
+    String dni_id;
     String nombre;
     String ap_pat;
     String ap_mat;
     String domiciilio;
     int edad;
-    Date fNac;
-    String pais_id;
+    String fNac;
+    int pais_id;
     String genero;
-    String estado_id;
+    int estado_id;
     String email;
     int pensiones_id;
     int lugar_id;
     int area_id;
-	public Postulante(String dNI, String nombre, String ap_pat, String ap_mat, String domiciilio, int edad, String fNac,
+	public Postulante(String dni_id, String nombre, String ap_pat, String ap_mat, String domiciilio, int edad, String fNac,
 			int pais_id, String genero, int estado_id, String email, int pensiones_id, int lugar_id, int area_id) {
 		super();
-		DNI = dNI;
+		this.dni_id = dni_id;
 		this.nombre = nombre;
 		this.ap_pat = ap_pat;
 		this.ap_mat = ap_mat;
@@ -45,10 +43,10 @@ public class Postulante {
 		this.area_id = area_id;
 	}
 	public String getDNI() {
-		return DNI;
+		return dni_id;
 	}
-	public void setDNI(String dNI) {
-		DNI = dNI;
+	public void setDNI(String dni_id) {
+		this.dni_id = dni_id;
 	}
 	public String getNombre() {
 		return nombre;
@@ -130,7 +128,7 @@ public class Postulante {
 	}
 	@Override
 	public String toString() {
-		return "Postulante [DNI=" + DNI + ", nombre=" + nombre + ", ap_pat=" + ap_pat + ", ap_mat=" + ap_mat
+		return "Postulante [dni_id=" + dni_id + ", nombre=" + nombre + ", ap_pat=" + ap_pat + ", ap_mat=" + ap_mat
 				+ ", domiciilio=" + domiciilio + ", edad=" + edad + ", fNac=" + fNac + ", pais_id=" + pais_id
 				+ ", genero=" + genero + ", estado_id=" + estado_id + ", email=" + email + ", pensiones_id="
 				+ pensiones_id + ", lugar_id=" + lugar_id + ", area_id=" + area_id + "]";
