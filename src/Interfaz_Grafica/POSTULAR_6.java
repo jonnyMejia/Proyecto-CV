@@ -81,15 +81,17 @@ public class POSTULAR_6 extends javax.swing.JFrame {
         List<Tipo_Familiar> lista_tipo=tipo.querySelectAll();
         relacion.setModel(new javax.swing.DefaultComboBoxModel<>(lista_tipo.stream().map(e->e.getNombre()).toArray()));
 
+<<<<<<< HEAD
         AgregarModel();
         
-        bAgregar1.setText("Agregar");
-        bAgregar1.addActionListener(e->{
+        bAgregar.setText("Agregar");
+        bAgregar.addActionListener(e->{
         	SQLTipoFamiliar fam= new SQLTipoFamiliar();
         	int rela=fam.querySelect_id(relacion.getSelectedItem().toString());
         	Curriculum.data_familiar.add(new Familiar(nombre.getText(),apelllido.getText(),rela,telefono.getText()));
         	actualizarTable();
         });
+=======
         relacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -106,6 +108,7 @@ public class POSTULAR_6 extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         bAgregar1.setText("Agregar");
+>>>>>>> 3ef9d3d9c4f34e220a865a9b702ad529becf4fbc
 
         bGuardar.setText("Guardar");
 
