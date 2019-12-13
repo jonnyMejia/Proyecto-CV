@@ -75,20 +75,11 @@ public class POSTULAR_2 extends javax.swing.JFrame {
 
         jLabel19.setText("Nombre de institucion");
         
-        SQLIntitucion ins= new SQLIntitucion();
-        List<Institucion> lista_inst=ins.querySelectAll();
-        
-        box_institucion.setModel(new javax.swing.DefaultComboBoxModel<>(lista_inst.stream().map(e->e.getNombre()).toArray()));
 
         jLabel22.setText("Grado de instruccion");
 
-        SQLGrado_Espec grado= new SQLGrado_Espec();
-        List<Grado_Espec> lista_grad=grado.querySelectAll();
-        grado_instituto.setModel(new javax.swing.DefaultComboBoxModel<>(lista_grad.stream().map(e->e.getNombre()).toArray()));
 
         jLabel23.setText("Ciclo");
-        String[] ciclos="1 2 3 4 5 6 7 8 9 10".split(" ");
-        ciclo.setModel(new javax.swing.DefaultComboBoxModel<>(ciclos));
         ciclo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cicloActionPerformed(evt);
@@ -130,9 +121,7 @@ public class POSTULAR_2 extends javax.swing.JFrame {
         bGuardar.setText("Guardar");
 
         jLabel1.setText("Pais");
-        SQLPais paises= new SQLPais();
-        List<Pais> lista_pais=paises.querySelectAll();
-        pais.setModel(new javax.swing.DefaultComboBoxModel<>(lista_pais.stream().map(e->e.getNombre()).toArray()));
+        
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -248,7 +237,7 @@ public class POSTULAR_2 extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24))))
         );
-
+        addJcombobox();
         jButton3.setText("Regresar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -333,6 +322,20 @@ public class POSTULAR_2 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    void addJcombobox(){
+    	SQLPais paises= new SQLPais();
+        List<Pais> lista_pais=paises.querySelectAll();
+        pais.setModel(new javax.swing.DefaultComboBoxModel<>(lista_pais.stream().map(e->e.getNombre()).toArray()));
+        SQLGrado_Espec grado= new SQLGrado_Espec();
+        List<Grado_Espec> lista_grad=grado.querySelectAll();
+        grado_instituto.setModel(new javax.swing.DefaultComboBoxModel<>(lista_grad.stream().map(e->e.getNombre()).toArray()));
+        SQLIntitucion ins= new SQLIntitucion();
+        List<Institucion> lista_inst=ins.querySelectAll();        
+        box_institucion.setModel(new javax.swing.DefaultComboBoxModel<>(lista_inst.stream().map(e->e.getNombre()).toArray()));
+        String[] ciclos="1 2 3 4 5 6 7 8 9 10".split(" ");
+        ciclo.setModel(new javax.swing.DefaultComboBoxModel<>(ciclos));
+        
+    }
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
 
