@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -87,7 +88,7 @@ public class POSTULAR_6 extends javax.swing.JFrame {
         bAgregar1.addActionListener(e->{
         	SQLTipoFamiliar fam= new SQLTipoFamiliar();
         	int rela=fam.querySelect_id(relacion.getSelectedItem().toString());
-        	Curriculum.data_familiar.add(new Familiar(nombre.getText(),apelllido.getText(),rela,telefono.getText()));
+        	Curriculum.data_familiar.add(new Familiar(nombre.getText(),apelllido.getText(),telefono.getText(),rela));
         	actualizarTable();
         });
         relacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -203,7 +204,7 @@ public class POSTULAR_6 extends javax.swing.JFrame {
                 bRegreActionPerformed(evt);
             }
         });
-
+        
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -245,8 +246,15 @@ public class POSTULAR_6 extends javax.swing.JFrame {
         );
 
         pack();
+        addjcombo();
     }// </editor-fold>//GEN-END:initComponents
-
+    private void addjcombo() {
+		// TODO Auto-generated method stub
+    	SQLTipoFamiliar tipo= new SQLTipoFamiliar();
+    	List<Tipo_Familiar> lista_tipo=tipo.querySelectAll();
+    	relacion.setModel(new DefaultComboBoxModel<Object>(lista_tipo.stream().map(e->e.getNombre()).toArray()));
+    
+    }
     void actualizarTable() {
 		// TODO Auto-generated method stub
     	AbstractTableModel model = (AbstractTableModel)jTable1.getModel();

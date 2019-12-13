@@ -60,9 +60,7 @@ public class POSTULAR_3 extends javax.swing.JFrame {
         jLabel1.setText("OTROS ESTUDIOS(INGLES, COMPUTACION , etc.)");
 
         jLabel3.setText("Nombre");
-        SQLNivel niveles= new SQLNivel();
-        List<Nivel> lista_niveles=niveles.querySelectAll();
-        nivel.setModel(new javax.swing.DefaultComboBoxModel<>(lista_niveles.stream().map(e->e.getNivel()).toArray()));
+        
 
         jLabel4.setText("Nivel de Instruccion");
 
@@ -107,6 +105,7 @@ public class POSTULAR_3 extends javax.swing.JFrame {
         bGuardar.setText("Guardar");
 
         bEliminar1.setText("Eliminar");
+        addjcombobox();
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -280,7 +279,12 @@ public class POSTULAR_3 extends javax.swing.JFrame {
             }
         });
     }
-
+    private void addjcombobox() {
+		// TODO Auto-generated method stub
+    	SQLNivel niveles= new SQLNivel();
+        List<Nivel> lista_niveles=niveles.querySelectAll();
+        nivel.setModel(new javax.swing.DefaultComboBoxModel<>(lista_niveles.stream().map(e->e.getNivel()).toArray()));
+	}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAgregar;
     private javax.swing.JButton bCancel;

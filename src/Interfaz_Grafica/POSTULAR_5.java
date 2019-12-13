@@ -5,6 +5,17 @@
  */
 package Interfaz_Grafica;
 
+import java.util.List;
+
+import javax.swing.DefaultComboBoxModel;
+
+import Controller.SQLAreaLaboral;
+import Controller.SQLCargo;
+import Controller.SQLMotivo;
+import Entidades.Area_Laboral;
+import Entidades.Cargo;
+import Entidades.Motivo;
+
 /**
  *
  * @author USER
@@ -86,7 +97,6 @@ public class POSTULAR_5 extends javax.swing.JFrame {
 
         jLabel27.setText("Area");
 
-        AreaLab.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         AreaLab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AreaLabActionPerformed(evt);
@@ -101,7 +111,6 @@ public class POSTULAR_5 extends javax.swing.JFrame {
 
         jLabel16.setText("Motivo de cese");
 
-        motivo_cese1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -116,7 +125,6 @@ public class POSTULAR_5 extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        AreaLab2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         AreaLab2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AreaLab2ActionPerformed(evt);
@@ -337,8 +345,25 @@ public class POSTULAR_5 extends javax.swing.JFrame {
         );
 
         pack();
+        addjcombobox();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    
+    private void addjcombobox() {
+		// TODO Auto-generated method stub
+    	SQLMotivo motivo= new SQLMotivo();
+    	List<Motivo> lista_motivo=motivo.querySelectAll();
+    	motivo_cese1.setModel(new DefaultComboBoxModel<Object>(lista_motivo.stream().map(e->e.getMotivo()).toArray()));
+    	
+    	SQLAreaLaboral area= new SQLAreaLaboral();
+    	List<Area_Laboral> lista_area=area.querySelectAll();
+    	AreaLab.setModel(new DefaultComboBoxModel<Object>(lista_area.stream().map(e->e.getNombre()).toArray()));
+    	
+    	SQLCargo cargo= new SQLCargo();
+    	List<Cargo> lista_cargo= cargo.querySelectAll();
+    	AreaLab2.setModel(new DefaultComboBoxModel<Object>(lista_cargo.stream().map(e->e.getNombre()).toArray()));
+	}
+    
     private void bContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bContinuarActionPerformed
         // TODO add your handling code here:
         POSTULAR_6 P=new POSTULAR_6();
@@ -409,8 +434,8 @@ public class POSTULAR_5 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> AreaLab;
-    private javax.swing.JComboBox<String> AreaLab2;
+    private javax.swing.JComboBox<Object> AreaLab;
+    private javax.swing.JComboBox<Object> AreaLab2;
     private javax.swing.JTextField apellido;
     private javax.swing.JButton bAgregar;
     private javax.swing.JButton bCancelar;
@@ -436,7 +461,7 @@ public class POSTULAR_5 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JComboBox<String> motivo_cese1;
+    private javax.swing.JComboBox<Object> motivo_cese1;
     private javax.swing.JTextField nom_empresa;
     private javax.swing.JTextField nombre;
     private javax.swing.JTextField relacion;
