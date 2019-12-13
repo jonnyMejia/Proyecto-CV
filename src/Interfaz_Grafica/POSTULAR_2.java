@@ -43,8 +43,6 @@ public class POSTULAR_2 extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
-        box_institucion = new javax.swing.JComboBox<>();
-        txt_institucion = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
         grado_instituto = new javax.swing.JComboBox<>();
         jLabel23 = new javax.swing.JLabel();
@@ -65,6 +63,7 @@ public class POSTULAR_2 extends javax.swing.JFrame {
         bGuardar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         pais = new javax.swing.JComboBox<>();
+        jTextField1 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
@@ -74,12 +73,14 @@ public class POSTULAR_2 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel19.setText("Nombre de institucion");
-        
 
         jLabel22.setText("Grado de instruccion");
 
+        grado_instituto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel23.setText("Ciclo");
+
+        ciclo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         ciclo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cicloActionPerformed(evt);
@@ -89,9 +90,8 @@ public class POSTULAR_2 extends javax.swing.JFrame {
         jLabel26.setText("EDUCACION SUPERIOR");
 
         jLabel27.setText("Especialidad");
-        SQLEspecialidad esp= new SQLEspecialidad();
-        List<Especialidad> lista_eso=esp.querySelect();
-        especialidad.setModel(new javax.swing.DefaultComboBoxModel<>(lista_eso.stream().map(e->e.getNombre()).toArray()));
+
+        especialidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         bAgregar.setText("Agregar");
 
@@ -121,7 +121,14 @@ public class POSTULAR_2 extends javax.swing.JFrame {
         bGuardar.setText("Guardar");
 
         jLabel1.setText("Pais");
-        
+
+        pais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -136,14 +143,10 @@ public class POSTULAR_2 extends javax.swing.JFrame {
                                 .addComponent(jLabel19)
                                 .addComponent(jLabel22))
                             .addGap(41, 41, 41)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addComponent(box_institucion, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(47, 47, 47)
-                                    .addComponent(txt_institucion, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addComponent(grado_instituto, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(60, 60, 60)
+                                    .addComponent(grado_instituto, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(34, 34, 34)
                                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(jPanel4Layout.createSequentialGroup()
                                             .addComponent(jLabel23)
@@ -154,10 +157,11 @@ public class POSTULAR_2 extends javax.swing.JFrame {
                                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(jLabel27)
                                                 .addComponent(jLabel1))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addGap(35, 35, 35)
                                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(pais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(especialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                                .addComponent(especialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addGap(306, 306, 306)
                             .addComponent(jLabel26))
@@ -193,12 +197,13 @@ public class POSTULAR_2 extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel19)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(box_institucion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txt_institucion, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel19))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel22)
@@ -213,9 +218,9 @@ public class POSTULAR_2 extends javax.swing.JFrame {
                             .addComponent(especialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(text_fecha_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(text_fecha_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
@@ -237,7 +242,7 @@ public class POSTULAR_2 extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24))))
         );
-        addJcombobox();
+
         jButton3.setText("Regresar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -367,6 +372,10 @@ public class POSTULAR_2 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cicloActionPerformed
 
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -408,11 +417,10 @@ public class POSTULAR_2 extends javax.swing.JFrame {
     private javax.swing.JButton bEliminar;
     private javax.swing.JButton bGuardar;
     private javax.swing.JButton bRegre;
-    private javax.swing.JComboBox<Object> box_institucion;
     private javax.swing.JButton cancelar;
-    private javax.swing.JComboBox<Object> ciclo;
-    private javax.swing.JComboBox<Object> especialidad;
-    private javax.swing.JComboBox<Object> grado_instituto;
+    private javax.swing.JComboBox<String> ciclo;
+    private javax.swing.JComboBox<String> especialidad;
+    private javax.swing.JComboBox<String> grado_instituto;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton9;
@@ -428,10 +436,10 @@ public class POSTULAR_2 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton limpiar;
-    private javax.swing.JComboBox<Object> pais;
+    private javax.swing.JComboBox<String> pais;
     private javax.swing.JTextField text_fecha_fin;
     private javax.swing.JTextField text_fecha_inicio;
-    private javax.swing.JTextField txt_institucion;
     // End of variables declaration//GEN-END:variables
 }
