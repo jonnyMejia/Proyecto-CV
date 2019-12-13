@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class Educ_Superior {
     int educ_sup_id;
-    int inst_id;
+    String inst_nom;
     int grado_id;
     int pais_id;
     int f_ini;
