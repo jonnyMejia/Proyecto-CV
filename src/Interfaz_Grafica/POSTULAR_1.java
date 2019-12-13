@@ -22,6 +22,7 @@ import Controller.SQLLugarLaboral;
 import Controller.SQLPais;
 import Controller.SQLPuesto;
 import Entidades.Area_Laboral;
+import Entidades.CV;
 import Entidades.Estado;
 import Entidades.Lugar_Laboral;
 import Entidades.Pais;
@@ -39,7 +40,7 @@ public class POSTULAR_1 extends javax.swing.JFrame {
      * Creates new form POSTULAR_1
      */
 	Estado estado;
-	List<Postulante> lista_postulante ;
+	
     public POSTULAR_1() {
         initComponents();
     }
@@ -52,7 +53,7 @@ public class POSTULAR_1 extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
+    	
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         prefTrab = new javax.swing.JComboBox<>();
@@ -88,11 +89,13 @@ public class POSTULAR_1 extends javax.swing.JFrame {
         bContinuar = new javax.swing.JButton();
         bClean = new javax.swing.JButton();
         bCancel = new javax.swing.JButton();
-
+        
+        
+        initData();
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel2.setText("Lugar de preferencia para trabajar");
-
+        
         
         jLabel3.setText("Area de preferencia para trabajar");
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -123,7 +126,7 @@ public class POSTULAR_1 extends javax.swing.JFrame {
                 txt_ape1ActionPerformed(evt);
             }
         });
-
+        
         ape_mat.setText("Ape. Materno");
         addJcomboBox();
 
@@ -239,6 +242,9 @@ public class POSTULAR_1 extends javax.swing.JFrame {
         });
 
         bClean.setText("Limpiar");
+        bClean.addActionListener(e->{
+        	limpiar();
+        });
 
         bCancel.setText("Cancelar");
         bCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -344,14 +350,45 @@ public class POSTULAR_1 extends javax.swing.JFrame {
     	Curriculum.data_postulante.add(new Postulante(txt_dni.getText(), txt_nom.getText(),txt_ape1.getText(), txt_ape2.getText(),txt_domi.getText(),
     			periodo.getYears(), text_fecha.getText() ,pais_id,sexo,est_id, email.getText(), 1,lugar_id,area_id));
     }
+    private void initData() {
+		// TODO Auto-generated method stub
+    	for(Postulante e:Curriculum.data_postulante) {
+        	txt_dni.setText(e.getDNI());
+        	txt_nom.setText(e.getNombre());
+        	txt_ape1.setText(e.getAp_pat());
+        	txt_ape2.setText(e.getAp_mat());
+        	txt_domi.setText(e.getDomiciilio());
+        	email.setText(e.getEmail());
+        }
+	}
+    private void agregarCV() {
+		// TODO Auto-generated method stub
+    	SQLPuesto puesto= new SQLPuesto();
+    	int puesto_id=puesto.querySelectId(codPuesto.getSelectedItem().toString());
+    	Curriculum.data_cv.add(new CV(0, txt_dni.getText(), puesto_id, "sysdate"));
+    	System.out.println(Curriculum.data_cv.get(0));
+	}
     private void bContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bContinuarActionPerformed
     	agregarPostulante();
+    	agregarCV();
     	System.out.println(Curriculum.data_postulante.get(0).toString());
     	POSTULAR_2 P=new POSTULAR_2();
         P.setVisible(true);
         this.setVisible(false); 
     }//GEN-LAST:event_bContinuarActionPerformed
     
+    private void limpiar() {
+		// TODO Auto-generated method stub
+    	 	email.setText("");
+    	    telefono.setText("");
+    	    text_fecha.setText("");
+    	    txt_ape1.setText("");
+    	    txt_ape2.setText("");
+    	    txt_dni.setText("");
+    	    txt_domi.setText("");
+    	    txt_nom.setText("");
+    	
+	}
     private void addJcomboBox() {
 		// TODO Auto-generated method stub
     	SQLLugarLaboral lugar= new SQLLugarLaboral();
@@ -384,6 +421,8 @@ public class POSTULAR_1 extends javax.swing.JFrame {
 
     private void txt_ape1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_ape1ActionPerformed
         // TODO add your handling code here:
+    	
+    	
     }//GEN-LAST:event_txt_ape1ActionPerformed
 
     /**
@@ -430,7 +469,6 @@ public class POSTULAR_1 extends javax.swing.JFrame {
     private javax.swing.JButton bClean;
     private javax.swing.JButton bContinuar;
     private javax.swing.JComboBox<Object> codPuesto;
-    private javax.swing.JTextField email;
     private javax.swing.JComboBox<Object> genero;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -450,6 +488,7 @@ public class POSTULAR_1 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JComboBox<Object> pais;
     private javax.swing.JComboBox<Object> prefTrab;
+    private javax.swing.JTextField email;
     private javax.swing.JTextField telefono;
     private javax.swing.JTextField text_fecha;
     private javax.swing.JTextField txt_ape1;

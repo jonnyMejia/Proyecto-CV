@@ -104,7 +104,7 @@ public class POSTULAR_3 extends javax.swing.JFrame {
         bAgregar.setText("Agregar");
 
         bGuardar.setText("Guardar");
-
+        addjcombobox();
         bEliminar1.setText("Eliminar");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -226,6 +226,8 @@ public class POSTULAR_3 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
     private void bCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelActionPerformed
         // TODO add your handling code here:
         INICIO I=new INICIO();
@@ -303,7 +305,7 @@ public class POSTULAR_3 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JComboBox<String> nivel;
+    private javax.swing.JComboBox<Object> nivel;
     private javax.swing.JTextField nom_institucion;
     private java.awt.PopupMenu popupMenu1;
     private javax.swing.JTextField txt_nom;

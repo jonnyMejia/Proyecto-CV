@@ -7,11 +7,10 @@ package Models;
 
 import java.util.List;
 
+
 import javax.swing.table.AbstractTableModel;
 
-import Controller.SQLIntitucion;
 import Entidades.Educ_Superior;
-import Entidades.Institucion;
 import Controller.SQLGrado_Espec;
 import Entidades.Grado_Espec;
 import Controller.SQLPais;
@@ -49,8 +48,6 @@ public class EducSupModel extends AbstractTableModel{
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		Educ_Superior e = data.get(rowIndex);
-		SQLIntitucion inst= new SQLIntitucion();
-		Institucion tempInst=inst.querySelectOne(e.getInst_id());
 		SQLGrado_Espec g= new SQLGrado_Espec();
 		Grado_Espec tempGrad=g.querySelectOne(e.getGrado_id());
 		SQLPais p= new SQLPais();
@@ -59,7 +56,7 @@ public class EducSupModel extends AbstractTableModel{
 		Especialidad tempEsp=esp.querySelectOne(e.getEspec_id());
 		switch (columnIndex) {
 		case 0:
-			return tempInst.getNombre();
+
 		case 1:
 			return tempGrad.getNombre();
 		case 2:

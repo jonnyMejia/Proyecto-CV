@@ -13,7 +13,7 @@ import Entidades.Puesto;
 public class SQLPuesto {
          private static String SELECT_ALL = "SELECT * FROM PUESTO ";
 	private static String SELECT_ONE = "SELECT * FROM PUESTO where puesto_id = ? ";
-	private static String SELECT_ID = "SELECT puesto_id FROM PAIS WHERE PUESTO = ? ";
+	private static String SELECT_ID = "SELECT puesto_id FROM PAIS WHERE nombre= ? ";
 	private static String DELETE = "DELETE FROM PUESTO  WHERE NOMBRE = ? ";
 	private static String UPDATE = "UPDATE PUESTO SET NOMBRE = ? WHERE puesto_id = ? ";
 	private static String INSERT = "INSERT INTO PUESTO(NOMBRE) VALUES ( ? )";

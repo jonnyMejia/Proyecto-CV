@@ -11,11 +11,9 @@ import javax.swing.DefaultComboBoxModel;
 
 import Controller.SQLEspecialidad;
 import Controller.SQLGrado_Espec;
-import Controller.SQLIntitucion;
 import Controller.SQLPais;
 import Entidades.Especialidad;
 import Entidades.Grado_Espec;
-import Entidades.Institucion;
 import Entidades.Pais;
 
 /**
@@ -325,6 +323,7 @@ public class POSTULAR_2 extends javax.swing.JFrame {
         );
 
         pack();
+        addJcombobox();
     }// </editor-fold>//GEN-END:initComponents
 
     void addJcombobox(){
@@ -334,9 +333,6 @@ public class POSTULAR_2 extends javax.swing.JFrame {
         SQLGrado_Espec grado= new SQLGrado_Espec();
         List<Grado_Espec> lista_grad=grado.querySelectAll();
         grado_instituto.setModel(new javax.swing.DefaultComboBoxModel<>(lista_grad.stream().map(e->e.getNombre()).toArray()));
-        SQLIntitucion ins= new SQLIntitucion();
-        List<Institucion> lista_inst=ins.querySelectAll();        
-        box_institucion.setModel(new javax.swing.DefaultComboBoxModel<>(lista_inst.stream().map(e->e.getNombre()).toArray()));
         String[] ciclos="1 2 3 4 5 6 7 8 9 10".split(" ");
         ciclo.setModel(new javax.swing.DefaultComboBoxModel<>(ciclos));
         
@@ -418,9 +414,9 @@ public class POSTULAR_2 extends javax.swing.JFrame {
     private javax.swing.JButton bGuardar;
     private javax.swing.JButton bRegre;
     private javax.swing.JButton cancelar;
-    private javax.swing.JComboBox<String> ciclo;
-    private javax.swing.JComboBox<String> especialidad;
-    private javax.swing.JComboBox<String> grado_instituto;
+    private javax.swing.JComboBox<Object> ciclo;
+    private javax.swing.JComboBox<Object> especialidad;
+    private javax.swing.JComboBox<Object> grado_instituto;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton9;
@@ -438,7 +434,7 @@ public class POSTULAR_2 extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton limpiar;
-    private javax.swing.JComboBox<String> pais;
+    private javax.swing.JComboBox<Object> pais;
     private javax.swing.JTextField text_fecha_fin;
     private javax.swing.JTextField text_fecha_inicio;
     // End of variables declaration//GEN-END:variables

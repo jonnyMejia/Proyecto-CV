@@ -13,41 +13,39 @@ import java.util.Date;
  */
 public class CV {
     int cv_id;
-    int pos_id;
+    String dni_id;
     int puesto_id;
-    Date fecha;
-
-    public int getCv_id() {
-        return cv_id;
-    }
-
-    public void setCv_id(int cv_id) {
-        this.cv_id = cv_id;
-    }
-
-    public int getPos_id() {
-        return pos_id;
-    }
-
-    public void setPos_id(int pos_id) {
-        this.pos_id = pos_id;
-    }
-
-    public int getPuesto_id() {
-        return puesto_id;
-    }
-
-    public void setPuesto_id(int puesto_id) {
-        this.puesto_id = puesto_id;
-    }
-
-    public Date getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-    
+    String fecha;
+	public CV(int cv_id, String dni_id, int puesto_id, String fecha) {
+		super();
+		this.cv_id = cv_id;
+		this.dni_id = dni_id;
+		this.puesto_id = puesto_id;
+		this.fecha = fecha;
+	}
+	public int getCv_id() {
+		return cv_id;
+	}
+	public void setCv_id(int cv_id) {
+		this.cv_id = cv_id;
+	}
+	public String getDni_id() {
+		return dni_id;
+	}
+	public void setDni_id(String dni_id) {
+		this.dni_id = dni_id;
+	}
+	public int getPuesto_id() {
+		return puesto_id;
+	}
+	public void setPuesto_id(int puesto_id) {
+		this.puesto_id = puesto_id;
+	}
+	public String getFecha() {
+		return fecha;
+	}
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
     
 }
