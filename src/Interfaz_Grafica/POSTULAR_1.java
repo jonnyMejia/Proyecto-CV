@@ -20,12 +20,14 @@ import Controller.SQLAreaLaboral;
 import Controller.SQLEstado;
 import Controller.SQLLugarLaboral;
 import Controller.SQLPais;
+import Controller.SQLPensiones;
 import Controller.SQLPuesto;
 import Entidades.Area_Laboral;
 import Entidades.CV;
 import Entidades.Estado;
 import Entidades.Lugar_Laboral;
 import Entidades.Pais;
+import Entidades.Pensiones;
 import Entidades.Postulante;
 import Entidades.Puesto;
 import Models.Curriculum;
@@ -93,7 +95,10 @@ public class POSTULAR_1 extends javax.swing.JFrame {
         bCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
+        initData();
+        Curriculum.initPostu();
+        Curriculum.initCv();
+        
         jLabel2.setText("Lugar de preferencia para trabajar");
 
         prefTrab.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -270,6 +275,9 @@ public class POSTULAR_1 extends javax.swing.JFrame {
         });
 
         bClean.setText("Limpiar");
+        bClean.addActionListener(e->{
+        	limpiar();
+        });
 
         bCancel.setText("Cancelar");
         bCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -348,6 +356,7 @@ public class POSTULAR_1 extends javax.swing.JFrame {
         );
 
         pack();
+        addJcomboBox();
     }// </editor-fold>//GEN-END:initComponents
 
     void agregarPostulante() {
@@ -358,6 +367,7 @@ public class POSTULAR_1 extends javax.swing.JFrame {
     	}else {
     		 sexo = "F";
     	}
+    	
     	DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     	LocalDate fechaNac = LocalDate.parse(text_fecha.getText(), fmt);
     	LocalDate ahora = LocalDate.now();
@@ -373,17 +383,19 @@ public class POSTULAR_1 extends javax.swing.JFrame {
     	int lugar_id= lugar.querySelectId(areaPref.getSelectedItem().toString());
     	
     	Curriculum.data_postulante.add(new Postulante(txt_dni.getText(), txt_nom.getText(),txt_ape1.getText(), txt_ape2.getText(),txt_domi.getText(),
-    			periodo.getYears(), text_fecha.getText() ,pais_id,sexo,est_id, email.getText(), 1,lugar_id,area_id));
+    			periodo.getYears(), text_fecha.getText() ,pais_id,sexo,est_id, email.getText(), 1,lugar_id,area_id,telefono.getText()));
     }
     private void initData() {
 		// TODO Auto-generated method stub
     	for(Postulante e:Curriculum.data_postulante) {
-        	txt_dni.setText(e.getDNI());
+        	txt_dni.setText(e.getDni_id());
         	txt_nom.setText(e.getNombre());
         	txt_ape1.setText(e.getAp_pat());
         	txt_ape2.setText(e.getAp_mat());
         	txt_domi.setText(e.getDomiciilio());
         	email.setText(e.getEmail());
+        	telefono.setText(e.getTelefono());
+        	text_fecha.setText(e.getfNac());
         }
 	}
     private void agregarCV() {
@@ -427,7 +439,9 @@ public class POSTULAR_1 extends javax.swing.JFrame {
         List<Puesto> lista_puesto=puesto.querySelectAll();
         codPuesto.setModel(new javax.swing.DefaultComboBoxModel<>(lista_puesto.stream().map(e->e.getNombre()).toArray()));
         genero.setModel(new javax.swing.DefaultComboBoxModel<>(new Object[] {"Masculino","Femenino"}));
-
+        SQLPensiones pensiones= new SQLPensiones();
+        List<Pensiones> lista_pensiones=pensiones.querySelectAll();
+        this.pensiones.setModel(new DefaultComboBoxModel<Object>(lista_pensiones.stream().map(e->e.getNombre()).toArray()));
         SQLPais paises= new SQLPais();
         List<Pais> lista_pais=paises.querySelectAll();
         pais.setModel(new javax.swing.DefaultComboBoxModel<>(lista_pais.stream().map(e->e.getNombre()).toArray()));
@@ -486,16 +500,16 @@ public class POSTULAR_1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> Estado;
     private javax.swing.JLabel ape_mat;
     private javax.swing.JLabel ape_pat;
-    private javax.swing.JComboBox<String> areaPref;
     private javax.swing.JButton bCancel;
     private javax.swing.JButton bClean;
     private javax.swing.JButton bContinuar;
-    private javax.swing.JComboBox<String> codPuesto;
     private javax.swing.JTextField email;
-    private javax.swing.JComboBox<String> genero;
+    private javax.swing.JComboBox<Object> Estado;
+    private javax.swing.JComboBox<Object> areaPref;
+    private javax.swing.JComboBox<Object> codPuesto;
+    private javax.swing.JComboBox<Object> genero;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -513,9 +527,9 @@ public class POSTULAR_1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JComboBox<String> pais;
-    private javax.swing.JComboBox<String> pensiones;
-    private javax.swing.JComboBox<String> prefTrab;
+    private javax.swing.JComboBox<Object> pais;
+    private javax.swing.JComboBox<Object> pensiones;
+    private javax.swing.JComboBox<Object> prefTrab;
     private javax.swing.JTextField telefono;
     private javax.swing.JTextField text_fecha;
     private javax.swing.JTextField txt_ape1;

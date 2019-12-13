@@ -24,8 +24,11 @@ public class Postulante {
     int pensiones_id;
     int lugar_id;
     int area_id;
-	public Postulante(String dni_id, String nombre, String ap_pat, String ap_mat, String domiciilio, int edad, String fNac,
-			int pais_id, String genero, int estado_id, String email, int pensiones_id, int lugar_id, int area_id) {
+    String telefono; 
+    
+	public Postulante(String dni_id, String nombre, String ap_pat, String ap_mat, String domiciilio, int edad,
+			String fNac, int pais_id, String genero, int estado_id, String email, int pensiones_id, int lugar_id,
+			int area_id, String telefono) {
 		super();
 		this.dni_id = dni_id;
 		this.nombre = nombre;
@@ -41,11 +44,12 @@ public class Postulante {
 		this.pensiones_id = pensiones_id;
 		this.lugar_id = lugar_id;
 		this.area_id = area_id;
+		this.telefono = telefono;
 	}
-	public String getDNI() {
+	public String getDni_id() {
 		return dni_id;
 	}
-	public void setDNI(String dni_id) {
+	public void setDni_id(String dni_id) {
 		this.dni_id = dni_id;
 	}
 	public String getNombre() {
@@ -126,13 +130,13 @@ public class Postulante {
 	public void setArea_id(int area_id) {
 		this.area_id = area_id;
 	}
-	@Override
-	public String toString() {
-		return "Postulante [dni_id=" + dni_id + ", nombre=" + nombre + ", ap_pat=" + ap_pat + ", ap_mat=" + ap_mat
-				+ ", domiciilio=" + domiciilio + ", edad=" + edad + ", fNac=" + fNac + ", pais_id=" + pais_id
-				+ ", genero=" + genero + ", estado_id=" + estado_id + ", email=" + email + ", pensiones_id="
-				+ pensiones_id + ", lugar_id=" + lugar_id + ", area_id=" + area_id + "]";
+	public String getTelefono() {
+		return telefono;
 	}
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+	
     
   
     

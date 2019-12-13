@@ -16,7 +16,7 @@ public class SQLPostulante {
 	private static String SELECT_ID = "SELECT dni_id FROM POSTULANTE WHERE nombre = ? ";
 	private static String SELECT_ONE = "SELECT * FROM POSTULANTE WHERE dni_id= ? ";
 	private static String DELETE = "DELETE FROM POSTULANTE WHERE dni_id = ? ";
-	private static String INSERT = "INSERT INTO postulante VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )";
+	private static String INSERT = "INSERT INTO postulante VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )";
 	private static String UPDATE = "UPDATE postulante SET dni_id = ? "
 			+ ", nombre = ? "
 			+ ", ap_pat = ? "
@@ -31,6 +31,7 @@ public class SQLPostulante {
 			+ ", pensiones_id = ? "
 			+ ", lug_id = ? "
 			+ ", area_lab_id = ? "
+			+ ", telefono = ? "
 			+ " WHERE dni_id = ? ";
 	
 	public int querySelectId(String nombre) {
@@ -72,7 +73,7 @@ public class SQLPostulante {
 						,rs.getString(7),rs.getInt(8)
 						,rs.getString(9),rs.getInt(10)
 						,rs.getString(11),rs.getInt(12)
-						,rs.getInt(13),rs.getInt(14)
+						,rs.getInt(13),rs.getInt(14),rs.getString(15)
 						);
 			}
 		}catch(SQLException e) {
@@ -102,7 +103,7 @@ public class SQLPostulante {
 						,rs.getString(7),rs.getInt(8)
 						,rs.getString(9),rs.getInt(10)
 						,rs.getString(11),rs.getInt(12)
-						,rs.getInt(13),rs.getInt(14)
+						,rs.getInt(13),rs.getInt(14),rs.getString(15)
 						);
 				lista.add(areaLab);
 			}
@@ -122,7 +123,7 @@ public class SQLPostulante {
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(INSERT);
-			stmt.setString(1, pos.getDNI());
+			stmt.setString(1, pos.getDni_id());
 			stmt.setString(2, pos.getNombre());
 			stmt.setString(3, pos.getAp_pat());
 			stmt.setString(4, pos.getAp_mat());
@@ -136,6 +137,8 @@ public class SQLPostulante {
 			stmt.setInt(12, pos.getPensiones_id());
 			stmt.setInt(13, pos.getLugar_id());
 			stmt.setInt(14, pos.getArea_id());
+			stmt.setString(15, pos.getTelefono());
+			
 			
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {
@@ -170,7 +173,7 @@ public class SQLPostulante {
 		try {
 			con=DBManager.getConnection();
 			stmt=con.prepareStatement(UPDATE);
-			stmt.setString(1, pos.getDNI());
+			stmt.setString(1, pos.getDni_id());
 			stmt.setString(2, pos.getNombre());
 			stmt.setString(3, pos.getAp_pat());
 			stmt.setString(4, pos.getAp_mat());
@@ -184,7 +187,8 @@ public class SQLPostulante {
 			stmt.setInt(12, pos.getPensiones_id());
 			stmt.setInt(13, pos.getLugar_id());
 			stmt.setInt(14, pos.getArea_id());
-			stmt.setString(15, pos.getDNI());
+			stmt.setString(15, pos.getTelefono());
+			stmt.setString(16, pos.getDni_id());
 			
 			rows = stmt.executeUpdate();	
 		}catch(SQLException e) {

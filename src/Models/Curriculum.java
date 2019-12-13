@@ -26,5 +26,32 @@ public class Curriculum {
 		data_extras= new ArrayList<>();
 		data_educ= new ArrayList<>();
 	}
-	
+	public static void initFamiliar() {
+		data_familiar= new ArrayList<>();		
+	}
+	public static void initPostu() {
+		// TODO Auto-generated method stub
+		data_postulante= new ArrayList<>();
+
+	}
+	public static void initRef() {
+		// TODO Auto-generated method stub
+		data_ref= new ArrayList<>();
+
+	}
+	public static void initCv() {
+		// TODO Auto-generated method stub
+		data_cv= new ArrayList<>();
+
+	}
+	public  static void initExtras() {
+		data_extras= new ArrayList<>();
+		// TODO Auto-generated method stub
+
+	}
+	public static void initEduc() {
+		// TODO Auto-generated method stub
+		data_educ= new ArrayList<>();
+
+	}
 }

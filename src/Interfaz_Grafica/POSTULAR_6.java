@@ -6,6 +6,7 @@
 package Interfaz_Grafica;
 
 import Models.Curriculum;
+
 import Models.FamiliarModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -84,34 +86,36 @@ public class POSTULAR_6 extends javax.swing.JFrame {
 
         AgregarModel();
         
-        bAgregar1.setText("Agregar");
-        bAgregar1.addActionListener(e->{
-        	SQLTipoFamiliar fam= new SQLTipoFamiliar();
-        	int rela=fam.querySelect_id(relacion.getSelectedItem().toString());
-        	Curriculum.data_familiar.add(new Familiar(nombre.getText(),apelllido.getText(),telefono.getText(),rela));
-        	actualizarTable();
-        });
+        bAgregar1.setText("Nuevo familiar");
         relacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Nombres", "Apellidos", "Telefono", "Relacion"
-            }
-        ));
+       AgregarModel();
         jScrollPane1.setViewportView(jTable1);
 
-        bAgregar1.setText("Agregar");
+        bAgregar1.addActionListener(e->{
+        	limpiar();
+			modo = Modo.Nuevo;
+			actualizarTable();
+        });
 
         bGuardar.setText("Guardar");
+        bGuardar.addActionListener(e->{
+        	if (modo == Modo.Nuevo) {
+				guardarNuevo();
+			} else if (modo == Modo.Edicion) {
+				editarNumero();
+				
+			} else {
+				JOptionPane.showMessageDialog(null, "No esta en ningun modo.");
+			}
+			actualizarTable();
+        });
 
         bEliminar.setText("Eliminar");
-
+        bEliminar.addActionListener(e->{
+        	eliminarNumero();
+        	actualizarTable();
+        });
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -273,7 +277,24 @@ public class POSTULAR_6 extends javax.swing.JFrame {
         I.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bCancelActionPerformed
-
+    private void guardarNuevo() {
+    	SQLTipoFamiliar tipo= new SQLTipoFamiliar();
+    	int tipo_id=tipo.querySelect_id(relacion.getSelectedItem().toString());
+		Familiar e = new Familiar(nombre.getText(),apelllido.getText(),telefono.getText(),
+				tipo_id);
+		Curriculum.data_familiar.add(e);
+	}
+    private void eliminarNumero() {
+		// TODO Auto-generated method stub
+		Curriculum.data_cv.remove(jTable1.getSelectedRow());
+	}
+    private void editarNumero() {
+		// TODO Auto-generated method stub
+    	SQLTipoFamiliar tipo= new SQLTipoFamiliar();    	
+    	int tipo_id=tipo.querySelect_id(relacion.getSelectedItem().toString());
+    	Curriculum.data_familiar.set(jTable1.getSelectedRow(), new Familiar(nombre.getText(),apelllido.getText(),telefono.getText(),
+				tipo_id)); 
+	}
     private void bRegreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRegreActionPerformed
         // TODO add your handling code here:
         POSTULAR_5 P=new POSTULAR_5();
@@ -301,6 +322,12 @@ public class POSTULAR_6 extends javax.swing.JFrame {
         
     	
 	}
+    void limpiar(){
+    	nombre.setText("");
+		apelllido.setText("");
+		telefono.setText("");
+		
+    }
     void poblarCampos(int i) {
 		nombre.setText(Curriculum.data_familiar.get(i).getNombre());
 		apelllido.setText(Curriculum.data_familiar.get(i).getApellido());

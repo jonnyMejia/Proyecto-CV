@@ -332,6 +332,9 @@ public class POSTULAR_2 extends javax.swing.JFrame {
         pais.setModel(new javax.swing.DefaultComboBoxModel<>(lista_pais.stream().map(e->e.getNombre()).toArray()));
         SQLGrado_Espec grado= new SQLGrado_Espec();
         List<Grado_Espec> lista_grad=grado.querySelectAll();
+        SQLEspecialidad espec= new SQLEspecialidad();
+        List<Especialidad> lista_espec=espec.querySelect();
+        especialidad.setModel(new DefaultComboBoxModel<Object>(lista_espec.stream().map(e->e.getNombre()).toArray()));
         grado_instituto.setModel(new javax.swing.DefaultComboBoxModel<>(lista_grad.stream().map(e->e.getNombre()).toArray()));
         String[] ciclos="1 2 3 4 5 6 7 8 9 10".split(" ");
         ciclo.setModel(new javax.swing.DefaultComboBoxModel<>(ciclos));
